@@ -1,0 +1,19 @@
+{
+  "name": "Jetify Docs",
+  "description": "Repo containing documentation for Jetify products.",
+  "packages": {
+    "git": "latest",
+    "nodejs": "latest",
+    "vale": "latest"
+  },
+  "shell": {
+    "scripts": {
+      "dev": "pnpm run dev $@",
+      "fmt": "pnpm run fmt $@",
+      "lint": "pnpm run lint $@",
+      "mint": "pnpm run mint $@",
+      "vale": "pnpm run vale $@"
+    }
+  },
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/main/.schema/devbox.schema.json"
+}

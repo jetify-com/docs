@@ -9,8 +9,8 @@
     "dev": "mint dev",
     "fmt": "remark . --output",
     "lint": "mint broken-links && mint a11y",
-    "update": "mint update",
-    "mint": "mint"
+    "mint": "mint",
+    "vale": "vale"
   },
   "remarkConfig": {
     "plugins": [
@@ -27,6 +27,7 @@
     "pnpm": ">=8"
   },
   "devDependencies": {
+    "mdx2vast": "^0.3.0",
     "mint": "^4.2.147",
     "remark-cli": "^12.0.1",
     "remark-preset-lint-consistent": "^6.0.1",
