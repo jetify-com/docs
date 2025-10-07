@@ -1,3 +1,7 @@
+.nav-logo {
+    height: 1.75rem;
+}
+
 footer a[href*="mintlify.com"] {
     display: none !important;
 }
