@@ -7,5 +7,13 @@
     "light": "#07C983",
     "dark": "#15803D"
   },
-  "favicon": "/favicon.svg"
+  "favicon": "/favicon.svg",
+  "navigation": {
+    "products": [
+      {
+        "product": "Testpilot",
+        "description": "AI agent for end-to-end testing"
+      }
+    ]
+  }
 }

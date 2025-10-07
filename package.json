@@ -12,6 +12,15 @@
     "update": "mint update",
     "mint": "mint"
   },
+  "remarkConfig": {
+    "plugins": [
+      "remark-preset-wooorm",
+      [
+        "remark-lint-no-html",
+        false
+      ]
+    ]
+  },
   "packageManager": "pnpm@10.15.1",
   "engines": {
     "node": ">=22",
