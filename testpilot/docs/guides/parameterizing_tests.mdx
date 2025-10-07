@@ -9,8 +9,8 @@ You can include environment variables in your test files using the format `${ENV
 
 The syntax works as follows:
 
-* `${ENV_VAR_NAME}` - Uses the value of the environment variable
-* `${ENV_VAR_NAME:-default_value}` - Uses the value of the environment variable if set, otherwise uses the default value
+- `${ENV_VAR_NAME}` - Uses the value of the environment variable
+- `${ENV_VAR_NAME:-default_value}` - Uses the value of the environment variable if set, otherwise uses the default value
 
 ## Example: Parameterizing Host URLs[​](#example-parameterizing-host-urls "Direct link to Example: Parameterizing Host URLs")
 
@@ -22,8 +22,8 @@ name: "Parameterized URL Test"context:  - text: "Test can run against different 
 
 In this example:
 
-* If `TEST_HOST` is set (e.g., `export TEST_HOST=https://dev.example.com`), the test will use that value
-* If `TEST_HOST` is not set, it will fall back to the default value `https://staging.example.com`
+- If `TEST_HOST` is set (e.g., `export TEST_HOST=https://dev.example.com`), the test will use that value
+- If `TEST_HOST` is not set, it will fall back to the default value `https://staging.example.com`
 
 ## Running Tests with Different Parameters[​](#running-tests-with-different-parameters "Direct link to Running Tests with Different Parameters")
 

@@ -44,9 +44,8 @@ Testpilot discovers Android devices through the Android Debug Bridge (adb). You 
 ### Option 2: Physical Device[​](#option-2-physical-device "Direct link to Option 2: Physical Device")
 
 1. Enable Developer Options on your Android device:
-
-   * Go to Settings > About Phone
-   * Tap "Build Number" 7 times to enable Developer Options
+   - Go to Settings > About Phone
+   - Tap "Build Number" 7 times to enable Developer Options
 
 2. Enable USB Debugging in Developer Options
 
@@ -66,7 +65,7 @@ Testpilot discovers Android devices through the Android Debug Bridge (adb). You 
 
 ## Creating an Android Test[​](#creating-an-android-test "Direct link to Creating an Android Test")
 
-Create a test file (e.g., `android-test.pilot.yaml`) with the platform\_config specifying your Android app package:
+Create a test file (e.g., `android-test.pilot.yaml`) with the platform_config specifying your Android app package:
 
 ```
 name: "Android App Test"context:  - text: "Testing a native Android application"cases:  - id: "android-basic-001"    name: "Basic Android Navigation"    description: "Test basic navigation in the Android app"    platform_config:      android_pkg: "com.example.myapp"  # Replace with your app's package name    steps:      - "Verify the app launches successfully"      - "Tap on the 'Login' button"      - "Enter username and password"      - "Tap the Submit button"      - "Verify successful login"
@@ -94,5 +93,5 @@ The `platform_config` section lets you define the android app that you want to r
 platform_config:  url: "https://example.com"        # For browser-based tests  android_pkg: "com.example.myapp"  # For native app tests
 ```
 
-* Use `url` for browser-based tests on Android Chrome
-* Use `android_pkg` for native Android app tests
+- Use `url` for browser-based tests on Android Chrome
+- Use `android_pkg` for native Android app tests

@@ -16,9 +16,7 @@
     "groups": [
       {
         "group": "s/docs/",
-        "pages": [
-          "testpilot/docs/"
-        ]
+        "pages": ["testpilot/docs/"]
       },
       {
         "group": "Getting Started",
@@ -46,9 +44,7 @@
       },
       {
         "group": "Tips",
-        "pages": [
-          "testpilot/docs/tips"
-        ]
+        "pages": ["testpilot/docs/tips"]
       },
       {
         "group": "CLI Reference",
@@ -70,15 +66,11 @@
       },
       {
         "group": "Gitlab",
-        "pages": [
-          "testpilot/docs/gitlab"
-        ]
+        "pages": ["testpilot/docs/gitlab"]
       },
       {
         "group": "Pilotfile Spec",
-        "pages": [
-          "testpilot/docs/pilotfile-spec"
-        ]
+        "pages": ["testpilot/docs/pilotfile-spec"]
       }
     ]
   }

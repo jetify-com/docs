@@ -39,8 +39,8 @@ See the [Environment Variables](#environment-variables) section for details.
 
 MCP server configurations are stored in a `mcp.json` file that follows a schema similar to Claude Code and other agents. The file location depends on whether you're running Testpilot in a Git repository:
 
-* **Git repos:** Testpilot searches for `.testpilot/mcp.json` starting from the current directory up to the repository root. If not found, it creates the file at `.testpilot/mcp.json` in the repository root.
-* **Non-Git directories:** Testpilot searches for `.testpilot/mcp.json` starting from the current directory up through parent directories. If not found, it creates the file at `.testpilot/mcp.json` in the current directory.
+- **Git repos:** Testpilot searches for `.testpilot/mcp.json` starting from the current directory up to the repository root. If not found, it creates the file at `.testpilot/mcp.json` in the repository root.
+- **Non-Git directories:** Testpilot searches for `.testpilot/mcp.json` starting from the current directory up through parent directories. If not found, it creates the file at `.testpilot/mcp.json` in the current directory.
 
 You should commit the `.testpilot` directory to share MCP server configurations with your team and use them in CI.
 

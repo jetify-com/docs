@@ -4,18 +4,19 @@ description: "Testpilot can automatically generate test plans based on your prom
 ---
 
 <Info>
-  This feature is experimental. It may generate erroneous or incorrect tests, and you should review any tests before executing or checking them in.
+  This feature is experimental. It may generate erroneous or incorrect tests, and you should review
+  any tests before executing or checking them in.
 </Info>
 
 ## Why Generate Tests?[​](#why-generate-tests "Direct link to Why Generate Tests?")
 
 Manually writing test cases can be time-consuming and may miss important scenarios. Testpilot's test generation capability helps by:
 
-* Creating test plans much faster than manual authoring
-* Discovering edge cases you might not have considered
-* Providing comprehensive coverage of your application
-* Standardizing test structure and approach
-* Reducing the expertise required to create quality tests
+- Creating test plans much faster than manual authoring
+- Discovering edge cases you might not have considered
+- Providing comprehensive coverage of your application
+- Standardizing test structure and approach
+- Reducing the expertise required to create quality tests
 
 ## Generating Your First Test[​](#generating-your-first-test "Direct link to Generating Your First Test")
 
@@ -39,9 +40,9 @@ schema_version: v1.0.0name: nullcases:    - id: testcase_01jy56bqacey0vdkt9qtje7
 
 For best results, include:
 
-* The URL of the application you want to test
-* Specific features or flows you want to test
-* Any edge cases or scenarios to include
+- The URL of the application you want to test
+- Specific features or flows you want to test
+- Any edge cases or scenarios to include
 
 ## Adding Context for Better Tests[​](#adding-context-for-better-tests "Direct link to Adding Context for Better Tests")
 
@@ -53,11 +54,11 @@ testpilot generate "Test the checkout process" --context ./api-docs.md --context
 
 The context files can include:
 
-* API documentation
-* User flow descriptions
-* Existing test examples
-* Application requirements
-* Known edge cases
+- API documentation
+- User flow descriptions
+- Existing test examples
+- Application requirements
+- Known edge cases
 
 You can specify multiple context files to provide more comprehensive information.
 

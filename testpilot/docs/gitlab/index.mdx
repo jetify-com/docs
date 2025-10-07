@@ -11,9 +11,9 @@ You can check out an [example repo](https://gitlab.com/jetify-com/gitlab-compone
 
 Before you begin, make sure you have:
 
-* A GitLab project with CI/CD enabled
-* At least one Testpilot test file (`.pilot.yaml`) in your repository
-* Access to GitLab runners (SaaS or self-hosted)
+- A GitLab project with CI/CD enabled
+- At least one Testpilot test file (`.pilot.yaml`) in your repository
+- Access to GitLab runners (SaaS or self-hosted)
 
 ### Step 1: Create Your First Pipeline[​](#step-1-create-your-first-pipeline "Direct link to Step 1: Create Your First Pipeline")
 
@@ -34,8 +34,8 @@ Now that you have your pipeline defined, let's run it:
 
 You should see two jobs:
 
-* `testpilot-install-linux-amd64` - Downloads and sets up Testpilot
-* `run-my-tests` - Runs your Testpilot tests
+- `testpilot-install-linux-amd64` - Downloads and sets up Testpilot
+- `run-my-tests` - Runs your Testpilot tests
 
 ### Step 3: View your Artifacts[​](#step-3-view-your-artifacts "Direct link to Step 3: View your Artifacts")
 
@@ -47,11 +47,11 @@ Testpilot also generates a JUnit report that can be directly reported to your me
 
 The Testpilot component automatically:
 
-* Downloaded the Testpilot installer
-* Installed Testpilot and its dependencies (Playwright, Node.js)
-* Created a `./bin/testpilot` launcher script
-* Cached everything for faster future runs
-* Made Testpilot available to your test job
+- Downloaded the Testpilot installer
+- Installed Testpilot and its dependencies (Playwright, Node.js)
+- Created a `./bin/testpilot` launcher script
+- Cached everything for faster future runs
+- Made Testpilot available to your test job
 
 ## Platform-Specific Setup[​](#platform-specific-setup "Direct link to Platform-Specific Setup")
 
@@ -125,7 +125,7 @@ The component accepts these parameters:
 
 | Parameter        | Required | Default       | Description                         | Example                |
 | ---------------- | -------- | ------------- | ----------------------------------- | ---------------------- |
-| `stage`          | ✅ Yes    | -             | Which stage to install Testpilot in | `install`              |
+| `stage`          | ✅ Yes   | -             | Which stage to install Testpilot in | `install`              |
 | `platform`       | No       | `linux-amd64` | Target platform                     | `macos`, `linux-arm64` |
 | `runner-extends` | No       | -             | Custom runner configuration         | `.macos_saas_runners`  |
 | `xdg_cache_home` | No       | `.cache`      | Cache directory location            | `.custom_cache`        |
@@ -136,8 +136,8 @@ The component accepts these parameters:
 
 The component automatically caches:
 
-* The Testpilot binary and dependencies
-* Your `./bin/testpilot` launcher script
+- The Testpilot binary and dependencies
+- Your `./bin/testpilot` launcher script
 
 This means the second time your pipeline runs, Testpilot installation will be much faster!
 
@@ -153,15 +153,15 @@ include:  - component: gitlab.com/jetify-com/gitlab-components/testpilot_install
 
 ✅ **Do:**
 
-* Always use `needs:` to ensure proper job dependencies
-* Leverage the built-in caching for faster pipelines
-* Use descriptive job names that reflect what you're testing
-* Test on multiple platforms if your application supports them
-* Structure your tests in logical directories
+- Always use `needs:` to ensure proper job dependencies
+- Leverage the built-in caching for faster pipelines
+- Use descriptive job names that reflect what you're testing
+- Test on multiple platforms if your application supports them
+- Structure your tests in logical directories
 
 ❌ **Don't:**
 
-* Forget to specify the correct job name in `needs:`
-* Modify the cache directory unless necessary
-* Run tests without waiting for the installation job
-* Use the same job name for multiple platforms
+- Forget to specify the correct job name in `needs:`
+- Modify the cache directory unless necessary
+- Run tests without waiting for the installation job
+- Use the same job name for multiple platforms
