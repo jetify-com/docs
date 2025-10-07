@@ -1,0 +1,27 @@
+{
+  "name": "@jetify/docs",
+  "version": "0.0.0-dev",
+  "private": true,
+  "license": "UNLICENSED",
+  "sideEffects": false,
+  "type": "module",
+  "scripts": {
+    "dev": "mint dev",
+    "fmt": "remark . --output",
+    "lint": "mint broken-links && mint a11y",
+    "update": "mint update",
+    "mint": "mint"
+  },
+  "packageManager": "pnpm@10.15.1",
+  "engines": {
+    "node": ">=22",
+    "pnpm": ">=8"
+  },
+  "devDependencies": {
+    "mint": "^4.2.147",
+    "remark-cli": "^12.0.1",
+    "remark-preset-lint-consistent": "^6.0.1",
+    "remark-preset-lint-markdown-style-guide": "^6.0.1",
+    "remark-preset-lint-recommended": "^7.0.1"
+  }
+}

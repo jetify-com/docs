@@ -1,0 +1,28 @@
+node_modules
+.DS_Store
+
+.idea
+
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+# If we want to enable 'zero install':
+# !.yarn/cache
+# remove .pnp.* from the list above
+
+
+.turbo
+build/**
+dist/**
+.next/**
+coverage/**
+.vercel
+.env
+.env.local
+.devbox
+*.tsbuildinfo
+next-env.d.ts
