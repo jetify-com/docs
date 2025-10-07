@@ -11,6 +11,7 @@
   "type": "module",
   "scripts": {
     "dev": "mint dev",
+    "fmt": "prettier --write .",
     "lint": "mint broken-links && mint a11y",
     "mint": "mint",
     "vale": "devbox run vale"
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "mdx2vast": "^0.3.0",
-    "mint": "^4.2.147"
+    "mint": "^4.2.147",
+    "prettier": "^3.0.0"
   }
 }
