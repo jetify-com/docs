@@ -12,7 +12,7 @@
       "fmt": "pnpm run fmt $@",
       "lint": "pnpm run lint $@",
       "mint": "pnpm run mint $@",
-      "vale": "pnpm run vale $@"
+      "vale": "vale $@"
     }
   },
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/main/.schema/devbox.schema.json"
