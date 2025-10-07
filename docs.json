@@ -1,11 +1,11 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "name": "Jetify Docs",
   "theme": "aspen",
+  "name": "Jetify Docs",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#503D88",
+    "light": "#55D799",
+    "dark": "#0D9373"
   },
   "favicon": "/favicon.svg",
   "logo": {
@@ -13,10 +13,72 @@
     "dark": "/images/logo/dark.svg"
   },
   "navigation": {
-    "products": [
+    "groups": [
       {
-        "product": "Testpilot",
-        "description": "AI agent for end-to-end testing"
+        "group": "s/docs/",
+        "pages": [
+          "testpilot/docs/"
+        ]
+      },
+      {
+        "group": "Getting Started",
+        "pages": [
+          "testpilot/docs/category/getting-started",
+          "testpilot/docs/getting_started/setup",
+          "testpilot/docs/getting_started/running_tests",
+          "testpilot/docs/getting_started/running_tests_android",
+          "testpilot/docs/getting_started/running_tests_ios",
+          "testpilot/docs/getting_started/generating_tests",
+          "testpilot/docs/getting_started/mcp"
+        ]
+      },
+      {
+        "group": "Guides",
+        "pages": [
+          "testpilot/docs/category/guides",
+          "testpilot/docs/guides/adding_additional_context",
+          "testpilot/docs/guides/generating_email_addresses",
+          "testpilot/docs/guides/managing_login_flows",
+          "testpilot/docs/guides/parameterizing_tests",
+          "testpilot/docs/guides/setting_browser_viewport",
+          "testpilot/docs/guides/concurrency-and-sharding"
+        ]
+      },
+      {
+        "group": "Tips",
+        "pages": [
+          "testpilot/docs/tips"
+        ]
+      },
+      {
+        "group": "CLI Reference",
+        "pages": [
+          "testpilot/docs/category/cli-reference",
+          "testpilot/docs/cli_reference/testpilot",
+          "testpilot/docs/cli_reference/testpilot_auth",
+          "testpilot/docs/cli_reference/testpilot_auth_login",
+          "testpilot/docs/cli_reference/testpilot_auth_logout",
+          "testpilot/docs/cli_reference/testpilot_auth_whoami",
+          "testpilot/docs/cli_reference/testpilot_generate",
+          "testpilot/docs/cli_reference/testpilot_install",
+          "testpilot/docs/cli_reference/testpilot_report",
+          "testpilot/docs/cli_reference/testpilot_report_merge",
+          "testpilot/docs/cli_reference/testpilot_test",
+          "testpilot/docs/cli_reference/testpilot_version",
+          "testpilot/docs/cli_reference/testpilot_version_update"
+        ]
+      },
+      {
+        "group": "Gitlab",
+        "pages": [
+          "testpilot/docs/gitlab"
+        ]
+      },
+      {
+        "group": "Pilotfile Spec",
+        "pages": [
+          "testpilot/docs/pilotfile-spec"
+        ]
       }
     ]
   }
