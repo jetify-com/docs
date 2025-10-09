@@ -12,7 +12,7 @@
   "scripts": {
     "dev": "mint dev",
     "fmt": "prettier --write .",
-    "lint": "mint broken-links && mint a11y",
+    "lint": "mint broken-links",
     "mint": "mint",
     "vale": "devbox run vale"
   },

@@ -1,54 +1,6 @@
 {
   "lockfile_version": "1",
   "packages": {
-    "dprint@latest": {
-      "last_modified": "2025-09-18T16:33:27Z",
-      "resolved": "github:NixOS/nixpkgs/f4b140d5b253f5e2a1ff4e5506edbf8267724bde#dprint",
-      "source": "devbox-search",
-      "version": "0.50.2",
-      "systems": {
-        "aarch64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/yk4p757ffyslwb3k9xl7xqsc14xm3mvb-dprint-0.50.2",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/yk4p757ffyslwb3k9xl7xqsc14xm3mvb-dprint-0.50.2"
-        },
-        "aarch64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/54flgzsn5xh4i0mv48r40xcy8abkpfvr-dprint-0.50.2",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/54flgzsn5xh4i0mv48r40xcy8abkpfvr-dprint-0.50.2"
-        },
-        "x86_64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/2mmmrnrvbcc1lw9q4l1h1h8hc2v593r0-dprint-0.50.2",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/2mmmrnrvbcc1lw9q4l1h1h8hc2v593r0-dprint-0.50.2"
-        },
-        "x86_64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/jzcxc720skvh90gyb70q5b0b0n8nynq9-dprint-0.50.2",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/jzcxc720skvh90gyb70q5b0b0n8nynq9-dprint-0.50.2"
-        }
-      }
-    },
     "git@latest": {
       "last_modified": "2025-09-18T16:33:27Z",
       "resolved": "github:NixOS/nixpkgs/f4b140d5b253f5e2a1ff4e5506edbf8267724bde#git",
