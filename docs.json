@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "aspen",
+  "theme": "mint",
   "name": "Jetify Docs",
   "colors": {
     "primary": "#503D88",
@@ -81,6 +81,10 @@
             "pages": ["docs/testpilot/gitlab/index"]
           },
           {
+            "group": "Changelog",
+            "pages": ["docs/testpilot/changelog/index"]
+          },
+          {
             "group": "Pilotfile Spec",
             "pages": ["docs/testpilot/reference/pilotfile_spec"]
           }
@@ -90,19 +94,208 @@
         "product": "Devbox",
         "description": "Reproducible development environments",
         "icon": "box",
-        "pages": ["docs/devbox/index"]
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": ["docs/devbox/index"]
+          },
+          {
+            "group": "Getting Started",
+            "pages": [
+              "docs/devbox/installing_devbox/index",
+              "docs/devbox/quickstart/index",
+              "docs/devbox/devbox_global/index"
+            ]
+          },
+          {
+            "group": "Configuring your Project",
+            "pages": [
+              "docs/devbox/guides/pinning_packages/index",
+              "docs/devbox/guides/platform_specific_packages/index",
+              "docs/devbox/guides/using_flakes/index",
+              "docs/devbox/guides/scripts/index",
+              "docs/devbox/guides/plugins/index",
+              "docs/devbox/guides/creating_plugins/index",
+              "docs/devbox/guides/services/index"
+            ]
+          },
+          {
+            "group": "Reference",
+            "pages": [
+              {
+                "group": "CI/CD Reference",
+                "pages": ["docs/devbox/continuous_integration/github_action/index"]
+              },
+              {
+                "group": "CLI Reference",
+                "pages": [
+                  "docs/devbox/cli_reference/devbox/index",
+                  "docs/devbox/cli_reference/devbox_add/index",
+                  "docs/devbox/cli_reference/devbox_cache/index",
+                  "docs/devbox/cli_reference/devbox_cache_configure/index",
+                  "docs/devbox/cli_reference/devbox_cache_info/index",
+                  "docs/devbox/cli_reference/devbox_cache_upload/index",
+                  "docs/devbox/cli_reference/devbox_completion/index",
+                  "docs/devbox/cli_reference/devbox_completion_bash/index",
+                  "docs/devbox/cli_reference/devbox_completion_fish/index",
+                  "docs/devbox/cli_reference/devbox_completion_zsh/index",
+                  "docs/devbox/cli_reference/devbox_create/index",
+                  "docs/devbox/cli_reference/devbox_generate/index",
+                  "docs/devbox/cli_reference/devbox_generate_devcontainer/index",
+                  "docs/devbox/cli_reference/devbox_generate_direnv/index",
+                  "docs/devbox/cli_reference/devbox_generate_dockerfile/index",
+                  "docs/devbox/cli_reference/devbox_generate_readme/index",
+                  "docs/devbox/cli_reference/devbox_global/index",
+                  "docs/devbox/cli_reference/devbox_global_add/index",
+                  "docs/devbox/cli_reference/devbox_global_install/index",
+                  "docs/devbox/cli_reference/devbox_global_list/index",
+                  "docs/devbox/cli_reference/devbox_global_pull/index",
+                  "docs/devbox/cli_reference/devbox_global_push/index",
+                  "docs/devbox/cli_reference/devbox_global_rm/index",
+                  "docs/devbox/cli_reference/devbox_global_run/index",
+                  "docs/devbox/cli_reference/devbox_global_services/index",
+                  "docs/devbox/cli_reference/devbox_global_shellenv/index",
+                  "docs/devbox/cli_reference/devbox_global_update/index",
+                  "docs/devbox/cli_reference/devbox_info/index",
+                  "docs/devbox/cli_reference/devbox_init/index",
+                  "docs/devbox/cli_reference/devbox_install/index",
+                  "docs/devbox/cli_reference/devbox_rm/index",
+                  "docs/devbox/cli_reference/devbox_run/index",
+                  "docs/devbox/cli_reference/devbox_search/index",
+                  "docs/devbox/cli_reference/devbox_secrets/index",
+                  "docs/devbox/cli_reference/devbox_secrets_download/index",
+                  "docs/devbox/cli_reference/devbox_secrets_init/index",
+                  "docs/devbox/cli_reference/devbox_secrets_list/index",
+                  "docs/devbox/cli_reference/devbox_secrets_rm/index",
+                  "docs/devbox/cli_reference/devbox_secrets_set/index",
+                  "docs/devbox/cli_reference/devbox_secrets_upload/index",
+                  "docs/devbox/cli_reference/devbox_services/index",
+                  "docs/devbox/cli_reference/devbox_services_attach/index",
+                  "docs/devbox/cli_reference/devbox_services_ls/index",
+                  "docs/devbox/cli_reference/devbox_services_restart/index",
+                  "docs/devbox/cli_reference/devbox_services_start/index",
+                  "docs/devbox/cli_reference/devbox_services_stop/index",
+                  "docs/devbox/cli_reference/devbox_services_up/index",
+                  "docs/devbox/cli_reference/devbox_shell/index",
+                  "docs/devbox/cli_reference/devbox_shellenv/index",
+                  "docs/devbox/cli_reference/devbox_update/index",
+                  "docs/devbox/cli_reference/devbox_version/index",
+                  "docs/devbox/cli_reference/devbox_version_update/index"
+                ]
+              },
+              "docs/devbox/configuration/index",
+              "docs/devbox/env_variables/index",
+              {
+                "group": "IDE Reference",
+                "pages": [
+                  "docs/devbox/ide_configuration/direnv/index",
+                  "docs/devbox/ide_configuration/eclipse/index",
+                  "docs/devbox/ide_configuration/vscode/index",
+                  "docs/devbox/ide_configuration/zed/index"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Examples",
+            "pages": ["docs/devbox/devbox_examples/index"]
+          },
+          {
+            "group": "FAQ",
+            "pages": ["docs/devbox/faq/index"]
+          }
+        ]
       },
       {
         "product": "NixHub API",
         "description": "API for Nix package discovery",
         "icon": "gear",
-        "pages": ["docs/nixhub/index"]
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": ["docs/nixhub/index"]
+          },
+          {
+            "group": "API Endpoints",
+            "pages": [
+              "docs/nixhub/get-a-package/index",
+              "docs/nixhub/search-packages/index",
+              "docs/nixhub/resolve-a-package-version/index"
+            ]
+          }
+        ]
       },
       {
         "product": "Jetify Cloud",
         "description": "Cloud development environments",
         "icon": "cloud",
-        "pages": ["docs/cloud/index"]
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": ["docs/cloud/index"]
+          },
+          {
+            "group": "Secrets",
+            "pages": [
+              "docs/cloud/secrets/index",
+              {
+                "group": "Dashboard Secrets",
+                "pages": ["docs/cloud/secrets/dashboard_secrets/index"]
+              },
+              {
+                "group": "Secrets CLI",
+                "pages": ["docs/cloud/secrets/secrets_cli/index"]
+              }
+            ]
+          },
+          {
+            "group": "Cache",
+            "pages": [
+              "docs/cloud/cache/index",
+              {
+                "group": "Authenticating",
+                "pages": ["docs/cloud/cache/authenticating/index"]
+              },
+              {
+                "group": "Usage",
+                "pages": ["docs/cloud/cache/usage/index"]
+              },
+              {
+                "group": "Prebuilt Cache",
+                "pages": ["docs/cloud/cache/prebuilt_cache/index"]
+              }
+            ]
+          },
+          {
+            "group": "Deploying your Project with Jetify Deployments",
+            "pages": [
+              "docs/cloud/deploys/index",
+              "docs/cloud/deploys/setup/index",
+              "docs/cloud/deploys/monitoring_deploys/index",
+              "docs/cloud/deploys/secrets/index",
+              "docs/cloud/deploys/custom_domains/index",
+              "docs/cloud/deploys/integrations/index"
+            ]
+          },
+          {
+            "group": "Dashboard",
+            "pages": [
+              "docs/cloud/dashboard/index",
+              {
+                "group": "Creating Your Team",
+                "pages": ["docs/cloud/dashboard/creating_your_team/index"]
+              },
+              {
+                "group": "Inviting Members",
+                "pages": ["docs/cloud/dashboard/inviting_members/index"]
+              }
+            ]
+          },
+          {
+            "group": "FAQ",
+            "pages": ["docs/cloud/faq/index"]
+          }
+        ]
       }
     ]
   },
