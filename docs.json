@@ -87,12 +87,6 @@
         ]
       },
       {
-        "product": "Jetify Cloud",
-        "description": "Cloud development environments",
-        "icon": "cloud",
-        "pages": ["docs/cloud/index"]
-      },
-      {
         "product": "Devbox",
         "description": "Reproducible development environments",
         "icon": "box",
@@ -103,6 +97,12 @@
         "description": "API for Nix package discovery",
         "icon": "gear",
         "pages": ["docs/nixhub/index"]
+      },
+      {
+        "product": "Jetify Cloud",
+        "description": "Cloud development environments",
+        "icon": "cloud",
+        "pages": ["docs/cloud/index"]
       }
     ]
   },
