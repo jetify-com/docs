@@ -11,16 +11,20 @@ description:
 
 `devbox add mysql80`, or in your `devbox.json` add
 
-```
-    "packages": [        "mysql80@latest"    ]
+```json
+    "packages": [
+        "mysql80@latest"
+    ]
 ```
 
 You can also install Mysql 5.7 by using `devbox add mysql57`
 
 You can manually add the MySQL Plugin to your `devbox.json` by adding it to your `include` list:
 
-```
-    "include": [        "plugin:mysql"    ]
+```json
+    "include": [
+        "plugin:mysql"
+    ]
 ```
 
 This will install the latest version of MySQL. You can find other installable versions of MySQL by
@@ -41,7 +45,12 @@ You can use `devbox services up|stop mysql` to start or stop the MySQL Server.
 ### Environment Variables[​](#environment-variables "Direct link to Environment Variables")
 
 ```bash
-MYSQL_BASEDIR=.devbox/nix/profile/defaultMYSQL_HOME=./.devbox/virtenv/mysql/runMYSQL_DATADIR=./.devbox/virtenv/mysql/dataMYSQL_UNIX_PORT=./.devbox/virtenv/mysql/run/mysql.sockMYSQL_PID_FILE=./.devbox/virtenv/mysql/run/mysql.pidMYSQL_CONF=./devbox.d/mysql/my.cnf
+MYSQL_BASEDIR=.devbox/nix/profile/default
+MYSQL_HOME=./.devbox/virtenv/mysql/run
+MYSQL_DATADIR=./.devbox/virtenv/mysql/data
+MYSQL_UNIX_PORT=./.devbox/virtenv/mysql/run/mysql.sock
+MYSQL_PID_FILE=./.devbox/virtenv/mysql/run/mysql.pid
+MYSQL_CONF=./devbox.d/mysql/my.cnf
 ```
 
 ### Files[​](#files "Direct link to Files")
@@ -69,8 +78,10 @@ These files are used to setup your database and service, and should not be modif
 - `.sock` filepath can only be maximum 100 characters long. You can point to a different path by
   setting the `MYSQL_UNIX_PORT` env variable in your `devbox.json` as follows:
 
-```
-"env": {    "MYSQL_UNIX_PORT": "/<some-other-path>/mysql.sock"}
+```json
+"env": {
+    "MYSQL_UNIX_PORT": "/<some-other-path>/mysql.sock"
+}
 ```
 
 ### Disabling the MySQL PLugin[​](#disabling-the-mysql-plugin "Direct link to Disabling the MySQL PLugin")

@@ -30,8 +30,16 @@ steps:
 2. You may need to explicitly tell your LSP to use the binaries in your $PATH variable. To do this,
    add the following to the `~/.config/zed/config.json` file:
 
-```
-{  ...  "lsp": {    "<lsp-name>": {      "binary": {"path_lookup": true}    }  },  ...}
+```json
+{
+  ...
+  "lsp": {
+    "<lsp-name>": {
+      "binary": {"path_lookup": true}
+    }
+  },
+  ...
+}
 ```
 
 3. If you have a version of the binary/language server installed on your host machine, Zed's default

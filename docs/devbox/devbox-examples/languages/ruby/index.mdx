@@ -10,7 +10,7 @@ activate automatically when you install Ruby 2.7 using `devbox add ruby`.
 
 Run `devbox add [email protected] bundler`, or add the following to your `devbox.json`
 
-```
+```json
     "packages": [        "[email protected]",        "bundler@latest"    ]
 ```
 
@@ -29,7 +29,10 @@ These environment variables configure Gem to install your gems locally, and set 
 local folder
 
 ```bash
-RUBY_CONFDIR={PROJECT_DIR}/.devbox/virtenv/rubyGEMRC={PROJECT_DIR}/.devbox/virtenv/ruby/.gemrcGEM_HOME={PROJECT_DIR}/.devbox/virtenv/rubyPATH={PROJECT_DIR}/.devbox/virtenv/ruby/bin:$PATH
+RUBY_CONFDIR={PROJECT_DIR}/.devbox/virtenv/ruby
+GEMRC={PROJECT_DIR}/.devbox/virtenv/ruby/.gemrc
+GEM_HOME={PROJECT_DIR}/.devbox/virtenv/ruby
+PATH={PROJECT_DIR}/.devbox/virtenv/ruby/bin:$PATH
 ```
 
 ### Disabling the Ruby Plugin[​](#disabling-the-ruby-plugin "Direct link to Disabling the Ruby Plugin")
@@ -56,7 +59,7 @@ and flags to install gems.
 
 `.bundle/config` file example:
 
-```
+```yaml
 BUNDLE_BUILD__SASSC: "--disable-lto"
 ```
 

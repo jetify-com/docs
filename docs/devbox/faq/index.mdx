@@ -51,7 +51,7 @@ the prometheus package:
 
 ```bash
 devbox add prometheus --outputs=out,cli
-```
+```bash
 
 You can also specify non-default outputs in [flake references](/docs/devbox/guides/using-flakes/):
 
@@ -114,7 +114,7 @@ init_hook.
 You can use any previous version of Devbox by setting the `DEVBOX_USE_VERSION` environment variable.
 For example, to use version 0.8.0, you can run the following or add it to your shell's rcfile:
 
-```
+```bash
 export DEVBOX_USE_VERSION=0.8.0
 ```
 
@@ -128,13 +128,13 @@ disable this behavior by setting this environment variable in your shell's rcfil
 
 ```bash
 DEVBOX_NO_PROMPT=true
-```
+```json
 
 If you are using Fish:
 
 ```
 set -U devbox_no_prompt true
-```
+```bash
 
 ## How can I uninstall Devbox?[​](#how-can-i-uninstall-devbox "Direct link to How can I uninstall Devbox?")
 

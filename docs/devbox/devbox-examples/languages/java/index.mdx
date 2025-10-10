@@ -14,8 +14,11 @@ projects, so that the tools use the right version of the JDK for creating your p
 
 `devbox add jdk binutils`, or in your `devbox.json`
 
-```
-  "packages": [    "jdk@latest",    "binutils@latest"  ],
+```json
+  "packages": [
+    "jdk@latest",
+    "binutils@latest"
+  ]
 ```
 
 This will install the latest version of the JDK. To find other installable versions of the JDK, run
@@ -42,8 +45,22 @@ example project using Gradle, follow the instructions below:
 3. Then do: `gradle init`
    - In the generated `build.gradle` file, put the following text block:
 
-     ```bash
-     /* build.gradle */apply plugin: 'java'apply plugin: 'application'/* Change these versions to the JDK version you have installed */sourceCompatibility = 17targetCompatibility = 17mainClassName = 'hello.HelloWorld'jar {    manifest {      /* assuming main class is in src/main/java/hello/HelloWorld.java */        attributes 'Main-Class': 'hello.HelloWorld'    }}
+     ```gradle
+     /* build.gradle */
+     apply plugin: 'java'
+     apply plugin: 'application'
+
+     /* Change these versions to the JDK version you have installed */
+     sourceCompatibility = 17
+     targetCompatibility = 17
+     mainClassName = 'hello.HelloWorld'
+
+     jar {
+         manifest {
+           /* assuming main class is in src/main/java/hello/HelloWorld.java */
+             attributes 'Main-Class': 'hello.HelloWorld'
+         }
+     }
      ```
 
    - While in devbox shell, run `echo $JAVA_HOME` and take note of its value.
@@ -51,8 +68,9 @@ example project using Gradle, follow the instructions below:
    - Create a `gradle.properties` file like below and put value of `$JAVA_HOME` instead of
      \<JAVA_HOME_VALUE> in the file.
 
-     ```
-     /* gradle.properties */org.gradle.java.home=\<JAVA_HOME_VALUE\>
+     ```properties
+     /* gradle.properties */
+     org.gradle.java.home=<JAVA_HOME_VALUE>
      ```
 
 4. `gradle build` should compile the package and create a `build/` directory that contains an

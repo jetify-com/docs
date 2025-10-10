@@ -7,7 +7,7 @@ description:
 
 ```json
 {    "packages": [] | {},    "env": {},    "shell": {        "init_hook": "...",        "scripts": {}    },    "include": []}
-```
+```json
 
 ### Packages[​](#packages "Direct link to Packages")
 
@@ -33,7 +33,7 @@ the package), you can structure packages as a map, where each package follows th
 
 ```json
 {    "packages": {        // If only a version is specified, you can abbreviate the maps as "package_name": "version"        "package_name": string,        "package_name": {            // Version of the package to install. Defaults to "latest"            "version": string,            // Whether native library patching is enabled for this package. This defaults to `auto`, but can be overridden to `always` or `never` for individual packages.            "patch": ["auto" | "always" | "never"],            // List of platforms to install the package on. Defaults to all platforms            "platforms": [string],            // List of platforms to exclude this package from. Defaults to no excluded platforms            "excluded_platforms": [string],            // Whether to disable a built-in plugin, if one exists for this package. Defaults to false            "disable_plugin": boolean        }    }}
-```
+```json
 
 For example:
 
@@ -62,7 +62,7 @@ end of the package name. For example, to pin the `go` package to version `1.19`,
 
 ```json
 { "packages": ["[email protected]"] }
-```
+```json
 
 Where possible, pinned packages follow semver. For example, if you pin `python@3`, it will install
 the latest version of `python` with major version `3`.
@@ -89,7 +89,7 @@ packages or libraries that are only available on specific platforms (such as `bu
 
 ```json
 {    "packages": {        // Only install busybox on linux        "busybox": {            "version": "latest",            "platforms": ["x86_64-linux", "aarch64-linux"]        },        // Exclude UTM on Linux        "utm": {            "version": "latest",            "excluded_platforms": ["x86_64-linux", "aarch64-linux"]        }    }}
-```
+```json
 
 Note that a package can only specify one of `platforms` or `excluded_platforms`.
 
@@ -133,7 +133,7 @@ For example, you could set variable `$FOO` to `bar` by adding the following to y
 
 ```json
 { "env": { "FOO": "bar" } }
-```
+```bash
 
 Currently, you can only set values using string literals, `$PWD`, and `$PATH`. Any other values with
 environment variables will not be expanded when starting your shell.
@@ -164,7 +164,7 @@ project in Jetify Cloud. This will add the `jetify-cloud` field to `env_from` in
 
 ```json
 { "env_from": "jetify-cloud" }
-```
+```bash
 
 Note that setting secrets securely with Jetify Secrets requires a Jetify Cloud account. For more
 information, see the [Jetify Secrets](/docs/cloud/secrets/) guide.
@@ -202,7 +202,7 @@ When run, you'll see:
 
 ```bash
 > devbox shellInstalling nix packages. This may take a while...Starting a devbox shell...Welcome! See CONTRIBUTING.md for tips on contributing to devbox.📦 devbox>
-```
+```json
 
 #### Scripts[​](#scripts "Direct link to Scripts")
 
@@ -233,7 +233,7 @@ To run multiple commands in a single script, you can pass them as an array:
     }
   }
 }
-```
+```bash
 
 ### Include[​](#include "Direct link to Include")
 
@@ -248,7 +248,7 @@ take precedence.
 
 ```
 {    "include": [        // Include a plugin from a Github Repo. The repo must have a plugin.json in it's root,        // or in the directory specified by ?dir        "github:org/repo/ref?dir=<path-to-plugin>"        // Include a local plugin. The path must point to a plugin.json        "path:path/to/plugin.json"        // Force activate a builtin plugin        "plugin:php-config"    ]}
-```
+```toml
 
 ### Example: A Rust Devbox[​](#example-a-rust-devbox "Direct link to Example: A Rust Devbox")
 

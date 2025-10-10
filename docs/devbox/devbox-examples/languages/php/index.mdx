@@ -11,8 +11,11 @@ description:
 
 Run `devbox add php php83Packages.composer`, or add the following to your `devbox.json`:
 
-```
-    "packages": [        "php@latest",        "php83Packages.composer@latest"    ]
+```json
+    "packages": [
+        "php@latest",
+        "php83Packages.composer@latest"
+    ]
 ```
 
 If you want a different version of PHP for your project, you can search for available versions by
@@ -27,8 +30,12 @@ Devbox will automatically ensure that your extensions are included in PHP at com
 For example -- to add the `ds` extension, run `devbox add php83Extensions.ds`, or update your
 packages to include the following:
 
-```
-    "packages": [        "php@latest",        "php83Packages.composer",        "php83Extensions.ds"    ]
+```json
+    "packages": [
+        "php@latest",
+        "php83Packages.composer",
+        "php83Extensions.ds"
+    ]
 ```
 
 ## PHP Plugin Details[​](#php-plugin-details "Direct link to PHP Plugin Details")
@@ -37,8 +44,10 @@ The PHP Plugin will provide the following configuration when you install a PHP r
 `devbox add`. You can also manually add the PHP plugin by adding `plugin:php` to your `include` list
 in `devbox.json`:
 
-```
-    "include": [        "plugin:php"    ]
+```json
+    "include": [
+        "plugin:php"
+    ]
 ```
 
 ### Services[​](#services "Direct link to Services")
@@ -50,7 +59,10 @@ Use `devbox services start|stop php-fpm` to start PHP-FPM in the background.
 ### Environment Variables[​](#environment-variables "Direct link to Environment Variables")
 
 ```bash
-PHPFPM_PORT=8082PHPFPM_ERROR_LOG_FILE={PROJECT_DIR}/.devbox/virtenv/php/php-fpm.logPHPFPM_PID_FILE={PROJECT_DIR}/.devbox/virtenv/php/php-fpm.pidPHPRC={PROJECT_DIR}/devbox.d/php/php.ini
+PHPFPM_PORT=8082
+PHPFPM_ERROR_LOG_FILE={PROJECT_DIR}/.devbox/virtenv/php/php-fpm.log
+PHPFPM_PID_FILE={PROJECT_DIR}/.devbox/virtenv/php/php-fpm.pid
+PHPRC={PROJECT_DIR}/devbox.d/php/php.ini
 ```
 
 ### Helper Files[​](#helper-files "Direct link to Helper Files")

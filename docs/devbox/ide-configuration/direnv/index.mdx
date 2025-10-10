@@ -24,7 +24,7 @@ If you have direnv installed, Devbox will generate an .envrc file when you run
 
 ```bash
 ➜  devbox generate direnvSuccess: generated .envrc fileSuccess: ran `direnv allow`direnv: loading ~/src/docs/devbox/.envrcdirenv: using devbox
-```
+```bash
 
 This will generate a `.envrc` file in your project directory that contains `devbox.json`. Run
 `direnv allow` to activate your shell upon directory navigation. Run `direnv revoke` to stop.
@@ -57,7 +57,7 @@ variable with a value of `my-custom-value`, you would run the following command:
 
 ```bash
 devbox generate direnv --env MY_CUSTOM_ENV_VAR=my-value
-```
+```bash
 
 The resulting .envrc will have the following:
 
@@ -73,7 +73,7 @@ root, you would run the following command:
 
 ```bash
 devbox generate direnv --env-file .env.devbox
-```
+```bash
 
 The resulting .envrc will have the following:
 
@@ -94,7 +94,7 @@ Alternatively, a project directory can be whitelisted so that changes will be au
 up by `direnv`. This is done by adding following snippet to direnv config file typically at
 `~/.config/direnv/direnv.toml`. You can create the file and directory if it doesn't exist.
 
-```
+```bash
 [whitelist]prefix = [ "/absolute/path/to/project" ]
 ```
 

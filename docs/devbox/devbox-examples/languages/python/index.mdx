@@ -13,7 +13,9 @@ description:
 `devbox add [email protected]`, or in your `devbox.json` add:
 
 ```json
-  "packages": [    "[email protected]"  ],
+  "packages": [
+    "[email protected]"
+  ]
 ```
 
 This will install Python 3.10 in your shell. You can find other versions of Python by running
@@ -54,7 +56,16 @@ this path by setting the `VENV_DIR` environment variable in your devbox.json:
 ```json
 {
    "packages": [
-      "[email protected]"    ],    "env": {        // Install your virtual environment in `.venv`        "VENV_DIR": ".venv"    },    "shell": {        "init_hook": ". $VENV_DIR/bin/activate"    }}
+      "[email protected]"
+    ],
+    "env": {
+        // Install your virtual environment in `.venv`
+        "VENV_DIR": ".venv"
+    },
+    "shell": {
+        "init_hook": ". $VENV_DIR/bin/activate"
+    }
+}
 ```
 
 If you need to install a specific version of Pip, you can run `devbox add python3xxPackages.pip`,
@@ -62,7 +73,15 @@ where `3xx` is the major + minor version (e.g., python310 = python@3.10) of Pyth
 install:
 
 ```json
-{    "packages": [        "[email protected]"        "python310Packages.pip"    ],    "shell": {        "init_hook": ". $VENV_DIR/bin/activate"    }}
+{
+    "packages": [
+        "[email protected]",
+        "python310Packages.pip"
+    ],
+    "shell": {
+        "init_hook": ". $VENV_DIR/bin/activate"
+    }
+}
 ```
 
 ## Pipenv[​](#pipenv "Direct link to Pipenv")

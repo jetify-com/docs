@@ -12,8 +12,10 @@ description:
 
 `devbox add go`, or add the following to your `devbox.json`
 
-```
-  "packages": [    "go@latest"  ]
+```json
+  "packages": [
+    "go@latest"
+  ]
 ```
 
 This will install the latest version of the Go SDK. You can find other installable versions of Go by
@@ -23,8 +25,12 @@ running `devbox search go`. You can also view the available versions on
 If you need additional C libraries, you can add them along with `gcc` to your package list. For
 example, if libcap is required for your project:
 
-```
-"packages": [    "go",    "gcc",    "libcap"]
+```json
+"packages": [
+    "go",
+    "gcc",
+    "libcap"
+]
 ```
 
 ## Installing go packages that have CLIs[​](#installing-go-packages-that-have-clis "Direct link to Installing go packages that have CLIs")

@@ -11,8 +11,10 @@ description:
 
 `devbox add elixir`, or add the following to your `devbox.json`
 
-```
-    "packages": [        "elixir@latest"    ],
+```json
+    "packages": [
+        "elixir@latest"
+    ]
 ```
 
 This will install the latest version of Elixir. You can find other installable versions of Elixir by
@@ -29,7 +31,9 @@ Devbox will automatically use the following configuration when you install Elixi
 enables shell history in `iex`:
 
 ```bash
-MIX_HOME={PROJECT_DIR}/.devbox/virtenv/elixir/mixHEX_HOME={PROJECT_DIR}/.devbox/virtenv/elixir/hexERL_AFLAGS="-kernel shell_history enabled"
+MIX_HOME={PROJECT_DIR}/.devbox/virtenv/elixir/mix
+HEX_HOME={PROJECT_DIR}/.devbox/virtenv/elixir/hex
+ERL_AFLAGS="-kernel shell_history enabled"
 ```
 
 ### Disabling the Elixir Plugin[​](#disabling-the-elixir-plugin "Direct link to Disabling the Elixir Plugin")
@@ -56,8 +60,10 @@ of Devbox.
 If the plugin is disabled, it's recommended to manually set `$ERL_AFLAGS` to preserve `iex` shell
 history:
 
-```
-    "env": {      "ERL_AFLAGS": "-kernel shell_history enabled"    }
+```json
+    "env": {
+      "ERL_AFLAGS": "-kernel shell_history enabled"
+    }
 ```
 
 [Edit this page](https://github.com/jetify-com/devbox/tree/main/docs/app/docs/devbox-examples/languages/elixir.md)

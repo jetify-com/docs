@@ -11,8 +11,10 @@ description:
 
 `devbox add redis`, or in your Devbox.json
 
-```
-    "packages": [        "redis@latest   "    ],
+```json
+    "packages": [
+        "redis@latest"
+    ]
 ```
 
 This will install the latest version of Redis. You can find other installable versions of Redis by
@@ -39,7 +41,8 @@ The following helper files will be created in your project directory:
 ### Environment Variables[​](#environment-variables "Direct link to Environment Variables")
 
 ```bash
-REDIS_PORT=6379REDIS_CONF=./devbox.d/redis/redis.conf
+REDIS_PORT=6379
+REDIS_CONF=./devbox.d/redis/redis.conf
 ```
 
 ### Notes[​](#notes "Direct link to Notes")

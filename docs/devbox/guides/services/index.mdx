@@ -44,8 +44,14 @@ If you have a process or service that you want to run with your Devbox project, 
 using a process-compose.yml in your project's root directory. For example, if you want to run a
 Django server, you could add the following yaml:
 
-```
-# Process compose for starting djangoversion: "0.5"processes:  django:   command: python todo_project/manage.py runserver   availability:    restart: "always"
+```yaml
+# Process compose for starting django
+version: "0.5"
+processes:
+  django:
+   command: python todo_project/manage.py runserver
+   availability:
+    restart: "always"
 ```
 
 This will now start your django service whenever you run `devbox services up`.
@@ -69,15 +75,21 @@ The service will be made available to your project when you install the packages
 You can list all the services available to your current devbox project by running
 `devbox services ls`. For example, the services in a PHP web app project might look like this:
 
-```bash
-devbox services lsNo services currently running. Run `devbox services up` to start them:  django  postgresql
+```text
+devbox services ls
+No services currently running. Run `devbox services up` to start them:
+  django
+  postgresql
 ```
 
 If process-compose is already running, `devbox services ls` will show you the list of services
 registered with process-compose and their current status
 
-```
-Services running in process-compose:NAME              STATUS          EXIT CODEdjango            Running         0postgresql        Launched        0
+```text
+Services running in process-compose:
+NAME              STATUS          EXIT CODE
+django            Running         0
+postgresql        Launched        0
 ```
 
 ## Stopping your services[​](#stopping-your-services "Direct link to Stopping your services")

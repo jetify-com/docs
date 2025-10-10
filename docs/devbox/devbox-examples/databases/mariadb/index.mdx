@@ -12,14 +12,18 @@ description:
 
 `devbox add mariadb`, or in your `devbox.json` add
 
-```
-    "packages": [        "mariadb@latest"    ]
+```json
+    "packages": [
+        "mariadb@latest"
+    ]
 ```
 
 You can manually add the MariaDB Plugin to your `devbox.json` by adding it to your `include` list:
 
-```
-    "include": [        "plugin:mariadb"    ]
+```json
+    "include": [
+        "plugin:mariadb"
+    ]
 ```
 
 This will install the latest version of MariaDB. You can find other installable versions of MariaDB
@@ -40,7 +44,11 @@ You can use `devbox services up|stop mariadb` to start or stop the MariaDB Serve
 ### Environment Variables[​](#environment-variables "Direct link to Environment Variables")
 
 ```bash
-MYSQL_BASEDIR=.devbox/nix/profile/defaultMYSQL_HOME=./.devbox/virtenv/mariadb/runMYSQL_DATADIR=./.devbox/virtenv/mariadb/dataMYSQL_UNIX_PORT=./.devbox/virtenv/mariadb/run/mysql.sockMYSQL_PID_FILE=./.devbox/mariadb/run/mysql.pid
+MYSQL_BASEDIR=.devbox/nix/profile/default
+MYSQL_HOME=./.devbox/virtenv/mariadb/run
+MYSQL_DATADIR=./.devbox/virtenv/mariadb/data
+MYSQL_UNIX_PORT=./.devbox/virtenv/mariadb/run/mysql.sock
+MYSQL_PID_FILE=./.devbox/mariadb/run/mysql.pid
 ```
 
 ### Files[​](#files "Direct link to Files")
@@ -64,8 +72,10 @@ These files are used to setup your database and service, and should not be modif
 - `.sock` filepath can only be maximum 100 characters long. You can point to a different path by
   setting the `MYSQL_UNIX_PORT` env variable in your `devbox.json` as follows:
 
-```
-"env": {    "MYSQL_UNIX_PORT": "/<some-other-path>/mysql.sock"}
+```json
+"env": {
+    "MYSQL_UNIX_PORT": "/<some-other-path>/mysql.sock"
+}
 ```
 
 ### Disabling the MariaDB Plugin[​](#disabling-the-mariadb-plugin "Direct link to Disabling the MariaDB Plugin")

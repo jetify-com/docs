@@ -11,8 +11,10 @@ description:
 
 `devbox add valkey`, or in your Devbox.json
 
-```
-    "packages": [        "valkey@latest   "    ],
+```json
+    "packages": [
+        "valkey@latest"
+    ]
 ```
 
 This will install the latest version of Valkey. You can find other installable versions of Valkey by
@@ -39,7 +41,8 @@ The following helper files will be created in your project directory:
 ### Environment Variables[​](#environment-variables "Direct link to Environment Variables")
 
 ```bash
-VALKEY_PORT=6379VALKEY_CONF=./devbox.d/valkey/valkey.conf
+VALKEY_PORT=6379
+VALKEY_CONF=./devbox.d/valkey/valkey.conf
 ```
 
 ### Notes[​](#notes "Direct link to Notes")

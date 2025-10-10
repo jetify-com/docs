@@ -88,7 +88,7 @@ nix-env -iA nixpkgs.devbox
 
 or
 
-```
+```bash
 nix profile install nixpkgs#devbox
 ```
 
@@ -101,14 +101,14 @@ help you access pre-releases and final releases of Devbox as soon as they are pu
 
 To get the latest version:
 
-```
+```bash
 nix profile install github:jetify-com/devbox/latest
 ```
 
 To install a specific version, you can run the following command (only supports versions 0.13.2 and
 above).
 
-```
+```bash
 nix profile install github:jetify-com/devbox/0.13.2
 ```
 
@@ -128,7 +128,7 @@ You can find release notes and details on the
 You can rollback or pin the version of Devbox on your system using the `DEVBOX_USE_VERSION`
 environment variable. For example, to use version 0.8.0:
 
-```
+```bash
 export DEVBOX_USE_VERSION=0.8.0
 ```
 

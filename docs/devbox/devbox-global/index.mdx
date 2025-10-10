@@ -30,7 +30,7 @@ For example, if we wanted to install ripgrep, vim, and git to our global profile
 
 ```bash
 devbox global add ripgrep vim git# Output:ripgrep is now installedvim is now installedgit is now installed
-```
+```bash
 
 Once installed, the packages will be available whenever you start a Devbox Shell, even if it's not
 included in the project's `devbox.json`.
@@ -45,7 +45,7 @@ To remove a global package, use:
 
 ```bash
 devbox global rm ripgrep# Output:removing 'github:NixOS/nixpkgs/ripgrep'
-```
+```json
 
 ## Using Global Packages in your Host Shell[​](#using-global-packages-in-your-host-shell "Direct link to Using Global Packages in your Host Shell")
 
@@ -70,7 +70,7 @@ Add the following command to your `~/.bashrc` file:
 
 ```bash
 eval "$(devbox global shellenv --init-hook)"
-```
+```bash
 
 Make sure to add this hook before any other hooks that use your global packages.
 
@@ -88,7 +88,7 @@ Add the following command to your `~/.config/fish/config.fish` file:
 
 ```bash
 devbox global shellenv --init-hook | source
-```
+```json
 
 ## Sharing Your Global Config with Git[​](#sharing-your-global-config-with-git "Direct link to Sharing Your Global Config with Git")
 

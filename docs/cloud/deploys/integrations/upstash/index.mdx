@@ -39,6 +39,14 @@ your environment. You can then access them using any redis client.
 For example, if you are connecting from a Python app, you can do something like the following to
 connect from a Redis client.
 
-```
-import osimport redisredis_cache = redis.StrictRedis(    host=os.getenv('REDIS_HOST'),    password=os.getenv('REDIS_PASSWORD'),    port=os.getenv('REDIS_PORT'),    ssl=True)
+```python
+import os
+import redis
+
+redis_cache = redis.StrictRedis(
+    host=os.getenv('REDIS_HOST'),
+    password=os.getenv('REDIS_PASSWORD'),
+    port=os.getenv('REDIS_PORT'),
+    ssl=True
+)
 ```

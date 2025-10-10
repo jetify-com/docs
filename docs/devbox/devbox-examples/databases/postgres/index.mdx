@@ -15,8 +15,14 @@ distributions, you may also need to add `glibcLocales`, which can be added using
 
 Alternatively, you can add the following to your devbox.json:
 
-```
-  "packages": {    "postgresql": "latest",    "glibcLocales": {      "version":   "latest",      "platforms": ["x86_64-linux", "aarch64-linux"]    }  }
+```json
+  "packages": {
+    "postgresql": "latest",
+    "glibcLocales": {
+      "version": "latest",
+      "platforms": ["x86_64-linux", "aarch64-linux"]
+    }
+  }
 ```
 
 This will install the latest version of Postgres. You can find other installable versions of
@@ -44,20 +50,20 @@ This variable tells PostgreSQL which directory to use for creating and storing d
 
 1. To initialize PostgreSQL run:
 
-```
+```bash
 initdb
 ```
 
 1. You also need to create a user using:
 
-```
+```bash
 createuser --interactive
 ```
 
 1. (OPTIONAL) If the user has no permissions to create or drop a database, you also need to create a
    database using:
 
-```
+```bash
 createdb <db-name>
 ```
 
@@ -69,7 +75,7 @@ granting them extensive privileges including the ability to create and drop data
 you can use the `-r` or `--createrole` option to allow the user to create new roles. Here's an
 example command:
 
-```
+```bash
 createuser -s -r your_new_user_name
 ```
 

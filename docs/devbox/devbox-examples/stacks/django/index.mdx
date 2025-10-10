@@ -35,8 +35,9 @@ description:
 5. Start a devbox shell with `devbox shell`, then activate your virtual environment and install your
    requirements using the commands below.
 
-   ```
-   . $VENV_DIR/bin/activatepip install -r requirements.txt
+   ```bash
+   . $VENV_DIR/bin/activate
+   pip install -r requirements.txt
    ```
 
    You can also add these lines to your `init_hook` to automatically activate your venv whenever you
@@ -53,8 +54,9 @@ PostgreSQL database cluster, create the `todo_db` and user, and run the Django m
 
 3. In your `devbox shell`, create the empty `todo_db` database and user with the following commands.
 
-   ```
-   createdb todo_dbpsql todo_db -c "CREATE USER todo_user WITH PASSWORD 'secretpassword';"
+   ```bash
+   createdb todo_db
+   psql todo_db -c "CREATE USER todo_user WITH PASSWORD 'secretpassword';"
    ```
 
    You can add this as a devbox script in your `devbox.json` file, so you can replicate the setup on
@@ -62,8 +64,9 @@ PostgreSQL database cluster, create the `todo_db` and user, and run the Django m
 
 4. Run the Django migrations to create the tables in your database.
 
-   ```
-   python todo_project/manage.py makemigrationspython todo_project/manage.py migrate
+   ```bash
+   python todo_project/manage.py makemigrations
+   python todo_project/manage.py migrate
    ```
 
 Your database is now ready to use. You can add these commands as a script in your `devbox.json` if
@@ -74,7 +77,7 @@ example.
 
 You can now start your Django server by running the following command.
 
-```
+```bash
 python todo_project/manage.py runserver
 ```
 

@@ -9,14 +9,18 @@ description:
 
 You can start by adding the RabbitMQ server to your project by running `devbox add rabbitmq-server`.
 
-```
-    "packages": [        "rabbitmq-server@latest"    ]
+```json
+    "packages": [
+        "rabbitmq-server@latest"
+    ]
 ```
 
 You can then add the RabbitMQ Plugin to your devbox.json by adding it to your `include` list:
 
-```
-    "include": [        "github:jetify-com/devbox-plugins?dir=rabbitmq"    ]
+```json
+    "include": [
+        "github:jetify-com/devbox-plugins?dir=rabbitmq"
+    ]
 ```
 
 Adding these packages and the plugin will configure Devbox for working with RabbitMQ.
@@ -26,8 +30,20 @@ Adding these packages and the plugin will configure Devbox for working with Rabb
 The RabbitMQ plugin will automatically create a service for you that can be run with
 `devbox services up`. The process-compose.yaml for this service is shown below:
 
-```
-processes:  rabbitmq:    command: "rabbitmq-server"    availability:      restart: on_failure      max_restarts: 5    daemon: true    shutdown:      command: "rabbitmqctl shutdown"  rabbitmq-logs:    command: "tail -f $RABBITMQ_LOG_BASE/$RABBITMQ_NODENAME@$(hostname -s).log"    availability:      restart: "always"
+```yaml
+processes:
+  rabbitmq:
+    command: "rabbitmq-server"
+    availability:
+      restart: on_failure
+      max_restarts: 5
+    daemon: true
+    shutdown:
+      command: "rabbitmqctl shutdown"
+  rabbitmq-logs:
+    command: "tail -f $RABBITMQ_LOG_BASE/$RABBITMQ_NODENAME@$(hostname -s).log"
+    availability:
+      restart: "always"
 ```
 
 The `rabbitmq` process starts the server as a daemon in the background, and shuts it down whenever
@@ -43,8 +59,24 @@ details, see the [process-compose documentation](https://f1bonacc1.github.io/pro
 
 The plugin will create the following environment variables:
 
-```
-RABBITMQ_CONFIG_FILE = {{.DevboxDir}}/conf.d# Points to the directory containing your rabbitmq.conf fileRABBITMQ_MNESIA_BASE = {{.Virtenv}}/mnesia# Points to the directory where your node database store, and state files will be kept. Changing this variable is not recommendedRABBITMQ_ENABLED_PLUGINS_FILE = {{.DevboxDir}}/conf.d/enabled_plugins# Tells rabbit mq where to store the file with your enabled pluginsRABBITMQ_LOG_BASE = {{.Virtenv}}/log# Where the logs for your RabbitMQ instance will be storedRABBITMQ_NODENAME = rabbit# Default nodename for your rabbitmq instance. This variable is used in other settingsRABBITMQ_PID_FILE = {{.Virtenv}}/pid/$RABBITMQ_NODENAME.pid# Creates RabbitMQ's pidfile in a local directory for your project. Changing this is not recommended.
+```bash
+RABBITMQ_CONFIG_FILE = {{.DevboxDir}}/conf.d
+# Points to the directory containing your rabbitmq.conf file
+
+RABBITMQ_MNESIA_BASE = {{.Virtenv}}/mnesia
+# Points to the directory where your node database store, and state files will be kept. Changing this variable is not recommended
+
+RABBITMQ_ENABLED_PLUGINS_FILE = {{.DevboxDir}}/conf.d/enabled_plugins
+# Tells rabbit mq where to store the file with your enabled plugins
+
+RABBITMQ_LOG_BASE = {{.Virtenv}}/log
+# Where the logs for your RabbitMQ instance will be stored
+
+RABBITMQ_NODENAME = rabbit
+# Default nodename for your rabbitmq instance. This variable is used in other settings
+
+RABBITMQ_PID_FILE = {{.Virtenv}}/pid/$RABBITMQ_NODENAME.pid
+# Creates RabbitMQ's pidfile in a local directory for your project. Changing this is not recommended.
 ```
 
 You can override the default values of these variables using the `env` section of your `devbox.json`

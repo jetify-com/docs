@@ -49,8 +49,12 @@ your environment. You can use these environment variables when configuring your 
 For example, if you are connecting from a Python app, you can do something like the following to
 connect with the Supabase Python client:
 
-```
-from supabase import create_client, Clienturl: str = os.getenv('SUPABASE_URL')key: str = os.getenv('SUPABASE_KEY')supabase: Client = create_client(url, key)
+```python
+from supabase import create_client, Client
+
+url: str = os.getenv('SUPABASE_URL')
+key: str = os.getenv('SUPABASE_KEY')
+supabase: Client = create_client(url, key)
 ```
 
 ## Connecting via PostgreSQL Connection Parameters[​](#connecting-via-postgresql-connection-parameters "Direct link to Connecting via PostgreSQL Connection Parameters")
