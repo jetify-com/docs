@@ -9,8 +9,8 @@
   },
   "favicon": "/favicon.svg",
   "logo": {
-    "light": "/images/logo/light.svg",
-    "dark": "/images/logo/dark.svg",
+    "light": "/docs/images/logo/light.svg",
+    "dark": "/docs/images/logo/dark.svg",
     "href": "https://www.jetify.com/docs"
   },
   "navigation": {
