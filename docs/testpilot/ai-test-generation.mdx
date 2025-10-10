@@ -1,0 +1,186 @@
+---
+title: "AI Test Generation"
+description: "Generate comprehensive test plans automatically from natural language prompts. Create tests faster and discover edge cases with AI assistance."
+---
+
+<Info>
+  This feature is experimental. It may generate erroneous or incorrect tests, and you should review
+  any tests before executing or checking them in.
+</Info>
+
+## Why Generate Tests?[​](#why-generate-tests "Direct link to Why Generate Tests?")
+
+Manually writing test cases can be time-consuming and may miss important scenarios. Testpilot's test
+generation capability helps by:
+
+- Creating test plans much faster than manual authoring
+- Discovering edge cases you might not have considered
+- Providing comprehensive coverage of your application
+- Standardizing test structure and approach
+- Reducing the expertise required to create quality tests
+
+## Generating Your First Test[​](#generating-your-first-test "Direct link to Generating Your First Test")
+
+To generate tests, use the `testpilot generate` command followed by a prompt that describes what you
+want to test:
+
+```bash
+testpilot generate "Visit nixhub.com and search for 'go'. Verify that version 1.24 is shown"
+```
+
+This command:
+
+1. Processes your prompt using AI
+2. Generates a comprehensive test plan in YAML format
+3. Saves the test plan to a file in the current directory
+
+You should see something like the following output in a `generated.pilot.yaml` file:
+
+```yaml
+schema_version: v1.0.0
+name: null
+cases:
+  - id: testcase_01jy56bqacey0vdkt9qtje76q6
+    name: Verify version 1.24 of 'go' on nixhub.com
+    description: Users need to find the package 'go' on nixhub.com and ensure that version 1.24 is listed among the search results.
+    steps:
+      - Enter 'go' into the search bar.
+      - Look for search results related to 'go'.
+      - Verify that version 1.24 of 'go' is displayed in the search results.
+    url: https://nixhub.com
+    context:
+      - text: Visit nixhub.com and search for 'go'. Verify that version 1.24 is shown
+```
+
+For best results, include:
+
+- The URL of the application you want to test
+- Specific features or flows you want to test
+- Any edge cases or scenarios to include
+
+## Adding Context for Better Tests[​](#adding-context-for-better-tests "Direct link to Adding Context for Better Tests")
+
+You can provide additional context to improve test generation quality using the `--context` flag:
+
+```bash
+testpilot generate "Test the checkout process" --context ./api-docs.md --context ./checkout-flow.txt
+```
+
+The context files can include:
+
+- API documentation
+- User flow descriptions
+- Existing test examples
+- Application requirements
+- Known edge cases
+
+You can specify multiple context files to provide more comprehensive information.
+
+## Customizing Output Location[​](#customizing-output-location "Direct link to Customizing Output Location")
+
+By default, generated tests are saved to the current directory. You can specify a different output
+directory:
+
+```bash
+testpilot generate "Test search functionality" --outdir ./tests/search
+```
+
+## Example: Generated Test Plan[​](#example-generated-test-plan "Direct link to Example: Generated Test Plan")
+
+Here's an example of a test plan generated from a prompt:
+
+```yaml
+name: "Login Functionality Test Suite"
+context:
+  - text: "This test suite verifies the login functionality of the example.com website"
+  - text: "The login page has fields for username and password, plus a 'Remember me' checkbox"
+cases:
+  - id: "login-success-001"
+    name: "Successful Login"
+    description: "Verify that users can successfully log in with valid credentials"
+    url: "https://example.com/login"
+    steps:
+      - "Navigate to the login page"
+      - "Verify the login form is displayed with username and password fields"
+      - "Enter a valid username in the username field"
+      - "Enter a valid password in the password field"
+      - "Click the 'Log in' button"
+      - "Verify successful login by checking for the user dashboard"
+      - "Verify the username is displayed in the header area"
+  - id: "login-failure-001"
+    name: "Failed Login - Invalid Password"
+    description: "Verify appropriate error message when login fails due to invalid password"
+    url: "https://example.com/login"
+    steps:
+      - "Navigate to the login page"
+      - "Enter a valid username in the username field"
+      - "Enter an invalid password in the password field"
+      - "Click the 'Log in' button"
+      - "Verify an error message is displayed"
+      - "Verify the user remains on the login page"
+  - id: "login-remember-me-001"
+    name: "Remember Me Functionality"
+    description: "Verify the 'Remember me' option maintains login session across browser restarts"
+    url: "https://example.com/login"
+    steps:
+      - "Navigate to the login page"
+      - "Enter valid login credentials"
+      - "Check the 'Remember me' checkbox"
+      - "Click the 'Log in' button"
+      - "Verify successful login"
+      - "Close the browser and reopen it"
+      - "Navigate to https://example.com"
+      - "Verify the user is still logged in without re-entering credentials"
+```
+
+## Modifying Generated Tests[​](#modifying-generated-tests "Direct link to Modifying Generated Tests")
+
+Testpilot generates a starting point for your tests, but you should:
+
+1. **Review the tests**: Carefully review all generated test cases
+2. **Edit as needed**: Adjust steps to match your application's actual behavior
+3. **Add specificity**: Make vague steps more specific when necessary
+4. **Add assertions**: Ensure there are clear verification steps
+5. **Remove irrelevant tests**: Delete test cases that don't apply to your application
+
+## Running Generated Tests[​](#running-generated-tests "Direct link to Running Generated Tests")
+
+After reviewing and adjusting the generated tests, run them with:
+
+```bash
+testpilot test path/to/generated-test.pilot.yaml
+```
+
+## Effective Test Generation Prompts[​](#effective-test-generation-prompts "Direct link to Effective Test Generation Prompts")
+
+For the best results, create detailed, specific prompts:
+
+**Basic Prompt:**
+
+```bash
+Test the login functionality at https://example.com
+```
+
+**Better Prompt:**
+
+```bash
+Test the login functionality at https://example.com including:
+- Successful login with valid credentials
+- Failed login with incorrect password
+- Failed login with non-existent user
+- Password reset flow
+- Remember me functionality
+- Account lockout after multiple failed attempts
+```
+
+## Best Practices for Generated Tests[​](#best-practices-for-generated-tests "Direct link to Best Practices for Generated Tests")
+
+1. **Be specific in your prompts**: The more detail you provide, the better the generated tests
+2. **Include application URLs**: Always specify the URL to test in your prompt
+3. **Provide context files**: Add relevant documentation to improve generation quality
+4. **Review before running**: Always review generated tests before execution
+5. **Customize as needed**: Treat generated tests as a starting point, not the final product
+6. **Version control**: Save and version your refined test files
+
+By using Testpilot's test generation capabilities, you can quickly create a solid foundation for
+your test suite, saving time while ensuring good coverage of your application functionality.

@@ -1,0 +1,90 @@
+---
+title: "Testing Authentication and Login Flows"
+description: "Test authenticated features efficiently. Configure login credentials, set up authentication URLs, and reuse sessions across test cases."
+---
+
+## Setting Login Credentials[​](#setting-login-credentials "Direct link to Setting Login Credentials")
+
+Testpilot uses environment variables to securely manage your login credentials:
+
+```bash
+# Set your username and password as environment variables
+export TESTPILOT_USERNAME="your-username"
+export TESTPILOT_PASSWORD="your-password"
+```
+
+These credentials will be used whenever a test requires authentication. You can set these in your
+shell profile, CI environment, or just before running your tests. You can also use the secret
+manager of your choice to set these credentials before running Testpilot
+
+## Configuring Login URL[​](#configuring-login-url "Direct link to Configuring Login URL")
+
+To tell Testpilot where to log in, add a `login_url` field to your pilot file:
+
+```yaml
+name: "Authenticated Tests Example"
+login_url: "https://example.com/login"
+cases:
+  - id: "dashboard-test"
+    name: "View Dashboard"
+    description: "Test authenticated dashboard access"
+    url: "https://example.com/dashboard"
+    steps:
+      - "Verify the dashboard has loaded"
+      - "Check that user information is displayed correctly"
+      - "Navigate to settings page"
+```
+
+The `login_url` parameter tells Testpilot where to perform the authentication before running your
+tests.
+
+## How Authentication Works[​](#how-authentication-works "Direct link to How Authentication Works")
+
+When you provide both login credentials (via environment variables) and a login URL, Testpilot will:
+
+1. Launch a browser session
+2. Navigate to the login URL
+3. Automatically detect and fill in username and password fields
+4. Submit the login form
+5. Verify successful authentication
+6. Reuse this authenticated session for all your test cases
+
+This means you only authenticate once, and all your test cases benefit from the same authenticated
+session, saving time and reducing flakiness.
+
+## Example: Testing Authenticated Features[​](#example-testing-authenticated-features "Direct link to Example: Testing Authenticated Features")
+
+Here's a complete example of testing features that require authentication:
+
+```yaml
+name: "User Account Tests"
+login_url: "https://myapp.com/login"
+cases:
+  - id: "profile-edit"
+    name: "Edit User Profile"
+    description: "Test editing user profile information"
+    url: "https://myapp.com/account/profile"
+    steps:
+      - "Verify the profile page has loaded"
+      - "Click the 'Edit Profile' button"
+      - "Update the 'About Me' section with new text"
+      - "Click the 'Save Changes' button"
+      - "Verify success message appears"
+      - "Reload the page and verify changes persisted"
+  - id: "password-change"
+    name: "Change Password"
+    description: "Test changing user password"
+    url: "https://myapp.com/account/security"
+    steps:
+      - "Navigate to the security settings page"
+      - "Click on 'Change Password'"
+      - "Enter current password and new password"
+      - "Submit the form"
+      - "Verify password change confirmation is displayed"
+```
+
+In this example, Testpilot will log in once, then run both test cases using the same authenticated
+session.
+
+By properly configuring login credentials and URL, you can easily test authenticated sections of
+your application without repeatedly handling the login process in each test case.

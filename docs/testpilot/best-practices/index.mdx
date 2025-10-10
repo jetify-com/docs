@@ -1,0 +1,41 @@
+---
+title: "Testpilot Best Practices"
+sidebarTitle: "Overview"
+description: "Best practices for writing effective tests. Learn optimization techniques, testing philosophy, and maintainability patterns."
+---
+
+Writing high-quality tests ensures your test suite is reliable, maintainable, and provides meaningful feedback. This section shares best practices and patterns for getting the most out of Testpilot.
+
+## Testpilot's Testing Philosophy
+
+Testpilot uses AI to test applications visually, the way humans do. This means you should write tests like you would describe actions to a person:
+
+- Describe what you want to accomplish, not how to find specific elements
+- Start with general instructions and add specificity only when needed
+- Let Testpilot handle the visual navigation and element identification
+
+This approach creates tests that are more resilient to UI changes and easier to maintain.
+
+## What You'll Find Here
+
+This section provides guidance on writing effective tests, optimizing test performance, and maintaining your test suite over time.
+
+<CardGroup cols={2}>
+<Card title="How to Write Effective Tests" icon="check-circle" href="/docs/testpilot/best-practices/write-effective-tests">
+  Tips and patterns for creating reliable, maintainable tests.
+</Card>
+</CardGroup>
+
+## Key Principles
+
+- **Write for humans first**: Test steps should be readable and understandable
+- **Be flexible**: General instructions give Testpilot more flexibility to adapt to UI changes
+- **Consolidate steps**: Fewer steps mean faster tests and clearer intent
+- **Use context wisely**: Provide additional information only when necessary
+
+## See Also
+
+- [Getting Started](/docs/testpilot/getting-started) - Learn the basics of writing tests
+- [Guides](/docs/testpilot/guides) - Practical examples of common testing scenarios
+- [Pilotfile Reference](/docs/testpilot/pilotfile-reference) - Complete reference for test file format
+

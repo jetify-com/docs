@@ -1,0 +1,35 @@
+---
+title: "devbox generate"
+description:
+  "Top level command for generating Devcontainers, Dockerfiles, and other useful files for your
+  Devbox Project."
+---
+
+```bash
+devbox generate <devcontainer|dockerfile|direnv> [flags]
+```
+
+## Options[​](#options "Direct link to Options")
+
+| Option                | Description                                            |
+| --------------------- | ------------------------------------------------------ |
+| `-c, --config string` | path to directory containing a devbox.json config file |
+| `-h, --help`          | help for generate                                      |
+| `-q, --quiet`         | Quiet mode: Suppresses logs.                           |
+
+## Subcommands[​](#subcommands "Direct link to Subcommands")
+
+- [devbox generate devcontainer](/docs/devbox/cli-reference/devbox-generate-devcontainer/) -
+  Generate Dockerfile and devcontainer.json files under .devcontainer/ directory
+- [devbox generate direnv](/docs/devbox/cli-reference/devbox-generate-direnv/) - Generate a .envrc
+  file to use with direnv
+- [devbox generate dockerfile](/docs/devbox/cli-reference/devbox-generate-dockerfile/) - Generate a
+  Dockerfile that replicates devbox shell
+- [devbox generate readme](/docs/devbox/cli-reference/devbox-generate-readme/) - Generate markdown
+  readme file for your project
+
+## SEE ALSO[​](#see-also "Direct link to SEE ALSO")
+
+- [devbox](/docs/devbox/cli-reference/devbox/) - Instant, easy, predictable development environments
+
+[Edit this page](https://github.com/jetify-com/devbox/tree/main/docs/app/docs/cli-reference/devbox-generate.md)

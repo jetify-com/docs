@@ -1,0 +1,29 @@
+---
+title: "devbox generate devcontainer"
+description: "Generate Dockerfile and devcontainer.json files under .devcontainer/ directory"
+---
+
+## Synopsis[​](#synopsis "Direct link to Synopsis")
+
+Generate Dockerfile and devcontainer.json files necessary to run VSCode in remote container
+environments.
+
+```bash
+devbox generate devcontainer [flags]
+```
+
+### Options[​](#options "Direct link to Options")
+
+| Option        | Description                                                                          |
+| ------------- | ------------------------------------------------------------------------------------ |
+| `-f, --force` | force overwrite on existing files                                                    |
+| `--root-user` | use `root` as the user for container. Installs nix as single-user mode in Dockerfile |
+| `-h, --help`  | help for devcontainer                                                                |
+| `-q, --quiet` | Quiet mode: Suppresses logs.                                                         |
+
+### SEE ALSO[​](#see-also "Direct link to SEE ALSO")
+
+- [devbox generate](/docs/devbox/cli-reference/devbox-generate/) - Generate supporting files for
+  your project
+
+[Edit this page](https://github.com/jetify-com/devbox/tree/main/docs/app/docs/cli-reference/devbox-generate-devcontainer.md)

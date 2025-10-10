@@ -38,7 +38,7 @@ will automatically try to install the latest supported version for you.
 ## Can I use Devbox with NixOS?[​](#can-i-use-devbox-with-nixos "Direct link to Can I use Devbox with NixOS?")
 
 Yes! Devbox can be installed on any Linux distribution, including NixOS. You can even install Devbox
-via Nixpkgs. See the [installation guide](/docs/devbox/installing_devbox/) for more details.
+via Nixpkgs. See the [installation guide](/docs/devbox/installing-devbox/) for more details.
 
 ## A package I installed is missing header files or libraries I need for development. Where do I find them?[​](#a-package-i-installed-is-missing-header-files-or-libraries-i-need-for-development-where-do-i-find-them "Direct link to A package I installed is missing header files or libraries I need for development. Where do I find them?")
 
@@ -53,7 +53,7 @@ the prometheus package:
 devbox add prometheus --outputs=out,cli
 ```
 
-You can also specify non-default outputs in [flake references](/docs/devbox/guides/using_flakes/):
+You can also specify non-default outputs in [flake references](/docs/devbox/guides/using-flakes/):
 
 ```bash
 devbox add github:NixOS/nixpkgs#prometheus^out,cli
@@ -65,7 +65,7 @@ Packages may take a long time to install if they do not have a binary available 
 Cache. If a prebuilt binary is not available, Nix will built the package from source.
 
 If prebuilt binaries are not available in the public cache, you may want to use the
-[Jetify Cache](/docs/cloud/cache/) or the [Jetify Prebuilt Cache](/docs/cloud/cache/prebuilt_cache/)
+[Jetify Cache](/docs/cloud/cache/) or the [Jetify Prebuilt Cache](/docs/cloud/cache/prebuilt-cache/)
 to cache the binaries you build for future use. Using a package cache can reduce package install by
 up to 90% compared to building from source.
 
@@ -97,7 +97,7 @@ There are three ways to work around this issue:
 ## How can I use custom Nix packages or overrides with Devbox?[​](#how-can-i-use-custom-nix-packages-or-overrides-with-devbox "Direct link to How can I use custom Nix packages or overrides with Devbox?")
 
 You can add customized packages to your Devbox environment using our
-[Flake support](/docs/devbox/guides/using_flakes/). You can use these flakes to modify or override
+[Flake support](/docs/devbox/guides/using-flakes/). You can use these flakes to modify or override
 packages from nixpkgs, or to create your own custom packages.
 
 ## Can I use Devbox if I use [Fish](https://fishshell.com/)?[​](#can-i-use-devbox-if-i-use-fish "Direct link to can-i-use-devbox-if-i-use-fish")

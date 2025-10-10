@@ -1,0 +1,38 @@
+---
+title: "testpilot install"
+description: "Download and install dependencies"
+---
+
+```bash
+testpilot install [flags]
+```
+
+## Description[​](#description "Direct link to Description")
+
+Download and install the dependencies required to run Testpilot tests. This command does nothing if
+Testpilot is already installed unless --force is true.
+
+You usually don't need to run this command explicitly. Testpilot automatically installs dependencies
+on-demand when running tests. Use this command to pre-install dependencies when building container
+images.
+
+## Examples[​](#examples "Direct link to Examples")
+
+```bash
+# Install dependencies
+testpilot install
+
+# Force reinstall dependencies
+testpilot install --force
+```
+
+## Options[​](#options "Direct link to Options")
+
+| Option        | Description                                       |
+| ------------- | ------------------------------------------------- |
+| `-f, --force` | Reinstall and overwrite any existing installation |
+| `-h, --help`  | help for install                                  |
+
+## SEE ALSO[​](#see-also "Direct link to SEE ALSO")
+
+- [testpilot](/docs/testpilot/reference/cli/testpilot) - Testpilot CLI

@@ -1,0 +1,42 @@
+---
+title: "testpilot auth whoami"
+description: "Show information about the current user"
+---
+
+```bash
+testpilot auth whoami [flags]
+```
+
+## Description[​](#description "Direct link to Description")
+
+The whoami command displays information about the currently authenticated user, including user
+details and optionally authentication tokens.
+
+## Examples[​](#examples "Direct link to Examples")
+
+```bash
+# Show current user information
+testpilot auth whoami
+
+# Show user information including tokens
+testpilot auth whoami --show-tokens
+```
+
+## Options[​](#options "Direct link to Options")
+
+| Option              | Description                             |
+| ------------------- | --------------------------------------- |
+| `-h, --help`        | help for whoami                         |
+| `-t, --show-tokens` | Show the access, id, and refresh tokens |
+
+## Global Options[​](#global-options "Direct link to Global Options")
+
+| Option              | Description                                                             |
+| ------------------- | ----------------------------------------------------------------------- |
+| `-l, --logs string` | Show logs at level (one of: debug, info, warn, error) (default "ERROR") |
+| `-q, --quiet`       | Omit standard output                                                    |
+
+## SEE ALSO[​](#see-also "Direct link to SEE ALSO")
+
+- [testpilot auth](/docs/testpilot/reference/cli/testpilot-auth) - Manage your account
+- [testpilot](/docs/testpilot/reference/cli/testpilot) - Testpilot CLI

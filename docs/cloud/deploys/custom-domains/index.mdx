@@ -1,0 +1,30 @@
+---
+title: "Setting a Custom Domain for your Project"
+description:
+  "Jetify Cloud will automatically configure a unique, private domain for previewing your deployed
+  application. For production purposes, you will probably want to add a more user friendly domain to
+  route users to your application. Jetify will also configure and issue an SSL certificate for your
+  domain automatically."
+---
+
+<Info>
+  You will need access to the DNS records for your Domain in order to configure it for Jetify Cloud.
+</Info>
+
+## Adding a Custom Domain[​](#adding-a-custom-domain "Direct link to Adding a Custom Domain")
+
+1. In your project on the Jetify Cloud Dashboard, select **Settings**
+2. Scroll down to the **Custom Domain** section on the settings page
+   ![Custom Domain Section](/images/docs/cloud/deploys/custom-domains/docs/assets/images/custom-domain-e02341c0d771b1f4d425f37a0caf9cc3.png)
+3. Enter the custom domain name that you would like to use for your project
+4. After you click confirm, your custom domain will be set in a pending state. To validate the
+   domain, you will need to add a record to your DNS provider:
+   ![Pending custom domain](/images/docs/cloud/deploys/custom-domains/docs/assets/images/custom-domain-unknown-541badd59754c21949c3b3dd79b759fa.png)
+5. Once the correct records have been added to your DNS provider, your Custom Domain will display an
+   **Issued** status:
+   ![Custom Domain Issued](/images/docs/cloud/deploys/custom-domains/docs/assets/images/custom-domain-issued-3776c9f34d10f487fe1bff26c65b105b.png)
+
+## Removing a Custom Domain[​](#removing-a-custom-domain "Direct link to Removing a Custom Domain")
+
+You can remove a custom domain by clicking the Delete button. This will remove the domain from your
+project. Note that after removing the domain, you may want to also clean up your DNS records.

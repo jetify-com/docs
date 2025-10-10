@@ -1,0 +1,61 @@
+---
+title: "How to Write Effective Tests"
+description: "Learn tips and patterns for creating reliable, maintainable tests. Optimize test speed, use context effectively, and improve accuracy."
+---
+
+## General Tips[​](#general-tips "Direct link to General Tips")
+
+- When writing tests, start by providing general steps, and only get more specific or add context as
+  needed. General steps give Testpilot more flexibility, and can lead to faster tests.
+- If you need to check that something is present on the page before proceeding, start your step with
+  "Verify" or "Check". This tells Testpilot that you want to make an assertion about the page's
+  state.
+
+## Speeding up Tests[​](#speeding-up-tests "Direct link to Speeding up Tests")
+
+- Testpilot automatically handles launching the app or website provided via the `url` or
+  `platform_config` fields in the test. You don't need to add steps like "Wait for the application
+  to load," "Launch the app," or "Verify that the app launches successfully."
+
+- Consolidate steps wherever possible. Tests with fewer steps run faster because Testpilot needs to
+  capture an initial screenshot for each step and generate results after the test completes.
+
+- Avoid adding "Verify" or "Check" type assertion steps when you can use an action instead. You
+  don't need to verify that a text box is present if the next step is to click the text box.
+
+- For example — you can rewrite the following test steps:
+
+  ```
+  - Verify that you can see the login form- Click the login form- Verify that the login form is active- Enter your login information
+  ```
+
+  into:
+
+  ```
+  - Enter your login information in the form
+  ```
+
+## Using Context[​](#using-context "Direct link to Using Context")
+
+- Use context fields to provide important information that Testpilot needs for your test case.
+  Examples include:
+  - **Describing less common UI features or gestures**. For example: "If you see a Welcome Screen
+    pop-up in the flow, click the 'Not Interested' button to dismiss it."
+  - **Providing user information for Testpilot to model**. For example: "You are a new homeowner
+    with a $200,000 mortgage in Cincinnati, Ohio" helps Testpilot fill out the right details in an
+    application form.
+  - **Giving Testpilot permission for certain actions**. For example: "You should grant location
+    permissions whenever prompted" or "You are authorized to accept terms of service and submit loan
+    applications."
+
+- If you need to provide context that applies to multiple test cases, consider using the `context`
+  field at the test file level. This way, you can avoid repeating the same context in each test
+  case. If the context is only relevant to a single test case, you can use the `context` field at
+  the test case level.
+
+- Testpilot responds better to concise, direct context blocks. Instead of writing long paragraphs,
+  break important context into separate lines and remove unnecessary text.
+
+- Avoid using context to provide instructions that Testpilot can infer from the steps. For example,
+  you don't need to say "You are a user" or "You are testing the application" because Testpilot
+  already knows this.

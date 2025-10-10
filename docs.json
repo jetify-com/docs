@@ -33,60 +33,74 @@
           {
             "group": "Getting Started",
             "pages": [
-              "docs/testpilot/getting_started/index",
-              "docs/testpilot/getting_started/setup",
-              "docs/testpilot/getting_started/running_tests",
-              "docs/testpilot/getting_started/running_tests_android",
-              "docs/testpilot/getting_started/running_tests_ios",
-              "docs/testpilot/getting_started/generating_tests",
-              "docs/testpilot/getting_started/mcp"
+              "docs/testpilot/getting-started/index",
+              "docs/testpilot/install",
+              "docs/testpilot/getting-started/testing-web-apps",
+              "docs/testpilot/getting-started/testing-android-apps",
+              "docs/testpilot/getting-started/testing-ios-apps"
             ]
           },
           {
             "group": "Guides",
             "pages": [
               "docs/testpilot/guides/index",
-              "docs/testpilot/guides/adding_additional_context",
-              "docs/testpilot/guides/generating_email_addresses",
-              "docs/testpilot/guides/managing_login_flows",
-              "docs/testpilot/guides/parameterizing_tests",
-              "docs/testpilot/guides/setting_browser_viewport",
-              "docs/testpilot/guides/concurrency-and-sharding"
+              "docs/testpilot/guides/add-context-to-tests",
+              "docs/testpilot/guides/email-testing-mailosaur",
+              "docs/testpilot/guides/test-authentication",
+              "docs/testpilot/guides/parameterize-tests-environment-variables",
+              "docs/testpilot/guides/test-responsive-design",
+              "docs/testpilot/guides/parallel-testing"
             ]
           },
           {
-            "group": "Tips",
-            "pages": ["docs/testpilot/tips/index"]
-          },
-          {
-            "group": "CLI Reference",
+            "group": "Integrations",
             "pages": [
-              "docs/testpilot/reference/cli/index",
-              "docs/testpilot/reference/cli/testpilot",
-              "docs/testpilot/reference/cli/testpilot_auth",
-              "docs/testpilot/reference/cli/testpilot_auth_login",
-              "docs/testpilot/reference/cli/testpilot_auth_logout",
-              "docs/testpilot/reference/cli/testpilot_auth_whoami",
-              "docs/testpilot/reference/cli/testpilot_generate",
-              "docs/testpilot/reference/cli/testpilot_install",
-              "docs/testpilot/reference/cli/testpilot_report",
-              "docs/testpilot/reference/cli/testpilot_report_merge",
-              "docs/testpilot/reference/cli/testpilot_test",
-              "docs/testpilot/reference/cli/testpilot_version",
-              "docs/testpilot/reference/cli/testpilot_version_update"
+              "docs/testpilot/integrations/index",
+              "docs/testpilot/integrations/gitlab-cicd"
             ]
           },
           {
-            "group": "Gitlab",
-            "pages": ["docs/testpilot/gitlab/index"]
+            "group": "Advanced",
+            "pages": [
+              "docs/testpilot/advanced/index",
+              "docs/testpilot/ai-test-generation",
+              "docs/testpilot/model-context-protocol"
+            ]
+          },
+          {
+            "group": "Reference",
+            "pages": [
+              {
+                "group": "CLI Reference",
+                "pages": [
+                  "docs/testpilot/reference/cli/index",
+                  "docs/testpilot/reference/cli/testpilot",
+                  "docs/testpilot/reference/cli/testpilot-auth",
+                  "docs/testpilot/reference/cli/testpilot-auth-login",
+                  "docs/testpilot/reference/cli/testpilot-auth-logout",
+                  "docs/testpilot/reference/cli/testpilot-auth-whoami",
+                  "docs/testpilot/reference/cli/testpilot-generate",
+                  "docs/testpilot/reference/cli/testpilot-install",
+                  "docs/testpilot/reference/cli/testpilot-report",
+                  "docs/testpilot/reference/cli/testpilot-report-merge",
+                  "docs/testpilot/reference/cli/testpilot-test",
+                  "docs/testpilot/reference/cli/testpilot-version",
+                  "docs/testpilot/reference/cli/testpilot-version-update"
+                ]
+              },
+              "docs/testpilot/pilotfile-reference"
+            ]
+          },
+          {
+            "group": "Best Practices",
+            "pages": [
+              "docs/testpilot/best-practices/index",
+              "docs/testpilot/best-practices/write-effective-tests"
+            ]
           },
           {
             "group": "Changelog",
             "pages": ["docs/testpilot/changelog/index"]
-          },
-          {
-            "group": "Pilotfile Spec",
-            "pages": ["docs/testpilot/reference/pilotfile_spec"]
           }
         ]
       },
@@ -102,20 +116,20 @@
           {
             "group": "Getting Started",
             "pages": [
-              "docs/devbox/installing_devbox/index",
+              "docs/devbox/installing-devbox/index",
               "docs/devbox/quickstart/index",
-              "docs/devbox/devbox_global/index"
+              "docs/devbox/devbox-global/index"
             ]
           },
           {
             "group": "Configuring your Project",
             "pages": [
-              "docs/devbox/guides/pinning_packages/index",
-              "docs/devbox/guides/platform_specific_packages/index",
-              "docs/devbox/guides/using_flakes/index",
+              "docs/devbox/guides/pinning-packages/index",
+              "docs/devbox/guides/platform-specific-packages/index",
+              "docs/devbox/guides/using-flakes/index",
               "docs/devbox/guides/scripts/index",
               "docs/devbox/guides/plugins/index",
-              "docs/devbox/guides/creating_plugins/index",
+              "docs/devbox/guides/creating-plugins/index",
               "docs/devbox/guides/services/index"
             ]
           },
@@ -124,81 +138,81 @@
             "pages": [
               {
                 "group": "CI/CD Reference",
-                "pages": ["docs/devbox/continuous_integration/github_action/index"]
+                "pages": ["docs/devbox/continuous-integration/github-action/index"]
               },
               {
                 "group": "CLI Reference",
                 "pages": [
-                  "docs/devbox/cli_reference/devbox/index",
-                  "docs/devbox/cli_reference/devbox_add/index",
-                  "docs/devbox/cli_reference/devbox_cache/index",
-                  "docs/devbox/cli_reference/devbox_cache_configure/index",
-                  "docs/devbox/cli_reference/devbox_cache_info/index",
-                  "docs/devbox/cli_reference/devbox_cache_upload/index",
-                  "docs/devbox/cli_reference/devbox_completion/index",
-                  "docs/devbox/cli_reference/devbox_completion_bash/index",
-                  "docs/devbox/cli_reference/devbox_completion_fish/index",
-                  "docs/devbox/cli_reference/devbox_completion_zsh/index",
-                  "docs/devbox/cli_reference/devbox_create/index",
-                  "docs/devbox/cli_reference/devbox_generate/index",
-                  "docs/devbox/cli_reference/devbox_generate_devcontainer/index",
-                  "docs/devbox/cli_reference/devbox_generate_direnv/index",
-                  "docs/devbox/cli_reference/devbox_generate_dockerfile/index",
-                  "docs/devbox/cli_reference/devbox_generate_readme/index",
-                  "docs/devbox/cli_reference/devbox_global/index",
-                  "docs/devbox/cli_reference/devbox_global_add/index",
-                  "docs/devbox/cli_reference/devbox_global_install/index",
-                  "docs/devbox/cli_reference/devbox_global_list/index",
-                  "docs/devbox/cli_reference/devbox_global_pull/index",
-                  "docs/devbox/cli_reference/devbox_global_push/index",
-                  "docs/devbox/cli_reference/devbox_global_rm/index",
-                  "docs/devbox/cli_reference/devbox_global_run/index",
-                  "docs/devbox/cli_reference/devbox_global_services/index",
-                  "docs/devbox/cli_reference/devbox_global_shellenv/index",
-                  "docs/devbox/cli_reference/devbox_global_update/index",
-                  "docs/devbox/cli_reference/devbox_info/index",
-                  "docs/devbox/cli_reference/devbox_init/index",
-                  "docs/devbox/cli_reference/devbox_install/index",
-                  "docs/devbox/cli_reference/devbox_rm/index",
-                  "docs/devbox/cli_reference/devbox_run/index",
-                  "docs/devbox/cli_reference/devbox_search/index",
-                  "docs/devbox/cli_reference/devbox_secrets/index",
-                  "docs/devbox/cli_reference/devbox_secrets_download/index",
-                  "docs/devbox/cli_reference/devbox_secrets_init/index",
-                  "docs/devbox/cli_reference/devbox_secrets_list/index",
-                  "docs/devbox/cli_reference/devbox_secrets_rm/index",
-                  "docs/devbox/cli_reference/devbox_secrets_set/index",
-                  "docs/devbox/cli_reference/devbox_secrets_upload/index",
-                  "docs/devbox/cli_reference/devbox_services/index",
-                  "docs/devbox/cli_reference/devbox_services_attach/index",
-                  "docs/devbox/cli_reference/devbox_services_ls/index",
-                  "docs/devbox/cli_reference/devbox_services_restart/index",
-                  "docs/devbox/cli_reference/devbox_services_start/index",
-                  "docs/devbox/cli_reference/devbox_services_stop/index",
-                  "docs/devbox/cli_reference/devbox_services_up/index",
-                  "docs/devbox/cli_reference/devbox_shell/index",
-                  "docs/devbox/cli_reference/devbox_shellenv/index",
-                  "docs/devbox/cli_reference/devbox_update/index",
-                  "docs/devbox/cli_reference/devbox_version/index",
-                  "docs/devbox/cli_reference/devbox_version_update/index"
+                  "docs/devbox/cli-reference/devbox/index",
+                  "docs/devbox/cli-reference/devbox-add/index",
+                  "docs/devbox/cli-reference/devbox-cache/index",
+                  "docs/devbox/cli-reference/devbox-cache-configure/index",
+                  "docs/devbox/cli-reference/devbox-cache-info/index",
+                  "docs/devbox/cli-reference/devbox-cache-upload/index",
+                  "docs/devbox/cli-reference/devbox-completion/index",
+                  "docs/devbox/cli-reference/devbox-completion-bash/index",
+                  "docs/devbox/cli-reference/devbox-completion-fish/index",
+                  "docs/devbox/cli-reference/devbox-completion-zsh/index",
+                  "docs/devbox/cli-reference/devbox-create/index",
+                  "docs/devbox/cli-reference/devbox-generate/index",
+                  "docs/devbox/cli-reference/devbox-generate-devcontainer/index",
+                  "docs/devbox/cli-reference/devbox-generate-direnv/index",
+                  "docs/devbox/cli-reference/devbox-generate-dockerfile/index",
+                  "docs/devbox/cli-reference/devbox-generate-readme/index",
+                  "docs/devbox/cli-reference/devbox-global/index",
+                  "docs/devbox/cli-reference/devbox-global-add/index",
+                  "docs/devbox/cli-reference/devbox-global-install/index",
+                  "docs/devbox/cli-reference/devbox-global-list/index",
+                  "docs/devbox/cli-reference/devbox-global-pull/index",
+                  "docs/devbox/cli-reference/devbox-global-push/index",
+                  "docs/devbox/cli-reference/devbox-global-rm/index",
+                  "docs/devbox/cli-reference/devbox-global-run/index",
+                  "docs/devbox/cli-reference/devbox-global-services/index",
+                  "docs/devbox/cli-reference/devbox-global-shellenv/index",
+                  "docs/devbox/cli-reference/devbox-global-update/index",
+                  "docs/devbox/cli-reference/devbox-info/index",
+                  "docs/devbox/cli-reference/devbox-init/index",
+                  "docs/devbox/cli-reference/devbox-install/index",
+                  "docs/devbox/cli-reference/devbox-rm/index",
+                  "docs/devbox/cli-reference/devbox-run/index",
+                  "docs/devbox/cli-reference/devbox-search/index",
+                  "docs/devbox/cli-reference/devbox-secrets/index",
+                  "docs/devbox/cli-reference/devbox-secrets-download/index",
+                  "docs/devbox/cli-reference/devbox-secrets-init/index",
+                  "docs/devbox/cli-reference/devbox-secrets-list/index",
+                  "docs/devbox/cli-reference/devbox-secrets-rm/index",
+                  "docs/devbox/cli-reference/devbox-secrets-set/index",
+                  "docs/devbox/cli-reference/devbox-secrets-upload/index",
+                  "docs/devbox/cli-reference/devbox-services/index",
+                  "docs/devbox/cli-reference/devbox-services-attach/index",
+                  "docs/devbox/cli-reference/devbox-services-ls/index",
+                  "docs/devbox/cli-reference/devbox-services-restart/index",
+                  "docs/devbox/cli-reference/devbox-services-start/index",
+                  "docs/devbox/cli-reference/devbox-services-stop/index",
+                  "docs/devbox/cli-reference/devbox-services-up/index",
+                  "docs/devbox/cli-reference/devbox-shell/index",
+                  "docs/devbox/cli-reference/devbox-shellenv/index",
+                  "docs/devbox/cli-reference/devbox-update/index",
+                  "docs/devbox/cli-reference/devbox-version/index",
+                  "docs/devbox/cli-reference/devbox-version-update/index"
                 ]
               },
               "docs/devbox/configuration/index",
-              "docs/devbox/env_variables/index",
+              "docs/devbox/env-variables/index",
               {
                 "group": "IDE Reference",
                 "pages": [
-                  "docs/devbox/ide_configuration/direnv/index",
-                  "docs/devbox/ide_configuration/eclipse/index",
-                  "docs/devbox/ide_configuration/vscode/index",
-                  "docs/devbox/ide_configuration/zed/index"
+                  "docs/devbox/ide-configuration/direnv/index",
+                  "docs/devbox/ide-configuration/eclipse/index",
+                  "docs/devbox/ide-configuration/vscode/index",
+                  "docs/devbox/ide-configuration/zed/index"
                 ]
               }
             ]
           },
           {
             "group": "Examples",
-            "pages": ["docs/devbox/devbox_examples/index"]
+            "pages": ["docs/devbox/devbox-examples/index"]
           },
           {
             "group": "FAQ",
@@ -240,11 +254,11 @@
               "docs/cloud/secrets/index",
               {
                 "group": "Dashboard Secrets",
-                "pages": ["docs/cloud/secrets/dashboard_secrets/index"]
+                "pages": ["docs/cloud/secrets/dashboard-secrets/index"]
               },
               {
                 "group": "Secrets CLI",
-                "pages": ["docs/cloud/secrets/secrets_cli/index"]
+                "pages": ["docs/cloud/secrets/secrets-cli/index"]
               }
             ]
           },
@@ -262,7 +276,7 @@
               },
               {
                 "group": "Prebuilt Cache",
-                "pages": ["docs/cloud/cache/prebuilt_cache/index"]
+                "pages": ["docs/cloud/cache/prebuilt-cache/index"]
               }
             ]
           },
@@ -271,9 +285,9 @@
             "pages": [
               "docs/cloud/deploys/index",
               "docs/cloud/deploys/setup/index",
-              "docs/cloud/deploys/monitoring_deploys/index",
+              "docs/cloud/deploys/monitoring-deploys/index",
               "docs/cloud/deploys/secrets/index",
-              "docs/cloud/deploys/custom_domains/index",
+              "docs/cloud/deploys/custom-domains/index",
               "docs/cloud/deploys/integrations/index"
             ]
           },
@@ -283,11 +297,11 @@
               "docs/cloud/dashboard/index",
               {
                 "group": "Creating Your Team",
-                "pages": ["docs/cloud/dashboard/creating_your_team/index"]
+                "pages": ["docs/cloud/dashboard/creating-your-team/index"]
               },
               {
                 "group": "Inviting Members",
-                "pages": ["docs/cloud/dashboard/inviting_members/index"]
+                "pages": ["docs/cloud/dashboard/inviting-members/index"]
               }
             ]
           },

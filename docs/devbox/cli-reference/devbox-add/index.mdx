@@ -1,0 +1,47 @@
+---
+title: "devbox add"
+description: "Add a new package to your devbox"
+---
+
+```bash
+devbox add <pkg>... [flags]
+```
+
+## Examples[​](#examples "Direct link to Examples")
+
+```
+# Add the latest version of the `ripgrep` packagedevbox add ripgrep# Install glibcLocales only on x86_64-linux and aarch64-linuxdevbox add glibcLocales --platform x86_64-linux,aarch64-linux# Exclude busybox from installation on macOSdevbox add busybox --exclude-platform aarch64-darwin,x86_64-darwin# Install non-default outputs for a package, such as the promtool CLIdevbox add prometheus --outputs=out,cli
+```
+
+## Options[​](#options "Direct link to Options")
+
+| Option                           | Description                                                                                                            |
+| -------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `--allow-insecure`               | allows Devbox to install a package that is marked insecure by Nix                                                      |
+| `-c, --config string`            | path to directory containing a devbox.json config file                                                                 |
+| `--disable-plugin`               | disable the build plugin for a package                                                                                 |
+| `--environment string`           | Jetify Secrets environment to use, when supported (e.g.secrets support dev, prod, preview.) (default "dev")            |
+| `-e, --exclude-platform strings` | exclude packages from a specific platform.                                                                             |
+| `-h, --help`                     | help for add                                                                                                           |
+| `-o, --outputs strings`          | specify the outputs to install for the nix package                                                                     |
+| `-p`, `--platform strings`       | install packages only on specific platforms.                                                                           |
+| `--patch`                        | Allow Devbox to patch your packages to fix issues with missing native libraries (auto, always, never) (default "auto") |
+| `-q, --quiet`                    | quiet mode: Suppresses logs.                                                                                           |
+
+Valid Platforms include:
+
+- `aarch64-darwin`
+- `aarch64-linux`
+- `x86_64-darwin`
+- `x86_64-linux`
+
+The platforms below are also supported, but will build packages from source
+
+- `i686-linux`
+- `armv7l-linux`
+
+## SEE ALSO[​](#see-also "Direct link to SEE ALSO")
+
+- [devbox](/docs/devbox/cli-reference/devbox/) - Instant, easy, predictable shells and containers
+
+[Edit this page](https://github.com/jetify-com/devbox/tree/main/docs/app/docs/cli-reference/devbox-add.md)
