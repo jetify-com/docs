@@ -71,21 +71,61 @@ Let's take a look at the plugin for Nginx. To get started, let's initialize a ne
 and add the `nginx` package:
 
 ```bash
-cd ~/my_projdevbox init && devbox add nginx
+cd ~/my_proj
+devbox init && devbox add nginx
 ```
 
 Devbox will install the package, activate the `nginx` plugin, and print a short explanation of the
 plugin's configuration
 
 ```bash
-Installing nix packages. This may take a while... done.nginx NOTES:nginx can be configured with env variablesTo customize:* Use $NGINX_CONFDIR to change the configuration directory* Use $NGINX_LOGDIR to change the log directory* Use $NGINX_PIDDIR to change the pid directory* Use $NGINX_RUNDIR to change the run directory* Use $NGINX_SITESDIR to change the sites directory* Use $NGINX_TMPDIR to change the tmp directory. Use $NGINX_USER to change the user* Use $NGINX_GROUP to customize.Services:* nginxUse `devbox services start|stop [service]` to interact with servicesThis plugin creates the following helper files:* ~/my_project/devbox.d/nginx/nginx.conf* ~/my_project/devbox.d/nginx/fastcgi.conf* ~/my_project/devbox.d/web/index.htmlThis plugin sets the following environment variables:* NGINX_CONFDIR=~/my_project/devbox.d/nginx/nginx.conf* NGINX_PATH_PREFIX=~/my_project/.devbox/virtenv/nginx* NGINX_TMPDIR=~/my_project/.devbox/virtenv/nginx/tempTo show this information, run `devbox info nginx`nginx (nginx-1.22.1) is now installed.
+Installing nix packages. This may take a while... done.
+
+nginx NOTES:
+nginx can be configured with env variables
+
+To customize:
+* Use $NGINX_CONFDIR to change the configuration directory
+* Use $NGINX_LOGDIR to change the log directory
+* Use $NGINX_PIDDIR to change the pid directory
+* Use $NGINX_RUNDIR to change the run directory
+* Use $NGINX_SITESDIR to change the sites directory
+* Use $NGINX_TMPDIR to change the tmp directory
+* Use $NGINX_USER to change the user
+* Use $NGINX_GROUP to customize.
+
+Services:
+* nginx
+
+Use `devbox services start|stop [service]` to interact with services
+
+This plugin creates the following helper files:
+* ~/my_project/devbox.d/nginx/nginx.conf
+* ~/my_project/devbox.d/nginx/fastcgi.conf
+* ~/my_project/devbox.d/web/index.html
+
+This plugin sets the following environment variables:
+* NGINX_CONFDIR=~/my_project/devbox.d/nginx/nginx.conf
+* NGINX_PATH_PREFIX=~/my_project/.devbox/virtenv/nginx
+* NGINX_TMPDIR=~/my_project/.devbox/virtenv/nginx/temp
+
+To show this information, run `devbox info nginx`
+
+nginx (nginx-1.22.1) is now installed.
 ```
 
 Based on this info page, we can see that Devbox has created the configuration we need to run `nginx`
 in our local shell. Let's take a look at the files it created:
 
 ```
-% tree.├── devbox.d│   ├── nginx│   │   ├── fastcgi.conf│   │   └── nginx.conf│   └── web│       └── index.html└── devbox.json
+% tree .
+├── devbox.d
+│   ├── nginx
+│   │   ├── fastcgi.conf
+│   │   └── nginx.conf
+│   └── web
+│       └── index.html
+└── devbox.json
 ```
 
 These files give us everything we need to run NGINX, and we can modify the `nginx.conf` and
@@ -95,7 +135,22 @@ We can also see in the info page that Devbox has configured an NGINX service for
 this service with `devbox services start nginx`, and then test it with `curl`:
 
 ```bash
-> devbox services start nginxInstalling nix packages. This may take a while... done.Starting a devbox shell...Service "nginx" started> curl localhost:80<!DOCTYPE html><html lang="en">  <head>    <meta charset="utf-8" />    <title>Hello World!</title>  </head>  <body>    Hello World!  </body></html>
+> devbox services start nginx
+Installing nix packages. This may take a while... done.
+Starting a devbox shell...
+Service "nginx" started
+
+> curl localhost:80
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Hello World!</title>
+  </head>
+  <body>
+    Hello World!
+  </body>
+</html>
 ```
 
 ## Plugin Configuration in detail[​](#plugin-configuration-in-detail "Direct link to Plugin Configuration in detail")

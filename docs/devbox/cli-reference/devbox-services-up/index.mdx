@@ -17,8 +17,15 @@ Once your services are running, you can manage them using `services start`, `ser
 
 ## Examples[​](#examples "Direct link to Examples")
 
-```
-# Start all services with process compose in the foregrounddevbox services up#Start all services with process compose in the backgrounddevbox services up -b# Start only the web service with process compose in the foregrounddevbox services up web
+```bash
+# Start all services with process compose in the foreground
+devbox services up
+
+# Start all services with process compose in the background
+devbox services up -b
+
+# Start only the web service with process compose in the foreground
+devbox services up web
 ```
 
 ## Options[​](#options "Direct link to Options")

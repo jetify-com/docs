@@ -16,13 +16,15 @@ devbox global run <pkg>... [flags]
 Run a command directly:
 
 ```bash
-  devbox add cowsay  devbox global run cowsay hello  devbox global run -- cowsay -d hello
+devbox add cowsay
+devbox global run cowsay hello
+devbox global run -- cowsay -d hello
 ```
 
 Run a script (defined as `"moo": "cowsay moo"`) in your devbox.json:
 
 ```bash
-  devbox global run moo
+devbox global run moo
 ```
 
 ## Options[​](#options "Direct link to Options")

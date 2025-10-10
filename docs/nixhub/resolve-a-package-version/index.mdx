@@ -257,8 +257,94 @@ OK
 
 </Accordion>
 
-```
-{  "name": "string",  "version": "string",  "summary": "string",  "systems": {    "aarch64-darwin": {      "flake_installable": {        "ref": {          "type": "string",          "owner": "string",          "repo": "string",          "rev": "string"        },        "attr_path": "string"      },      "last_updated": "string",      "outputs": [        {          "name": "string",          "path": "string",          "default": true,          "nar": "string"        }      ]    },    "aarch64-linux": {      "flake_installable": {        "ref": {          "type": "string",          "owner": "string",          "repo": "string",          "rev": "string"        },        "attr_path": "string"      },      "last_updated": "string",      "outputs": [        {          "name": "string",          "path": "string",          "default": true,          "nar": "string"        }      ]    },    "x86_64-darwin": {      "flake_installable": {        "ref": {          "type": "string",          "owner": "string",          "repo": "string",          "rev": "string"        },        "attr_path": "string"      },      "last_updated": "string",      "outputs": [        {          "name": "string",          "path": "string",          "default": true,          "nar": "string"        }      ]    },    "x86_64-linux": {      "flake_installable": {        "ref": {          "type": "string",          "owner": "string",          "repo": "string",          "rev": "string"        },        "attr_path": "string"      },      "last_updated": "string",      "outputs": [        {          "name": "string",          "path": "string",          "default": true,          "nar": "string"        }      ]    }  }}
+```json
+{
+  "name": "string",
+  "version": "string",
+  "summary": "string",
+  "systems": {
+    "aarch64-darwin": {
+      "flake_installable": {
+        "ref": {
+          "type": "string",
+          "owner": "string",
+          "repo": "string",
+          "rev": "string"
+        },
+        "attr_path": "string"
+      },
+      "last_updated": "string",
+      "outputs": [
+        {
+          "name": "string",
+          "path": "string",
+          "default": true,
+          "nar": "string"
+        }
+      ]
+    },
+    "aarch64-linux": {
+      "flake_installable": {
+        "ref": {
+          "type": "string",
+          "owner": "string",
+          "repo": "string",
+          "rev": "string"
+        },
+        "attr_path": "string"
+      },
+      "last_updated": "string",
+      "outputs": [
+        {
+          "name": "string",
+          "path": "string",
+          "default": true,
+          "nar": "string"
+        }
+      ]
+    },
+    "x86_64-darwin": {
+      "flake_installable": {
+        "ref": {
+          "type": "string",
+          "owner": "string",
+          "repo": "string",
+          "rev": "string"
+        },
+        "attr_path": "string"
+      },
+      "last_updated": "string",
+      "outputs": [
+        {
+          "name": "string",
+          "path": "string",
+          "default": true,
+          "nar": "string"
+        }
+      ]
+    },
+    "x86_64-linux": {
+      "flake_installable": {
+        "ref": {
+          "type": "string",
+          "owner": "string",
+          "repo": "string",
+          "rev": "string"
+        },
+        "attr_path": "string"
+      },
+      "last_updated": "string",
+      "outputs": [
+        {
+          "name": "string",
+          "path": "string",
+          "default": true,
+          "nar": "string"
+        }
+      ]
+    }
+  }
+}
 ```
 
 400 Bad Request: empty name (set a ?name=\<value> query parameter)

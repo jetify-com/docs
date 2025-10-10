@@ -5,8 +5,9 @@ description: "Generate the autocompletion script for the zsh shell."
 
 If you are using Oh My Zsh, just run the following:
 
-```
-mkdir -p ~/.oh-my-zsh/completionsdevbox completion zsh > ~/.oh-my-zsh/completions/_devbox
+```bash
+mkdir -p ~/.oh-my-zsh/completions
+devbox completion zsh > ~/.oh-my-zsh/completions/_devbox
 ```
 
 If you are not using Oh My Zsh and shell completion is not already enabled in your environment you
@@ -33,7 +34,8 @@ devbox completion zsh > "${fpath[1]}/_devbox"
 ## macOS[​](#macos "Direct link to macOS")
 
 ```bash
-devbox completion zsh > $(brew --prefix)/share/zsh/site-functions/_devbox
+devbox completion zsh > \
+  $(brew --prefix)/share/zsh/site-functions/_devbox
 ```
 
 You will need to start a new shell for this setup to take effect.

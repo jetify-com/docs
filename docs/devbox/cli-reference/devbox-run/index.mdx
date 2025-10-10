@@ -23,7 +23,19 @@ For more details, read our [scripts guide](/docs/devbox/guides/scripts/)
 ## Examples[​](#examples "Direct link to Examples")
 
 ```bash
-# Run a command directly:  devbox add cowsay  devbox run cowsay hello# Run a command that takes flags:  devbox run cowsay -d hello# Pass flags to devbox while running a command.# All `devbox run` flags must be passed before the command  devbox run -q cowsay -d hello#Run a script (defined as `"moo": "cowsay moo"`) in your devbox.json:  devbox run moo
+# Run a command directly:
+devbox add cowsay
+devbox run cowsay hello
+
+# Run a command that takes flags:
+devbox run cowsay -d hello
+
+# Pass flags to devbox while running a command.
+# All `devbox run` flags must be passed before the command
+devbox run -q cowsay -d hello
+
+# Run a script (defined as `"moo": "cowsay moo"`) in your devbox.json:
+devbox run moo
 ```
 
 ## Options[​](#options "Direct link to Options")

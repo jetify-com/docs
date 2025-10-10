@@ -9,8 +9,18 @@ devbox add <pkg>... [flags]
 
 ## Examples[​](#examples "Direct link to Examples")
 
-```
-# Add the latest version of the `ripgrep` packagedevbox add ripgrep# Install glibcLocales only on x86_64-linux and aarch64-linuxdevbox add glibcLocales --platform x86_64-linux,aarch64-linux# Exclude busybox from installation on macOSdevbox add busybox --exclude-platform aarch64-darwin,x86_64-darwin# Install non-default outputs for a package, such as the promtool CLIdevbox add prometheus --outputs=out,cli
+```bash
+# Add the latest version of the `ripgrep` package
+devbox add ripgrep
+
+# Install glibcLocales only on x86_64-linux and aarch64-linux
+devbox add glibcLocales --platform x86_64-linux,aarch64-linux
+
+# Exclude busybox from installation on macOS
+devbox add busybox --exclude-platform aarch64-darwin,x86_64-darwin
+
+# Install non-default outputs for a package, such as the promtool CLI
+devbox add prometheus --outputs=out,cli
 ```
 
 ## Options[​](#options "Direct link to Options")
