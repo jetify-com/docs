@@ -1,0 +1,58 @@
+---
+title: "devbox completion zsh"
+description: "Generate the autocompletion script for the zsh shell."
+---
+
+If you are using Oh My Zsh, just run the following:
+
+```
+mkdir -p ~/.oh-my-zsh/completionsdevbox completion zsh > ~/.oh-my-zsh/completions/_devbox
+```
+
+If you are not using Oh My Zsh and shell completion is not already enabled in your environment you
+will need to enable it. You can execute the following once:
+
+```
+echo "autoload -U compinit; compinit" >> ~/.zshrc
+```
+
+To load completions in your current shell session:
+
+```bash
+source <(devbox completion zsh); compdef _devbox devbox
+```
+
+To load completions for every new session, execute once:
+
+## Linux[​](#linux "Direct link to Linux")
+
+```bash
+devbox completion zsh > "${fpath[1]}/_devbox"
+```
+
+## macOS[​](#macos "Direct link to macOS")
+
+```bash
+devbox completion zsh > $(brew --prefix)/share/zsh/site-functions/_devbox
+```
+
+You will need to start a new shell for this setup to take effect.
+
+```bash
+devbox completion zsh [flags]
+```
+
+## Options[​](#options "Direct link to Options")
+
+| Option              | Description                     |
+| ------------------- | ------------------------------- |
+| `-h, --help`        | help for zsh                    |
+| `--no-descriptions` | disable completion descriptions |
+| `-q, --quiet`       | suppresses logs                 |
+
+## SEE ALSO[​](#see-also "Direct link to SEE ALSO")
+
+- [devbox completion](/docs/devbox/cli_reference/devbox_completion/) - Generate the autocompletion
+  script for the specified shell
+
+[Edit this page](https://github.com/jetify-com/devbox/tree/main/docs/app/docs/cli_reference/devbox_completion_zsh.md)

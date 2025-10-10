@@ -1,0 +1,266 @@
+---
+title: "Resolve a Package Version"
+---
+
+```
+GET
+/resolve
+```
+
+Resolve a Package Version. This endpoint resolves a package name + version string to the latest
+version of the package available in the Nixpkg repository. The response includes the Flake
+installable information for the package on each supported platform.
+
+## Request[​](#request "Direct link to Request")
+
+<Accordion title="Query Parameters">
+  * **name** stringrequired
+
+    The name of the package you want to resolve. Must be a valid Nixpkgs package name.
+
+    **version** stringrequired
+
+    The version string of the package you want to resolve.
+
+</Accordion>
+
+## Responses[​](#responses "Direct link to Responses")
+
+- 200
+- 400
+- 404
+
+OK
+
+- application/json
+
+- Schema
+- Example (from schema)
+
+<Accordion title="Response Schema">
+  - **name**string
+
+    The name of the package that was resolved.
+
+    **version**string
+
+    The latest version the package that matches the version string provided in the request.
+
+    **summary**string
+
+    A short description of the package
+
+    A list of systems that the package can be installed on, along with the details of the Package on that system.
+
+    The information needed to install this package as a flake reference.
+
+    The full Nix reference to the flake that contains this package.
+
+    **type**string
+
+    The type of flake reference. Usually this will be `github`.
+
+    **owner**string
+
+    The owner of the repository that contains the flake. Usually `NixOS`.
+
+    **repo**string
+
+    the repository that contains the flake. Usually `nixpkgs`
+
+    **rev**string
+
+    The Git revision of the flake. This is usually a commit hash.
+
+    **attr\_path**string
+
+    The attribute path to the package in the flake. This can be used to install the package with Nix or Devbox.
+
+    **last\_updated**string
+
+    The last time this package was updated in the Nixpkgs repo
+
+    A list of Outputs (e.g., `out`, `lib`, `dev`) that are available for the package on this platform.
+
+    Array \[
+
+- **name**string
+
+  The name of the output (e.g., `out`, `lib`, `dev`)
+
+  **path**string
+
+  The unique path to the output in the Nix store.
+
+  **default**boolean
+
+  Whether this output is the default output for the package
+
+  **nar**string
+
+  The path to the packages NAR (Nix Archive) file. This file contains the package's build artifacts.
+
+  ]
+
+- The information needed to install this package as a flake reference.
+
+  The full Nix reference to the flake that contains this package.
+
+  **type**string
+
+  The type of flake reference. Usually this will be `github`.
+
+  **owner**string
+
+  The owner of the repository that contains the flake. Usually `NixOS`.
+
+  **repo**string
+
+  the repository that contains the flake. Usually `nixpkgs`
+
+  **rev**string
+
+  The Git revision of the flake. This is usually a commit hash.
+
+  **attr_path**string
+
+  The attribute path to the package in the flake. This can be used to install the package with Nix
+  or Devbox.
+
+  **last_updated**string
+
+  The last time this package was updated in the Nixpkgs repo
+
+  A list of Outputs (e.g., `out`, `lib`, `dev`) that are available for the package on this platform.
+
+  Array \[
+
+- **name**string
+
+  The name of the output (e.g., `out`, `lib`, `dev`)
+
+  **path**string
+
+  The unique path to the output in the Nix store.
+
+  **default**boolean
+
+  Whether this output is the default output for the package
+
+  **nar**string
+
+  The path to the packages NAR (Nix Archive) file. This file contains the package's build artifacts.
+
+  ]
+
+- The information needed to install this package as a flake reference.
+
+  The full Nix reference to the flake that contains this package.
+
+  **type**string
+
+  The type of flake reference. Usually this will be `github`.
+
+  **owner**string
+
+  The owner of the repository that contains the flake. Usually `NixOS`.
+
+  **repo**string
+
+  the repository that contains the flake. Usually `nixpkgs`
+
+  **rev**string
+
+  The Git revision of the flake. This is usually a commit hash.
+
+  **attr_path**string
+
+  The attribute path to the package in the flake. This can be used to install the package with Nix
+  or Devbox.
+
+  **last_updated**string
+
+  The last time this package was updated in the Nixpkgs repo
+
+  A list of Outputs (e.g., `out`, `lib`, `dev`) that are available for the package on this platform.
+
+  Array \[
+
+- **name**string
+
+  The name of the output (e.g., `out`, `lib`, `dev`)
+
+  **path**string
+
+  The unique path to the output in the Nix store.
+
+  **default**boolean
+
+  Whether this output is the default output for the package
+
+  **nar**string
+
+  The path to the packages NAR (Nix Archive) file. This file contains the package's build artifacts.
+
+  ]
+
+- The information needed to install this package as a flake reference.
+
+  The full Nix reference to the flake that contains this package.
+
+  **type**string
+
+  The type of flake reference. Usually this will be `github`.
+
+  **owner**string
+
+  The owner of the repository that contains the flake. Usually `NixOS`.
+
+  **repo**string
+
+  the repository that contains the flake. Usually `nixpkgs`
+
+  **rev**string
+
+  The Git revision of the flake. This is usually a commit hash.
+
+  **attr_path**string
+
+  The attribute path to the package in the flake. This can be used to install the package with Nix
+  or Devbox.
+
+  **last_updated**string
+
+  The last time this package was updated in the Nixpkgs repo
+
+  A list of Outputs (e.g., `out`, `lib`, `dev`) that are available for the package on this platform.
+
+  Array \[
+
+- **name**string
+
+      The name of the output (e.g., `out`, `lib`, `dev`)
+
+      **path**string
+
+      The unique path to the output in the Nix store.
+
+      **default**boolean
+
+      Whether this output is the default output for the package
+
+      **nar**string
+
+      The path to the packages NAR (Nix Archive) file. This file contains the package's build artifacts.
+
+      ]
+
+</Accordion>
+
+```
+{  "name": "string",  "version": "string",  "summary": "string",  "systems": {    "aarch64-darwin": {      "flake_installable": {        "ref": {          "type": "string",          "owner": "string",          "repo": "string",          "rev": "string"        },        "attr_path": "string"      },      "last_updated": "string",      "outputs": [        {          "name": "string",          "path": "string",          "default": true,          "nar": "string"        }      ]    },    "aarch64-linux": {      "flake_installable": {        "ref": {          "type": "string",          "owner": "string",          "repo": "string",          "rev": "string"        },        "attr_path": "string"      },      "last_updated": "string",      "outputs": [        {          "name": "string",          "path": "string",          "default": true,          "nar": "string"        }      ]    },    "x86_64-darwin": {      "flake_installable": {        "ref": {          "type": "string",          "owner": "string",          "repo": "string",          "rev": "string"        },        "attr_path": "string"      },      "last_updated": "string",      "outputs": [        {          "name": "string",          "path": "string",          "default": true,          "nar": "string"        }      ]    },    "x86_64-linux": {      "flake_installable": {        "ref": {          "type": "string",          "owner": "string",          "repo": "string",          "rev": "string"        },        "attr_path": "string"      },      "last_updated": "string",      "outputs": [        {          "name": "string",          "path": "string",          "default": true,          "nar": "string"        }      ]    }  }}
+```
+
+400 Bad Request: empty name (set a ?name=\<value> query parameter)
+
+Not Found

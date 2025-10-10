@@ -16,73 +16,101 @@
     "groups": [
       {
         "group": "s/docs/",
-        "pages": [
-          "testpilot/docs/index"
-        ]
+        "pages": ["testpilot/index"]
       },
       {
         "group": "Getting Started",
         "pages": [
-          "testpilot/docs/category/getting-started",
-          "testpilot/docs/getting_started/setup",
-          "testpilot/docs/getting_started/running_tests",
-          "testpilot/docs/getting_started/running_tests_android",
-          "testpilot/docs/getting_started/running_tests_ios",
-          "testpilot/docs/getting_started/generating_tests",
-          "testpilot/docs/getting_started/mcp"
+          "testpilot/getting_started/index",
+          "testpilot/getting_started/setup",
+          "testpilot/getting_started/running_tests",
+          "testpilot/getting_started/running_tests_android",
+          "testpilot/getting_started/running_tests_ios",
+          "testpilot/getting_started/generating_tests",
+          "testpilot/getting_started/mcp"
         ]
       },
       {
         "group": "Guides",
         "pages": [
-          "testpilot/docs/category/guides",
-          "testpilot/docs/guides/adding_additional_context",
-          "testpilot/docs/guides/generating_email_addresses",
-          "testpilot/docs/guides/managing_login_flows",
-          "testpilot/docs/guides/parameterizing_tests",
-          "testpilot/docs/guides/setting_browser_viewport",
-          "testpilot/docs/guides/concurrency-and-sharding"
+          "testpilot/guides/index",
+          "testpilot/guides/adding_additional_context",
+          "testpilot/guides/generating_email_addresses",
+          "testpilot/guides/managing_login_flows",
+          "testpilot/guides/parameterizing_tests",
+          "testpilot/guides/setting_browser_viewport",
+          "testpilot/guides/concurrency-and-sharding"
         ]
       },
       {
         "group": "Tips",
-        "pages": [
-          "testpilot/docs/tips/index"
-        ]
+        "pages": ["testpilot/tips/index"]
       },
       {
         "group": "CLI Reference",
         "pages": [
-          "testpilot/docs/category/cli-reference",
-          "testpilot/docs/cli_reference/testpilot",
-          "testpilot/docs/cli_reference/testpilot_auth",
-          "testpilot/docs/cli_reference/testpilot_auth_login",
-          "testpilot/docs/cli_reference/testpilot_auth_logout",
-          "testpilot/docs/cli_reference/testpilot_auth_whoami",
-          "testpilot/docs/cli_reference/testpilot_generate",
-          "testpilot/docs/cli_reference/testpilot_install",
-          "testpilot/docs/cli_reference/testpilot_report",
-          "testpilot/docs/cli_reference/testpilot_report_merge",
-          "testpilot/docs/cli_reference/testpilot_test",
-          "testpilot/docs/cli_reference/testpilot_version",
-          "testpilot/docs/cli_reference/testpilot_version_update"
+          "testpilot/reference/cli/index",
+          "testpilot/reference/cli/testpilot",
+          "testpilot/reference/cli/testpilot_auth",
+          "testpilot/reference/cli/testpilot_auth_login",
+          "testpilot/reference/cli/testpilot_auth_logout",
+          "testpilot/reference/cli/testpilot_auth_whoami",
+          "testpilot/reference/cli/testpilot_generate",
+          "testpilot/reference/cli/testpilot_install",
+          "testpilot/reference/cli/testpilot_report",
+          "testpilot/reference/cli/testpilot_report_merge",
+          "testpilot/reference/cli/testpilot_test",
+          "testpilot/reference/cli/testpilot_version",
+          "testpilot/reference/cli/testpilot_version_update"
         ]
       },
       {
         "group": "Gitlab",
-        "pages": [
-          "testpilot/docs/gitlab/index"
-        ]
+        "pages": ["testpilot/gitlab/index"]
       },
       {
         "group": "Pilotfile Spec",
-        "pages": [
-          "testpilot/docs/pilotfile-spec/index"
-        ]
+        "pages": ["testpilot/reference/pilotfile_spec"]
       }
     ]
   },
   "contextual": {
-    "options": ["copy"]
+    "options": ["copy", "view"]
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/jetify-com",
+      "x": "https://x.com/jetify_com",
+      "linkedin": "https://www.linkedin.com/company/jetify-com",
+      "discord": "https://discord.gg/jetify"
+    },
+    "links": [
+      {
+        "header": "Resources",
+        "items": [
+          {
+            "label": "Changelog",
+            "href": "https://www.jetify.com/docs/changelog"
+          },
+          {
+            "label": "LLMs.txt",
+            "href": "https://www.jetify.com/docs/llms.txt"
+          }
+        ]
+      },
+      {
+        "header": "Support",
+        "items": [
+          {
+            "label": "Get Help",
+            "href": "https://help.jetify.com"
+          },
+          {
+            "label": "Contact Sales",
+            "href": "mailto:sales@jetify.com"
+          }
+        ]
+      }
+    ]
   }
 }

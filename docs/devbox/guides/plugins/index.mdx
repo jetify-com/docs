@@ -1,0 +1,142 @@
+---
+title: "Using Plugins"
+description:
+  "This doc describes how to use Devbox Plugins with your project.  provide a default Devbox
+  configuration for a Nix package. Plugins make it easier to get started with packages that require
+  additional setup when installed with Nix, and they offer a familiar interface for configuring
+  packages. They also help keep all of your project's configuration within your project directory,
+  which helps maintain portability and isolation."
+---
+
+## Using Plugins[​](#using-plugins "Direct link to Using Plugins")
+
+### Built-in Plugins[​](#built-in-plugins "Direct link to Built-in Plugins")
+
+If you add one of the packages listed below to your project using `devbox add <pkg>`, Devbox will
+automatically activate the plugin for that package.
+
+You can also explicitly add a built-in plugin in your project by adding it to the
+[`include` section](/docs/devbox/configuration/#include) of your `devbox.json` file. For example, to
+explicitly add the plugin for Nginx, you can add the following to your `devbox.json` file:
+
+```json
+{ "include": ["plugin:nginx"] }
+```
+
+Built-in plugins are available for the following packages. You can activate the plugins for these
+packages by running `devbox add <package_name>`
+
+- [Apache](/docs/devbox/devbox_examples/servers/apache/) (apacheHttpd)
+- [Caddy](/docs/devbox/devbox_examples/servers/caddy/) (caddy)
+- [Nginx](/docs/devbox/devbox_examples/servers/nginx/) (nginx)
+- [Node.js](/docs/devbox/devbox_examples/languages/nodejs/) (nodejs, nodejs-slim)
+- [MariaDB](/docs/devbox/devbox_examples/databases/mariadb/) (mariadb, mariadb_10_6...)
+- [MySQL](/docs/devbox/devbox_examples/databases/mysql/) (mysql80, mysql57)
+- [PostgreSQL](/docs/devbox/devbox_examples/databases/postgres/) (postgresql)
+- [Redis](/docs/devbox/devbox_examples/databases/redis/) (redis)
+- [Valkey](/docs/devbox/devbox_examples/databases/valkey/) (valkey)
+- [PHP](/docs/devbox/devbox_examples/languages/php/) (php, php80, php81, php82...)
+- [Python](/docs/devbox/devbox_examples/languages/python/) (python, python-full, python-minimal...)
+- [Ruby](/docs/devbox/devbox_examples/languages/ruby/)(ruby, ruby_3_1, ruby_3_0...)
+- [Elixir](/docs/devbox/devbox_examples/languages/elixir/)(elixir, elixir_1_16, elixir_1_15...)
+
+### Local Plugins[​](#local-plugins "Direct link to Local Plugins")
+
+You can also [define your own plugins](/docs/devbox/guides/creating_plugins/) and use them in your
+project. To use a local plugin, add the following to the `include` section of your devbox.json:
+
+```
+  "include": [    "path:./path/to/plugin.json"  ]
+```
+
+### Github Hosted Plugins[​](#github-hosted-plugins "Direct link to Github Hosted Plugins")
+
+Sometimes, you may want to share a plugin across multiple projects or users. In this case, you
+provide a Github reference to a plugin hosted on Github. To install a github hosted plugin, add the
+following to the include section of your devbox.json
+
+```
+  "include": [    "github:<org>/<repo>?dir=<plugin-dir>"  ]
+```
+
+Note that Devbox will cache Github plugins for 24 hours. This is to aid performance of
+`devbox shell` and similar commands, and avoids downloading the plugin from Github each time. In
+extenuating circumstances, you can bypass this cache by setting
+`export DEVBOX_X_GITHUB_PLUGIN_CACHE_TTL=<time>` , where time is a valid input to
+`time.ParseDuration` (see [doc](https://pkg.go.dev/time#ParseDuration)) such as "120s" or "2m".
+
+## An Example of a Plugin: Nginx[​](#an-example-of-a-plugin-nginx "Direct link to An Example of a Plugin: Nginx")
+
+Let's take a look at the plugin for Nginx. To get started, let's initialize a new devbox project,
+and add the `nginx` package:
+
+```bash
+cd ~/my_projdevbox init && devbox add nginx
+```
+
+Devbox will install the package, activate the `nginx` plugin, and print a short explanation of the
+plugin's configuration
+
+```bash
+Installing nix packages. This may take a while... done.nginx NOTES:nginx can be configured with env variablesTo customize:* Use $NGINX_CONFDIR to change the configuration directory* Use $NGINX_LOGDIR to change the log directory* Use $NGINX_PIDDIR to change the pid directory* Use $NGINX_RUNDIR to change the run directory* Use $NGINX_SITESDIR to change the sites directory* Use $NGINX_TMPDIR to change the tmp directory. Use $NGINX_USER to change the user* Use $NGINX_GROUP to customize.Services:* nginxUse `devbox services start|stop [service]` to interact with servicesThis plugin creates the following helper files:* ~/my_project/devbox.d/nginx/nginx.conf* ~/my_project/devbox.d/nginx/fastcgi.conf* ~/my_project/devbox.d/web/index.htmlThis plugin sets the following environment variables:* NGINX_CONFDIR=~/my_project/devbox.d/nginx/nginx.conf* NGINX_PATH_PREFIX=~/my_project/.devbox/virtenv/nginx* NGINX_TMPDIR=~/my_project/.devbox/virtenv/nginx/tempTo show this information, run `devbox info nginx`nginx (nginx-1.22.1) is now installed.
+```
+
+Based on this info page, we can see that Devbox has created the configuration we need to run `nginx`
+in our local shell. Let's take a look at the files it created:
+
+```
+% tree.├── devbox.d│   ├── nginx│   │   ├── fastcgi.conf│   │   └── nginx.conf│   └── web│       └── index.html└── devbox.json
+```
+
+These files give us everything we need to run NGINX, and we can modify the `nginx.conf` and
+`fastcgi.conf` to customize how Nginx works.
+
+We can also see in the info page that Devbox has configured an NGINX service for us. Let's start
+this service with `devbox services start nginx`, and then test it with `curl`:
+
+```bash
+> devbox services start nginxInstalling nix packages. This may take a while... done.Starting a devbox shell...Service "nginx" started> curl localhost:80<!DOCTYPE html><html lang="en">  <head>    <meta charset="utf-8" />    <title>Hello World!</title>  </head>  <body>    Hello World!  </body></html>
+```
+
+## Plugin Configuration in detail[​](#plugin-configuration-in-detail "Direct link to Plugin Configuration in detail")
+
+When Devbox detects a plugin for an installed package, it automatically applies its configuration
+and prints a short explanation. Developers can review this explanation anytime using
+`devbox info <package_name>`.
+
+### Services[​](#services "Direct link to Services")
+
+If your package can run as a daemon or background service, Devbox can configure and manage that
+service for you with `devbox services`.
+
+To learn more, visit our page on [Devbox Services](/docs/devbox/guides/services/).
+
+### Environment Variables[​](#environment-variables "Direct link to Environment Variables")
+
+Devbox stores default environment variables for your package in
+`.devbox/virtenv/<package_name>/.env` in your project directory. Devbox automatically updates these
+environment variables whenever you run `devbox shell` or `devbox run` to match your current project,
+and developers should not check these `.env` files into source control.
+
+#### Customizing Environment Variables[​](#customizing-environment-variables "Direct link to Customizing Environment Variables")
+
+If you want to customize the environment variables, you can override them in the `init_hook` of your
+`devbox.json`
+
+### Helper Files[​](#helper-files "Direct link to Helper Files")
+
+Helper files are files that your package may use for configuration purposes, such as NGINX's
+`nginx.conf` file. When installing a package, Devbox will check for helper files in your project's
+`devbox.d` folder and create them if they do not exist. If helper files are already present, Devbox
+will not overwrite them.
+
+#### Customizing Helper Files[​](#customizing-helper-files "Direct link to Customizing Helper Files")
+
+Developers should directly edit helper files and check them into source control if needed
+
+## Plugins Source Code[​](#plugins-source-code "Direct link to Plugins Source Code")
+
+Devbox Plugins are written in JSON and stored in the main Devbox Repo. You can view the source code
+of the current plugins [here](https://github.com/jetify-com/devbox/tree/main/plugins)
+
+[Edit this page](https://github.com/jetify-com/devbox/tree/main/docs/app/docs/guides/plugins.md)

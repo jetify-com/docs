@@ -1,0 +1,72 @@
+---
+title: "Search Packages"
+---
+
+```
+GET
+/search
+```
+
+Search Packages. This endpoint allows you to search for packages in the Nixpkgs repository using a
+search query. The response includes a list of package names along with their description. To get
+available versions and installables for a package, you can use this name with the `/v2/pkg`
+endpoint.
+
+## Request[​](#request "Direct link to Request")
+
+<Accordion title="Query Parameters">
+  * **q** stringrequired
+
+    Search query.
+
+</Accordion>
+
+## Responses[​](#responses "Direct link to Responses")
+
+- 200
+- 400
+- 404
+
+OK
+
+- application/json
+
+- Schema
+- Example (from schema)
+
+<Accordion title="Response Schema">
+  - **query**string
+
+    The search query sent to the `/v2/search` endpoint
+
+    **total\_results**integer
+
+    The total number of results for the search query
+
+    A list of SearchResults that match the query. This array will be empty if no results were found.
+
+    Array \[
+
+- **name**string
+
+      The name of the package that matched the search query
+
+      **summary**string
+
+      A short description of the package
+
+      **last\_updated**string
+
+      The last time this package was updated in the Nixpkgs repo
+
+      ]
+
+</Accordion>
+
+```
+{  "query": "string",  "total_results": 0,  "results": [    {      "name": "string",      "summary": "string",      "last_updated": "string"    }  ]}
+```
+
+Bad Request: empty search query (set a ?q=\<query> query parameter)
+
+Not Found

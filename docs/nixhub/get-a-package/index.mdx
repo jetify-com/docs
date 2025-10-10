@@ -1,0 +1,140 @@
+---
+title: "Get a Package"
+---
+
+```
+GET
+/pkg
+```
+
+Get information about a specific package in Nixpkgs. This endpoint returns a JSON object that
+contains information about the package, including a list of releases, platforms, and outputs. You
+should use this endpoint if you know the name of the package you want to look up. If you need to
+search for packages, use `/v2/search`. If you only need the latest version of a package, use
+`/v2/resolve`.
+
+## Request[​](#request "Direct link to Request")
+
+<Accordion title="Query Parameters">
+  * **name** stringrequired
+
+    The name of the package you want to look up. Must be a valid Nixpkgs package name.
+
+</Accordion>
+
+## Responses[​](#responses "Direct link to Responses")
+
+- 200
+- 400
+- 404
+
+Ok
+
+- application/json
+
+- Schema
+- Example (from schema)
+
+<Accordion title="Response Schema">
+  - **name**string
+
+    The name of the package in Nixhub/Devbox
+
+    **summary**string
+
+    A short description of the package
+
+    **homepage\_url**string
+
+    The URL to the package's project homepage
+
+    **license**string
+
+    The software license of the package
+
+    A list of Releases for the package.
+
+    Array \[
+
+- **version**string
+
+  The version string of the release. This string, combined with a package name, points to a specific
+  version of a package
+
+  **last_updated**string
+
+  The last time this release was updated in Nixpkg.
+
+  A list of platforms this release is available on.
+
+  Array \[
+
+- **arch**string
+
+  The chip architecture of the platform. This will be one of `arm64` or `x86-64`.
+
+  **os**string
+
+  The operating system of the platform. This will be one of `macOS` or `Linux`.
+
+  **systems**string
+
+  The full Nix compatible name of the system. This will be one of `aarch64-darwin`, `aarch64-linux`,
+  `x86_64-darwin`, or `x86_64-linux`.
+
+  **attribute_path**string
+
+  The attribute path to the package in the Nixpkgs. This can be used to install the package with Nix
+  or Devbox.
+
+  **commit_hash**string
+
+  The hash of the Nixpkgs commit that this package was last updated in.
+
+  **date**string
+
+  The date this package was last updated in Nixpkgs.
+
+  A list of Outputs (e.g., `out`, `lib`, `dev`) that are available for the package on this platform.
+
+  Array \[
+
+- **name**string
+
+  The name of the output (e.g., `out`, `lib`, `dev`)
+
+  **path**string
+
+  The unique path to the output in the Nix store.
+
+  **default**boolean
+
+  Whether this output is the default output for the package
+
+  **nar**string
+
+  The path to the packages NAR (Nix Archive) file. This file contains the package's build artifacts.
+
+  ]
+
+- ]
+
+- **platforms_summary**string
+
+      A summary string that represents the platforms the release can be installed on.
+
+      **outputs\_summary**string
+
+      A summary string of the outputs (e.g., `out`, `lib`, `dev`) that are available for the release
+
+      ]
+
+</Accordion>
+
+```
+{  "name": "string",  "summary": "string",  "homepage_url": "string",  "license": "string",  "releases": [    {      "version": "string",      "last_updated": "string",      "platforms": [        {          "arch": "string",          "os": "string",          "systems": "string",          "attribute_path": "string",          "commit_hash": "string",          "date": "string",          "outputs": [            {              "name": "string",              "path": "string",              "default": true,              "nar": "string"            }          ]        }      ],      "platforms_summary": "string",      "outputs_summary": "string"    }  ]}
+```
+
+Bad Request: empty package name (set a ?name=\&ltpkg\&gt query parameter)
+
+Not Found

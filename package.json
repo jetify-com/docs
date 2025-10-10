@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "mdx2vast": "^0.3.0",
-    "mint": "^4.2.147",
-    "prettier": "^3.0.0"
+    "mint": "^4.2.158",
+    "prettier": "^3.6.2"
   }
 }

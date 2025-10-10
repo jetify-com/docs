@@ -1,0 +1,31 @@
+---
+title: "devbox services start"
+description:
+  "Starts a service or list of services. If no service is specified, starts all services +
+  process-compose."
+---
+
+```bash
+devbox services start [service]... [flags]
+```
+
+<Info>
+  Note: We recommend using `devbox services up` if you are starting all your services and
+  process-compose. This command lets you specify your process-compose file and whether to run
+  process-compose in the foreground or background.
+</Info>
+
+## Options[​](#options "Direct link to Options")
+
+| Option                     | Description                                                                      |
+| -------------------------- | -------------------------------------------------------------------------------- |
+| `-e, --env stringToString` | environment variables to set in the devbox environment (default \[])             |
+| `--env-file string`        | path to a file containing environment variables to set in the devbox environment |
+| `-h, --help`               | help for start                                                                   |
+| `-q, --quiet`              | Quiet mode: Suppresses logs.                                                     |
+
+## SEE ALSO[​](#see-also "Direct link to SEE ALSO")
+
+- [devbox services](/docs/devbox/cli_reference/devbox_services/) - Interact with devbox services
+
+[Edit this page](https://github.com/jetify-com/devbox/tree/main/docs/app/docs/cli_reference/devbox_services_start.md)

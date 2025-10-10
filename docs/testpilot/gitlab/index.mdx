@@ -1,0 +1,183 @@
+---
+title: "GitLab Integration"
+description:
+  "Learn how to set up Testpilot in your GitLab CI/CD pipelines using the official Testpilot
+  component. This tutorial will walk you through everything from initial setup to running your first
+  automated tests."
+---
+
+You can check out an [example repo](https://gitlab.com/jetify-com/gitlab-components-example) with
+our Gitlab integration for more details.
+
+## Getting Started[​](#getting-started "Direct link to Getting Started")
+
+### Prerequisites[​](#prerequisites "Direct link to Prerequisites")
+
+Before you begin, make sure you have:
+
+- A GitLab project with CI/CD enabled
+- At least one Testpilot test file (`.pilot.yaml`) in your repository
+- Access to GitLab runners (SaaS or self-hosted)
+
+### Step 1: Create Your First Pipeline[​](#step-1-create-your-first-pipeline "Direct link to Step 1: Create Your First Pipeline")
+
+Let's start by creating a simple GitLab CI pipeline that installs Testpilot and runs a test. Create
+or edit your `.gitlab-ci.yml` file in your project root:
+
+```
+# Include the Testpilot componentinclude:  - component: gitlab.com/jetify-com/gitlab-components/testpilot_install@main    inputs:      stage: install# Define pipeline stagesstages:  - install  - test# Your test jobrun-my-tests:  stage: test  needs: ["testpilot-install-linux-amd64"]  # Wait for Testpilot installation  script:    - ./bin/testpilot test your_test.pilot.yaml  # Replace with your test file  # preserve artifacts and reports  artifacts:    report:      junit: testpilot-out/*.xm<D-l><D-s>    paths:       - testpilot-out    when: always    expire_in: 1 week
+```
+
+### Step 2: Commit and Run[​](#step-2-commit-and-run "Direct link to Step 2: Commit and Run")
+
+Now that you have your pipeline defined, let's run it:
+
+1. Save your `.gitlab-ci.yml` file
+2. Commit and push to your GitLab repository
+3. Navigate to your project's **CI/CD > Pipelines** section
+4. Watch your pipeline run!
+
+You should see two jobs:
+
+- `testpilot-install-linux-amd64` - Downloads and sets up Testpilot
+- `run-my-tests` - Runs your Testpilot tests
+
+### Step 3: View your Artifacts[​](#step-3-view-your-artifacts "Direct link to Step 3: View your Artifacts")
+
+The `artifacts` section of the job above will preserve a static report of your Testpilot tests,
+including images and videos. You can view it by browsing to the `Artifacts` section of your Gitlab
+project.
+
+Testpilot also generates a JUnit report that can be directly reported to your merge requests
+
+### Step 4: Understanding What Happened[​](#step-4-understanding-what-happened "Direct link to Step 4: Understanding What Happened")
+
+The Testpilot component automatically:
+
+- Downloaded the Testpilot installer
+- Installed Testpilot and its dependencies (Playwright, Node.js)
+- Created a `./bin/testpilot` launcher script
+- Cached everything for faster future runs
+- Made Testpilot available to your test job
+
+## Platform-Specific Setup[​](#platform-specific-setup "Direct link to Platform-Specific Setup")
+
+Testpilot supports running your tests on Linux and macOS runners. You can easily configure your
+pipeline to handle both platforms:
+
+### Setting Up for Linux (Default)[​](#setting-up-for-linux-default "Direct link to Setting Up for Linux (Default)")
+
+The component works out-of-the-box with GitLab's standard Linux runners. No additional configuration
+needed!
+
+```
+include:  - component: gitlab.com/jetify-com/gitlab-components/testpilot_install@main    inputs:      stage: installstages:  - install  - testrun-tests:  stage: test  needs: ["testpilot-install-linux-amd64"]  script:    - ./bin/testpilot test your_test.pilot.yaml
+```
+
+### Setting Up for macOS[​](#setting-up-for-macos "Direct link to Setting Up for macOS")
+
+Since macOS runners can't (currently) run Docker Images directly, they require a slightly different
+setup. Here's how to configure your pipeline to use GitLab's SaaS macOS runners:
+
+**Step 1:** Define your macOS runner configuration at the top of your `.gitlab-ci.yml`:
+
+```
+# macOS runner configuration.macos_saas_runners:  tags:    - saas-macos-medium-m1  # Use GitLab's SaaS macOS runners
+```
+
+**Step 2:** Include the component with macOS-specific settings:
+
+```
+# Include the Testpilot component for macOSinclude:    - component: gitlab.com/jetify-com/gitlab-components/testpilot_install@main        inputs:            stage: install                # Install Testpilot in the 'install' stage            platform: macos               # Target the macOS platform            runner-extends: .macos_saas_runners  # Use the macOS SaaS runner config# Define pipeline stagesstages:    - install    - test# Run your tests on macOSrun-tests-macos:    stage: test    extends: .macos_saas_runners          needs: ["testpilot-install-macos"]      script:        - ./bin/testpilot test your_test.pilot.yaml  # Replace with your test file
+```
+
+### Setting up Custom Runners[​](#setting-up-custom-runners "Direct link to Setting up Custom Runners")
+
+If you're using self-hosted runners, you can configure Testpilot to run on them using a
+configuration like the following
+
+```
+# Custom runner configurations.arm_runner:  tags:  # custom runner configuration goes hereinclude:  # ARM64 runner  - component: gitlab.com/jetify-com/gitlab-components/testpilot_install@main    inputs:      stage: install      platform: linux-arm64      runner-extends: .arm_runnerstages:  - install  - testtest-arm:  stage: test  extends: .arm_runner  needs: ["testpilot-install-linux-arm64"]  script:    - ./bin/testpilot test tests/
+```
+
+## Multi-Platform Testing[​](#multi-platform-testing "Direct link to Multi-Platform Testing")
+
+Want to test on both Linux and macOS? Here's how:
+
+```
+# Runner configurations.macos_saas_runners:  tags:    - saas-macos-medium-m1# Install Testpilot on both platformsinclude:  - component: gitlab.com/jetify-com/gitlab-components/testpilot_install@main    inputs:      stage: install      # platform: linux-amd64 is the default  - component: gitlab.com/jetify-com/gitlab-components/testpilot_install@main    inputs:      stage: install      platform: macos      runner-extends: .macos_saas_runnersstages:  - install  - test# Run tests on Linuxtest-linux:  stage: test  needs: ["testpilot-install-linux-amd64"]  script:    - ./bin/testpilot test tests/# Run tests on macOStest-macos:  stage: test  extends: .macos_saas_runners  needs: ["testpilot-install-macos"]  script:    - ./bin/testpilot test tests/
+```
+
+## Sharding your Tests and Running in Parallel[​](#sharding-your-tests-and-running-in-parallel "Direct link to Sharding your Tests and Running in Parallel")
+
+Testpilot can shard your test files across multiple runners using the `--shard` flag, which is
+useful for parallelizing and speeding up your test runs. Note that after sharding and running your
+tests in parallel, you will probably want to merge the reports back together using
+`testpilot report merge`.
+
+You can see an example of sharding testpilot files in our
+[example repo](https://gitlab.com/jetify-com/gitlab-components-example). An example gitlab.yaml file
+is below:
+
+```
+include:  - component: gitlab.com/jetify-com/gitlab-components/testpilot_install@main    inputs:      stage: install      xdg_cache_home: .cache/jetifystages:  - install  - test  - mergetestpilot_test:  stage: test  needs: ["testpilot-install-linux-amd64"]  parallel: 2  # Use built in CI_NODE environment variables to shard across runners  script: ./bin/testpilot test --outdir=testpilot-out-${CI_NODE_INDEX} --shard=${CI_NODE_INDEX}/${CI_NODE_TOTAL} --reporters=junit  artifacts:    reports:      junit: testpilot-out/*.xml    paths:      - testpilot-out-${CI_NODE_INDEX}/    when: always    expire_in: 1 week# Merge your test reports together into a single artifacttestpilot_merge:  stage: merge  needs:    - "testpilot-install-linux-amd64"    - job: "testpilot_test"      artifacts: true      optional: true  script: ./bin/testpilot report merge --outdir=testpilot-out testpilot-out-*  artifacts:    paths:      - testpilot-out/    when: always    expire_in: 1 week
+```
+
+## Understanding the Component[​](#understanding-the-component "Direct link to Understanding the Component")
+
+### Behind the Scenes[​](#behind-the-scenes "Direct link to Behind the Scenes")
+
+When you include the Testpilot component, it creates a job that:
+
+1. **Downloads the installer** from `https://get.jetify.com/testpilot`
+2. **Installs Testpilot** and its dependencies (Playwright, Node.js)
+3. **Creates a launcher script** at `./bin/testpilot` that handles environment setup
+4. **Caches everything** so future pipeline runs are faster
+5. **Shares the installation** with your test jobs via GitLab artifacts
+
+### Component Configuration Options[​](#component-configuration-options "Direct link to Component Configuration Options")
+
+The component accepts these parameters:
+
+| Parameter        | Required | Default       | Description                         | Example                |
+| ---------------- | -------- | ------------- | ----------------------------------- | ---------------------- |
+| `stage`          | ✅ Yes   | -             | Which stage to install Testpilot in | `install`              |
+| `platform`       | No       | `linux-amd64` | Target platform                     | `macos`, `linux-arm64` |
+| `runner-extends` | No       | -             | Custom runner configuration         | `.macos_saas_runners`  |
+| `xdg_cache_home` | No       | `.cache`      | Cache directory location            | `.custom_cache`        |
+
+## Caching and Performance[​](#caching-and-performance "Direct link to Caching and Performance")
+
+### Caching Strategy[​](#caching-strategy "Direct link to Caching Strategy")
+
+The component automatically caches:
+
+- The Testpilot binary and dependencies
+- Your `./bin/testpilot` launcher script
+
+This means the second time your pipeline runs, Testpilot installation will be much faster!
+
+### Custom Cache Directory[​](#custom-cache-directory "Direct link to Custom Cache Directory")
+
+If you need to change where files are cached:
+
+```
+include:  - component: gitlab.com/jetify-com/gitlab-components/testpilot_install@main    inputs:      stage: install      xdg_cache_home: .my_custom_cacherun-tests:  stage: test  needs: ["testpilot-install-linux-amd64"]  script:    - ./bin/testpilot test tests/
+```
+
+## Best Practices Summary[​](#best-practices-summary "Direct link to Best Practices Summary")
+
+✅ **Do:**
+
+- Always use `needs:` to ensure proper job dependencies
+- Leverage the built-in caching for faster pipelines
+- Use descriptive job names that reflect what you're testing
+- Test on multiple platforms if your application supports them
+- Structure your tests in logical directories
+
+❌ **Don't:**
+
+- Forget to specify the correct job name in `needs:`
+- Modify the cache directory unless necessary
+- Run tests without waiting for the installation job
+- Use the same job name for multiple platforms

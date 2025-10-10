@@ -1,0 +1,65 @@
+---
+title: "Setting Your Browser Viewport"
+description:
+  "When testing web applications, it's crucial to ensure your site works well across different
+  screen sizes. Testpilot makes it easy to define and test with various viewport dimensions directly
+  in your test files."
+---
+
+## Why Configure Viewports?[​](#why-configure-viewports "Direct link to Why Configure Viewports?")
+
+Configuring viewports allows you to:
+
+- Test responsive design across desktop, tablet, and mobile screen sizes
+- Verify that UI elements appear correctly at different resolutions
+- Ensure your application is usable on various devices
+- Catch layout issues that only appear at specific dimensions
+
+## Configuring Viewports in Your Pilot File[​](#configuring-viewports-in-your-pilot-file "Direct link to Configuring Viewports in Your Pilot File")
+
+You can define viewports at the test case level using the `viewports` field. Here's how to set it
+up:
+
+```
+cases:  - id: "responsive-test-001"    name: "Homepage Responsive Test"    description: "Verify the homepage displays correctly on multiple devices"    url: "https://example.com"    viewports:      - name: "Desktop"        size: [1920, 1080]      - name: "Tablet"        size: [768, 1024]      - name: "Mobile"        size: [375, 667]    steps:      - "Verify the navigation menu is visible"      - "Verify the hero image is displayed properly"      - "Scroll down to check content layout"
+```
+
+Each viewport configuration consists of:
+
+- `name`: A descriptive name for the viewport (e.g., "Desktop", "Tablet", "Mobile")
+- `size`: An array of two integers representing width and height in pixels
+
+## How Testpilot Uses Viewports[​](#how-testpilot-uses-viewports "Direct link to How Testpilot Uses Viewports")
+
+When you define multiple viewports for a test case, Testpilot will:
+
+1. Run the test case once for each viewport configuration
+2. Resize the browser window to match each viewport's dimensions before starting the test
+3. Take screenshots and generate reports that show how your site appears at each size
+4. Identify any issues specific to particular screen sizes
+
+## Common Viewport Sizes[​](#common-viewport-sizes "Direct link to Common Viewport Sizes")
+
+Here are some commonly used viewport sizes for different device categories:
+
+### Desktop[​](#desktop "Direct link to Desktop")
+
+```
+viewports:  - name: "Desktop Large"    size: [1920, 1080]  - name: "Desktop Small"    size: [1366, 768]
+```
+
+### Tablet[​](#tablet "Direct link to Tablet")
+
+```
+viewports:  - name: "Tablet Landscape"    size: [1024, 768]  - name: "Tablet Portrait"    size: [768, 1024]
+```
+
+### Mobile[​](#mobile "Direct link to Mobile")
+
+```
+viewports:  - name: "Mobile Large"    size: [428, 926]  # iPhone 13 Pro Max  - name: "Mobile Medium"    size: [390, 844]  # iPhone 13 Pro  - name: "Mobile Small"    size: [375, 667]  # iPhone SE
+```
+
+```
+## Tips for Viewport Testing1. **Start with key breakpoints**: Focus on testing the major breakpoints where your UI changes significantly2. **Test critical user flows**: Ensure important user journeys work on all screen sizes3. **Consider device-specific behaviors**: Some features might work differently on touch devices versus desktop4. **Test orientation changes**: For tablet and mobile viewports, consider testing both portrait and landscape orientations5. **Check for overflow issues**: Verify that content doesn't overflow or get cut off at smaller screen sizesBy thoroughly testing your application across different viewports, you can ensure a consistent and high-quality user experience for all your users, regardless of the device they're using.
+```

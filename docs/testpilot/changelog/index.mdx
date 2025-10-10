@@ -1,0 +1,52 @@
+---
+title: "0.0.19"
+description: "September 22, 2025 · 2 min read"
+---
+
+🚀 Features & Improvements
+
+- **Extra Cookie Support**
+  - Added ability to set custom cookie data during tests using the `TESTPILOT_EXTRA_COOKIE_DATA`
+    environment variable
+
+- **Experimental Action Cache**
+  - Introduced an experimental action cache feature to store and reuse actions based on element IDs,
+    improving test performance and reliability
+  - Users will need to be signed in to their Jetify Cloud account with `testpilot auth login` to
+    utilize this feature, and can update the cache using the `--upload-report` flag during test
+  - This feature can be enabled with the `FEATURE_FLAG_USE_CACHE_FOR_FAST_EXECUTION` environment
+    variable.
+
+🐛 Bug Fixes
+
+- **Screenshot Handling:**
+  - Fixed nil-pointer error when checking click elements prior to taking screenshots
+  - Fixed mobile viewport screenshot issues affecting test accuracy
+  - Improved screenshot timing for click actions on certain elements
+
+- **Performance Optimizations:**
+  - Significantly improved cache hit rates (from \~20% to 50% in some cases) through enhanced
+    element selection logic
+  - Reduced image I/O operations to improve performance
+  - Prevented continuous growth of screenshots in cached test reports
+
+- **Element Selection:**
+  - Enhanced element filtering to prioritize interactive elements, navigational elements, and
+    elements with test identifiers
+  - Improved selector preference logic, prioritizing aria-label attributes over CSS class selectors
+  - Fixed element selection for dropdown/select actions to use values instead of indices for better
+    cache reliability
+
+- **Concurrency & Stability:**
+  - Fixed race conditions with report protocol calls by adding proper locking
+  - Fixed terminal output handling in concurrency mode for multi-viewport test cases
+  - Fixed nil-pointer errors in LLM response handling
+
+- **Login & Authentication:**
+  - Improved login test reliability by using API service-hosted login pages
+  - Enhanced login password redaction in test reports and JUnit reports for better security
+
+- **Loading Timeouts**
+  - Set Playwright page navigation timeout to 10 seconds for more reliable page loading
+  - Testpilot will no longer fail a test if a page takes longer than 10 seconds to load, but will
+    attempt to continue with the test.
