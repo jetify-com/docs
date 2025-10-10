@@ -13,8 +13,17 @@ Scripts will run after your packages finish installing, and after your `init_hoo
 Scripts can be added in your `devbox.json`. Scripts require a unique name, and a command or list of
 commands to run:
 
-```
-"shell": {    "init_hook": "echo \"Hello \"",    "scripts": {        "echo_once": "echo \"World\"",        "echo_twice": [            "echo \"World\"",            "echo \"Again\""        ]    }}
+```json
+"shell": {
+    "init_hook": "echo \"Hello \"",
+    "scripts": {
+        "echo_once": "echo \"World\"",
+        "echo_twice": [
+            "echo \"World\"",
+            "echo \"Again\""
+        ]
+    }
+}
 ```
 
 ## Running your scripts[​](#running-your-scripts "Direct link to Running your scripts")
@@ -23,7 +32,18 @@ To run a script, use `devbox run <script_name>`. This will start your shell, run
 and then run the script:
 
 ```bash
-$ devbox run echo_onceInstalling nix packages. This may take a while... done.Starting a devbox shell...HelloWorld$ devbox run echo_twiceInstalling nix packages. This may take a while... done.Starting a devbox shell...HelloWorldAgain
+$ devbox run echo_once
+Installing nix packages. This may take a while... done.
+Starting a devbox shell...
+Hello
+World
+
+$ devbox run echo_twice
+Installing nix packages. This may take a while... done.
+Starting a devbox shell...
+Hello
+World
+Again
 ```
 
 Your devbox shell will exit once the last line of your script has finished running, or when you
@@ -48,7 +68,8 @@ Note that if you want to pass flags to `devbox run`, you should pass them before
 example:
 
 ```bash
-# Run `lsof -i :80` in your devbox shell in quiet modedevbox run -q lsof -i :80
+# Run `lsof -i :80` in your devbox shell in quiet mode
+devbox run -q lsof -i :80
 ```
 
 ## Run Scripts with Custom Environment Variables[​](#run-scripts-with-custom-environment-variables "Direct link to Run Scripts with Custom Environment Variables")
