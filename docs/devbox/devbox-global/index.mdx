@@ -11,7 +11,7 @@ profile with `devbox global add ripgrep`. Now whenever you start a Devbox shell,
 ripgrep available, even if it's not in the project's devbox.json.
 
 <Frame caption="Installing Packages with Devbox Global">
-
+  ![Devbox global package manager](devbox-global-package-manager.svg)
 </Frame>
 
 You can also use `devbox global` to replace package managers like `brew` and `apt` by adding the
@@ -29,8 +29,12 @@ list of [Nix Packages](https://search.nixos.org/packages) you want to install.
 For example, if we wanted to install ripgrep, vim, and git to our global profile, we could run:
 
 ```bash
-devbox global add ripgrep vim git# Output:ripgrep is now installedvim is now installedgit is now installed
-```bash
+devbox global add ripgrep vim git
+# Output:
+ripgrep is now installed
+vim is now installed
+git is now installed
+```
 
 Once installed, the packages will be available whenever you start a Devbox Shell, even if it's not
 included in the project's `devbox.json`.
@@ -38,14 +42,20 @@ included in the project's `devbox.json`.
 To view a full list of global packages, you can run `devbox global list`:
 
 ```bash
-devbox global list# Output:* ripgrep* vim* git
+devbox global list
+# Output:
+* ripgrep
+* vim
+* git
 ```
 
 To remove a global package, use:
 
 ```bash
-devbox global rm ripgrep# Output:removing 'github:NixOS/nixpkgs/ripgrep'
-```json
+devbox global rm ripgrep
+# Output:
+removing 'github:NixOS/nixpkgs/ripgrep'
+```
 
 ## Using Global Packages in your Host Shell[​](#using-global-packages-in-your-host-shell "Direct link to Using Global Packages in your Host Shell")
 
@@ -70,7 +80,7 @@ Add the following command to your `~/.bashrc` file:
 
 ```bash
 eval "$(devbox global shellenv --init-hook)"
-```bash
+```
 
 Make sure to add this hook before any other hooks that use your global packages.
 
@@ -88,7 +98,7 @@ Add the following command to your `~/.config/fish/config.fish` file:
 
 ```bash
 devbox global shellenv --init-hook | source
-```json
+```
 
 ## Sharing Your Global Config with Git[​](#sharing-your-global-config-with-git "Direct link to Sharing Your Global Config with Git")
 
