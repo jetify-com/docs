@@ -10,67 +10,99 @@
   "favicon": "/favicon.svg",
   "logo": {
     "light": "/images/logo/light.svg",
-    "dark": "/images/logo/dark.svg"
+    "dark": "/images/logo/dark.svg",
+    "href": "https://www.jetify.com/docs"
   },
   "navigation": {
-    "groups": [
+    "products": [
       {
-        "group": "s/docs/",
-        "pages": ["docs/testpilot/index"]
+        "product": "Home",
+        "description": "Learn about our different products",
+        "icon": "house",
+        "pages": ["docs/index"]
       },
       {
-        "group": "Getting Started",
-        "pages": [
-          "docs/testpilot/getting_started/index",
-          "docs/testpilot/getting_started/setup",
-          "docs/testpilot/getting_started/running_tests",
-          "docs/testpilot/getting_started/running_tests_android",
-          "docs/testpilot/getting_started/running_tests_ios",
-          "docs/testpilot/getting_started/generating_tests",
-          "docs/testpilot/getting_started/mcp"
+        "product": "Testpilot",
+        "description": "Your AI QA Engineer",
+        "icon": "rocket",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": ["docs/testpilot/index"]
+          },
+          {
+            "group": "Getting Started",
+            "pages": [
+              "docs/testpilot/getting_started/index",
+              "docs/testpilot/getting_started/setup",
+              "docs/testpilot/getting_started/running_tests",
+              "docs/testpilot/getting_started/running_tests_android",
+              "docs/testpilot/getting_started/running_tests_ios",
+              "docs/testpilot/getting_started/generating_tests",
+              "docs/testpilot/getting_started/mcp"
+            ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              "docs/testpilot/guides/index",
+              "docs/testpilot/guides/adding_additional_context",
+              "docs/testpilot/guides/generating_email_addresses",
+              "docs/testpilot/guides/managing_login_flows",
+              "docs/testpilot/guides/parameterizing_tests",
+              "docs/testpilot/guides/setting_browser_viewport",
+              "docs/testpilot/guides/concurrency-and-sharding"
+            ]
+          },
+          {
+            "group": "Tips",
+            "pages": ["docs/testpilot/tips/index"]
+          },
+          {
+            "group": "CLI Reference",
+            "pages": [
+              "docs/testpilot/reference/cli/index",
+              "docs/testpilot/reference/cli/testpilot",
+              "docs/testpilot/reference/cli/testpilot_auth",
+              "docs/testpilot/reference/cli/testpilot_auth_login",
+              "docs/testpilot/reference/cli/testpilot_auth_logout",
+              "docs/testpilot/reference/cli/testpilot_auth_whoami",
+              "docs/testpilot/reference/cli/testpilot_generate",
+              "docs/testpilot/reference/cli/testpilot_install",
+              "docs/testpilot/reference/cli/testpilot_report",
+              "docs/testpilot/reference/cli/testpilot_report_merge",
+              "docs/testpilot/reference/cli/testpilot_test",
+              "docs/testpilot/reference/cli/testpilot_version",
+              "docs/testpilot/reference/cli/testpilot_version_update"
+            ]
+          },
+          {
+            "group": "Gitlab",
+            "pages": ["docs/testpilot/gitlab/index"]
+          },
+          {
+            "group": "Pilotfile Spec",
+            "pages": ["docs/testpilot/reference/pilotfile_spec"]
+          }
         ]
       },
       {
-        "group": "Guides",
-        "pages": [
-          "docs/testpilot/guides/index",
-          "docs/testpilot/guides/adding_additional_context",
-          "docs/testpilot/guides/generating_email_addresses",
-          "docs/testpilot/guides/managing_login_flows",
-          "docs/testpilot/guides/parameterizing_tests",
-          "docs/testpilot/guides/setting_browser_viewport",
-          "docs/testpilot/guides/concurrency-and-sharding"
-        ]
+        "product": "Jetify Cloud",
+        "description": "Cloud development environments",
+        "icon": "cloud",
+        "pages": ["docs/cloud/index"]
       },
       {
-        "group": "Tips",
-        "pages": ["docs/testpilot/tips/index"]
+        "product": "Devbox",
+        "description": "Reproducible development environments",
+        "icon": "box",
+        "pages": ["docs/devbox/index"]
       },
       {
-        "group": "CLI Reference",
-        "pages": [
-          "docs/testpilot/reference/cli/index",
-          "docs/testpilot/reference/cli/testpilot",
-          "docs/testpilot/reference/cli/testpilot_auth",
-          "docs/testpilot/reference/cli/testpilot_auth_login",
-          "docs/testpilot/reference/cli/testpilot_auth_logout",
-          "docs/testpilot/reference/cli/testpilot_auth_whoami",
-          "docs/testpilot/reference/cli/testpilot_generate",
-          "docs/testpilot/reference/cli/testpilot_install",
-          "docs/testpilot/reference/cli/testpilot_report",
-          "docs/testpilot/reference/cli/testpilot_report_merge",
-          "docs/testpilot/reference/cli/testpilot_test",
-          "docs/testpilot/reference/cli/testpilot_version",
-          "docs/testpilot/reference/cli/testpilot_version_update"
-        ]
-      },
-      {
-        "group": "Gitlab",
-        "pages": ["docs/testpilot/gitlab/index"]
-      },
-      {
-        "group": "Pilotfile Spec",
-        "pages": ["docs/testpilot/reference/pilotfile_spec"]
+        "product": "NixHub API",
+        "description": "API for Nix package discovery",
+        "icon": "gear",
+        "pages": ["docs/nixhub/index"]
       }
     ]
   },
