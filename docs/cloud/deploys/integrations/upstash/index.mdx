@@ -18,7 +18,7 @@ You can view an example of this integration on
 - After clicking the Create button, you'll see a page with the connection details for your Database.
   Copy the Endpoint, Password, and Port -- you'll need these to connect from Jetify Cloud.
 
-![Upstash Dashboard after clicking Create](/images/docs/cloud/deploys/integrations/upstash/docs/assets/images/upstash-1b2a0f7038b7b865caeff49d4fe1e750.png)
+![Upstash Dashboard after clicking Create](./upstash-dashboard-create.png)
 
 - Go to the Jetify Dashboard for your project, and navigate to Secrets. Create the following Secrets
   in the `Prod` environment:
@@ -31,7 +31,7 @@ You can view an example of this integration on
   environment variables for the `dev` and `preview` environment
 </Info>
 
-![Secrets set in the Jetify Cloud](/images/docs/cloud/deploys/integrations/upstash/docs/assets/images/upstash-secrets-8c63c8aa78f3246126a464ed4477dd7e.png)
+![Secrets set in the Jetify Cloud](./upstash-secrets-configuration.png)
 
 When you deploy your application, Devbox will automatically set these secrets as env variables in
 your environment. You can then access them using any redis client.

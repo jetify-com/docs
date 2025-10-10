@@ -246,9 +246,19 @@ beginning of the list. Likewise, if a setting in your project config conflicts w
 your `devbox.json` has a script with the same name as a plugin script), your project config will
 take precedence.
 
+```json
+{
+    "include": [
+        // Include a plugin from a Github Repo. The repo must have a plugin.json in it's root,
+        // or in the directory specified by ?dir
+        "github:org/repo/ref?dir=<path-to-plugin>"
+        // Include a local plugin. The path must point to a plugin.json
+        "path:path/to/plugin.json"
+        // Force activate a builtin plugin
+        "plugin:php-config"
+    ]
+}
 ```
-{    "include": [        // Include a plugin from a Github Repo. The repo must have a plugin.json in it's root,        // or in the directory specified by ?dir        "github:org/repo/ref?dir=<path-to-plugin>"        // Include a local plugin. The path must point to a plugin.json        "path:path/to/plugin.json"        // Force activate a builtin plugin        "plugin:php-config"    ]}
-```toml
 
 ### Example: A Rust Devbox[​](#example-a-rust-devbox "Direct link to Example: A Rust Devbox")
 

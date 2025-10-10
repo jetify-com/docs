@@ -29,7 +29,7 @@ To connect using the API:
 - From your Supabase Project Dashboard, navigate to **Project Settings**, then **API**
 
 - In the API Settings pane, copy the Project URL and Secret Service Role key
-  ![Supabase API UI](/images/docs/cloud/deploys/integrations/supabase/docs/assets/images/supabase-API-f40f4b71577eb6272448b379a96f800b.png)
+  ![Supabase API UI](./supabase-api-settings.png)
 
 - Go to the Jetify Dashboard for your project, and navigate to Secrets. Create the following Secrets
   in the `Prod` environment:
@@ -41,7 +41,7 @@ To connect using the API:
   environment variables for the `dev` and `preview` environment
 </Info>
 
-![Secrets set in the Jetify Cloud](/images/docs/cloud/deploys/integrations/supabase/docs/assets/images/supabase-secrets-8bf8278bfacb052c766e14e6ab7e3859.png)
+![Secrets set in the Jetify Cloud](./supabase-secrets-configuration.png)
 
 When you deploy your application, Devbox will automatically set these secrets as env variables in
 your environment. You can use these environment variables when configuring your Supabase client.
@@ -69,7 +69,7 @@ To connect via PostgreSQL:
 
 - In the Connection Parameters Settings, copy values needed for connection. Your database password
   will be the password you set when creating your project.
-  ![Supabase Connection Parameters](/images/docs/cloud/deploys/integrations/supabase/docs/assets/images/connection_parameters-8998ee5136c176392f8132bbef76fe9c.png)
+  ![Supabase Connection Parameters](./supabase-connection-parameters.png)
 
 - Go to the Jetify Dashboard for your project, and navigate to Secrets. Create the following Secrets
   in the `Prod` environment:
@@ -78,7 +78,7 @@ To connect via PostgreSQL:
   - `POSTGRES_USER`: Your PostgreSQL Username
   - `POSTGRES_PASSWORD`: Your PostgreSQL Database Password
 
-![Postgres Secrets](/images/docs/cloud/deploys/integrations/supabase/docs/assets/images/postgres-secrets-6e3fb9b4ba5a504cf4a24e1175458c48.png)
+![Postgres Secrets](./supabase-postgres-secrets.png)
 
 When you deploy your application, Devbox will automatically set these secrets as env variables in
 your environment. You can use these environment variables when configuring your PostgreSQL client or

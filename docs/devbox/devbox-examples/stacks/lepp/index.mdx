@@ -46,8 +46,10 @@ devbox add postgresql@14 [emailÂ protected] php81Extensions.pgsql@latest [emailÂ
 Note that the `.sock` filepath can only be maximum 100 characters long. You can point to a different
 path by setting the `PGHOST` env variable in your `devbox.json` as follows:
 
+```json
+"env": {
+    "PGHOST": "/<some-shorter-path>"
+}
 ```
-"env": {    "PGHOST": "/<some-shorter-path>"}
-```bash
 
 [Edit this page](https://github.com/jetify-com/devbox/tree/main/docs/app/docs/devbox-examples/stacks/lepp.md)
