@@ -16,61 +16,61 @@
     "groups": [
       {
         "group": "s/docs/",
-        "pages": ["testpilot/index"]
+        "pages": ["docs/testpilot/index"]
       },
       {
         "group": "Getting Started",
         "pages": [
-          "testpilot/getting_started/index",
-          "testpilot/getting_started/setup",
-          "testpilot/getting_started/running_tests",
-          "testpilot/getting_started/running_tests_android",
-          "testpilot/getting_started/running_tests_ios",
-          "testpilot/getting_started/generating_tests",
-          "testpilot/getting_started/mcp"
+          "docs/testpilot/getting_started/index",
+          "docs/testpilot/getting_started/setup",
+          "docs/testpilot/getting_started/running_tests",
+          "docs/testpilot/getting_started/running_tests_android",
+          "docs/testpilot/getting_started/running_tests_ios",
+          "docs/testpilot/getting_started/generating_tests",
+          "docs/testpilot/getting_started/mcp"
         ]
       },
       {
         "group": "Guides",
         "pages": [
-          "testpilot/guides/index",
-          "testpilot/guides/adding_additional_context",
-          "testpilot/guides/generating_email_addresses",
-          "testpilot/guides/managing_login_flows",
-          "testpilot/guides/parameterizing_tests",
-          "testpilot/guides/setting_browser_viewport",
-          "testpilot/guides/concurrency-and-sharding"
+          "docs/testpilot/guides/index",
+          "docs/testpilot/guides/adding_additional_context",
+          "docs/testpilot/guides/generating_email_addresses",
+          "docs/testpilot/guides/managing_login_flows",
+          "docs/testpilot/guides/parameterizing_tests",
+          "docs/testpilot/guides/setting_browser_viewport",
+          "docs/testpilot/guides/concurrency-and-sharding"
         ]
       },
       {
         "group": "Tips",
-        "pages": ["testpilot/tips/index"]
+        "pages": ["docs/testpilot/tips/index"]
       },
       {
         "group": "CLI Reference",
         "pages": [
-          "testpilot/reference/cli/index",
-          "testpilot/reference/cli/testpilot",
-          "testpilot/reference/cli/testpilot_auth",
-          "testpilot/reference/cli/testpilot_auth_login",
-          "testpilot/reference/cli/testpilot_auth_logout",
-          "testpilot/reference/cli/testpilot_auth_whoami",
-          "testpilot/reference/cli/testpilot_generate",
-          "testpilot/reference/cli/testpilot_install",
-          "testpilot/reference/cli/testpilot_report",
-          "testpilot/reference/cli/testpilot_report_merge",
-          "testpilot/reference/cli/testpilot_test",
-          "testpilot/reference/cli/testpilot_version",
-          "testpilot/reference/cli/testpilot_version_update"
+          "docs/testpilot/reference/cli/index",
+          "docs/testpilot/reference/cli/testpilot",
+          "docs/testpilot/reference/cli/testpilot_auth",
+          "docs/testpilot/reference/cli/testpilot_auth_login",
+          "docs/testpilot/reference/cli/testpilot_auth_logout",
+          "docs/testpilot/reference/cli/testpilot_auth_whoami",
+          "docs/testpilot/reference/cli/testpilot_generate",
+          "docs/testpilot/reference/cli/testpilot_install",
+          "docs/testpilot/reference/cli/testpilot_report",
+          "docs/testpilot/reference/cli/testpilot_report_merge",
+          "docs/testpilot/reference/cli/testpilot_test",
+          "docs/testpilot/reference/cli/testpilot_version",
+          "docs/testpilot/reference/cli/testpilot_version_update"
         ]
       },
       {
         "group": "Gitlab",
-        "pages": ["testpilot/gitlab/index"]
+        "pages": ["docs/testpilot/gitlab/index"]
       },
       {
         "group": "Pilotfile Spec",
-        "pages": ["testpilot/reference/pilotfile_spec"]
+        "pages": ["docs/testpilot/reference/pilotfile_spec"]
       }
     ]
   },
