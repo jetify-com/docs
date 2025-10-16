@@ -18,13 +18,26 @@ These credentials will be used whenever a test requires authentication. You can 
 shell profile, CI environment, or just before running your tests. You can also use the secret
 manager of your choice to set these credentials before running Testpilot
 
-## Configuring Login URL[​](#configuring-login-url "Direct link to Configuring Login URL")
+## Configuring Custom Environment Variables For Login[](#configuring-custom-environment-variables-for-login "Direct link to Configuring Custom Environment Variables for Login")
 
-To tell Testpilot where to log in, add a `login_url` field to your pilot file:
+Alternatively, you can also use custom env-vars of your own choosing by specifying them in the pilot file:
+```yaml
+name: "Configuring Environment Variables for Login"
+login:
+  username: ${MY_CUSTOM_USERNAME}
+  password: ${MY_CUSTOM_PASSWORD}
+cases:
+  - ... # omitted for clarity
+```
+
+## Configuring Login URL [​](#configuring-login-url "Direct link to Configuring Login URL")
+
+To tell Testpilot where to log in, add a `login.url` field to your pilot file:
 
 ```yaml
 name: "Authenticated Tests Example"
-login_url: "https://example.com/login"
+login:
+  url: "https://example.com/login"
 cases:
   - id: "dashboard-test"
     name: "View Dashboard"
@@ -36,12 +49,12 @@ cases:
       - "Navigate to settings page"
 ```
 
-The `login_url` parameter tells Testpilot where to perform the authentication before running your
+The `login.url` parameter tells Testpilot where to perform the authentication before running your
 tests.
 
-## How Authentication Works[​](#how-authentication-works "Direct link to How Authentication Works")
+## How Authentication Works For Websites[​](#how-authentication-works-for-websites "Direct link to How Authentication Works For Websites")
 
-When you provide both login credentials (via environment variables) and a login URL, Testpilot will:
+When you provide both a login URL and credentials, Testpilot will:
 
 1. Launch a browser session
 2. Navigate to the login URL
@@ -53,13 +66,16 @@ When you provide both login credentials (via environment variables) and a login 
 This means you only authenticate once, and all your test cases benefit from the same authenticated
 session, saving time and reducing flakiness.
 
-## Example: Testing Authenticated Features[​](#example-testing-authenticated-features "Direct link to Example: Testing Authenticated Features")
+## Example: Testing Authenticated Features in a Website[​](#example-testing-authenticated-features "Direct link to Example: Testing Authenticated Features in a Website")
 
 Here's a complete example of testing features that require authentication:
 
 ```yaml
 name: "User Account Tests"
-login_url: "https://myapp.com/login"
+login:
+  url: "https://myapp.com/login"
+  username: ${MY_CUSTOM_USERNAME}
+  password: ${MY_CUSTOM_PASSWORD}
 cases:
   - id: "profile-edit"
     name: "Edit User Profile"
@@ -89,3 +105,28 @@ session.
 
 By properly configuring login credentials and URL, you can easily test authenticated sections of
 your application without repeatedly handling the login process in each test case.
+
+## Example: Testing Login Flow for a mobile app[](#example-testing-login-flow-for-a-mobile-app "Direct link to Example: Testing Login Flow for a mobile app")
+
+For mobile apps, the login steps have to be more explicitly specified and tested, notably as done in step 2 below.
+
+```yaml
+name: "Login Flow Test"
+login:
+  username: ${MY_CUSTOM_USERNAME}
+  password: ${MY_CUSTOM_PASSWORD}
+cases:
+  - id: "perform-login"
+    name: "Login to the app"
+    description: "Test logging in to the app"
+    steps:
+      - "Click on the Login button on the top right"
+      - "Login using username ${MY_CUSTOM_USERNAME} and password ${MY_CUSTOM_PASSWORD}"
+      - "Verify the login was successful by confirming the user account's name is displayed on the top-left"
+    platform_config:
+      android_pkg: com.mymobileapp.android
+```
+
+If you are using a custom env-var for the password (i.e. other than `TESTPILOT_PASSWORD`) then you are 
+encouraged to specify the top-level `login.password` field as well. This helps Testpilot handle the 
+password string literal more securely.
