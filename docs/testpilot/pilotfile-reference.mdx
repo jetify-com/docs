@@ -141,6 +141,22 @@ context:
   - text: "Database should contain sample product data"
 ```
 
+### headers[​](#headers "Direct link to headers")
+
+Custom HTTP headers to include in all browser requests for this test case. The
+browser sends these headers with every request made during test execution.
+
+```yaml
+headers:
+  X-Custom-Header: "custom-value"
+  Token: "Bearer ${MY_TOKEN}"
+  User-Agent: "TestPilot/1.0 Custom Agent"
+```
+
+**Important**: custom headers are only supported for web testing with
+Playwright. They're currently not available when testing mobile applications on
+Android or iOS platforms.
+
 ### platform_config[​](#platform_config "Direct link to platform_config")
 
 Configuration for testing on different platforms (web, mobile, etc.). This allows you to specify
@@ -298,6 +314,18 @@ cases:
     viewports:
       - name: "Mobile"
         size: [375, 667]
+  - id: "api-integration-001"
+    name: "Test API Integration"
+    description: "Verify custom headers are sent correctly with requests"
+    url: "https://shop.example.com/api-test"
+    headers:
+      X-Shop-Client: "testpilot"
+      X-Test-Environment: "staging"
+      Authorization: "Bearer test-token-123"
+    steps:
+      - "Navigate to the API integration test page"
+      - "Verify custom headers are displayed in the response"
+      - "Check that authentication header was processed correctly"
 ```
 
 This example demonstrates:
@@ -307,3 +335,4 @@ This example demonstrates:
 - Cross-platform testing configuration
 - Responsive testing with multiple viewports
 - Test-specific context and configuration
+- Custom HTTP headers for API integration testing
