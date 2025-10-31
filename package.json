@@ -13,7 +13,8 @@
     "dev": "mint dev",
     "fmt": "prettier --write .",
     "lint": "mint broken-links",
-    "mint": "mint"
+    "mint": "mint",
+    "vale": "devbox run vale"
   },
   "packageManager": "pnpm@10.15.1",
   "engines": {
