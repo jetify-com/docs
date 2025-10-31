@@ -210,7 +210,7 @@ Both formats share the same core object structures and use camelCase field namin
 
 - **id** (string): Unique report identifier with `tpreport_` prefix
 - **startTime** (string): ISO 8601 timestamp when the test run began
-- **duration** (string): Total execution time in duration format (e.g., "137.221s")
+- **duration** (string): Total execution time in duration format (for example, "137.221&nbsp;s")
 - **platforms** (string[]): List of platforms/browsers used in the test run
 - **statusSummary** (StatusSummary[]): Aggregated count of tests by their final status
 - **tests** (Test[]): Array of all test executions in this report
@@ -261,7 +261,7 @@ Both formats share the same core object structures and use camelCase field namin
 
 ### Action Fields
 
-- **name** (string): Human-readable action name (e.g., "left click", "screenshot")
+- **name** (string): Human-readable action name (for example, "left click," "screenshot")
 - **xCoordinate** (integer): X coordinate for pointer-based actions
 - **yCoordinate** (integer): Y coordinate for pointer-based actions
 - **text** (string): Text content for typing or text-based actions
@@ -275,8 +275,8 @@ Both formats share the same core object structures and use camelCase field namin
 - **keys** (string[]): Array of key names for keyboard actions
 - **beforeUrl** (string): Page URL before the action was performed
 - **afterUrl** (string): Page URL after the action was performed
-- **button** (string): Mouse button used (e.g., "left", "right")
-- **type** (string): Action type classification (e.g., "click", "type")
+- **button** (string): Mouse button used (for example, "left," "right")
+- **type** (string): Action type classification (for example, "click," "type")
 - **path** (DragPath[]): Coordinate path for drag gestures
 - **scrollX** (integer): Horizontal scroll position
 - **scrollY** (integer): Vertical scroll position
@@ -298,7 +298,7 @@ Both formats share the same core object structures and use camelCase field namin
 - **required** (boolean): Whether element is required
 - **selected** (boolean): Whether option is selected
 - **src** (string): Source URL for media elements
-- **tagName** (string): HTML tag name (e.g., "INPUT", "BUTTON")
+- **tagName** (string): HTML tag name (for example, "INPUT," "BUTTON")
 - **testpilotId** (string): TestPilot-generated element identifier
 - **textContent** (string): Text content of the element
 - **title** (string): Title attribute
@@ -306,7 +306,7 @@ Both formats share the same core object structures and use camelCase field namin
 - **name** (string): Name attribute
 - **dataTestid** (string): data-testid attribute for testing
 - **target** (string): Target attribute for links
-- **type** (string): Type attribute (e.g., input type)
+- **type** (string): Type attribute (for example, input type)
 - **selectedValue** (string): Value of selected option
 - **width** (integer): Element width in pixels
 - **height** (integer): Element height in pixels
@@ -390,7 +390,7 @@ Both formats share the same core object structures and use camelCase field namin
 {
   "id": "tpreport_01abc123...",
   "startTime": "2025-10-30T10:00:00Z",
-  "duration": "45.123s",
+  "duration": "45.123&nbsp;s",
   "platforms": ["Linux - Chrome"],
   "statusSummary": [
     {"count": 3, "status": 2},
@@ -423,9 +423,9 @@ Both formats share the same core object structures and use camelCase field namin
 ## Notes
 
 - **Field Naming**: All JSON fields use camelCase convention
-- **Timestamps**: Use ISO 8601 format (e.g., "2025-10-30T10:00:00Z")
-- **Durations**: String format with units (e.g., "45.123s", "1m30.5s")
-- **Enums**: Always serialized as numeric values in JSON
+- **Timestamps**: Use ISO 8601 format (for example, "2025-10-30T10:00:00Z")
+- **Durations**: String format with units (for example, "45.123&nbsp;s," "1m30.5&nbsp;s")
+- **Enum values**: Always serialized as numeric values in JSON
 - **TypeIDs**: Use specific prefixes (`tpreport_`, `tptest_`, `org_`)
 - **Optional Fields**: May be omitted entirely or contain zero/empty values
 - **File Locations**: Per-test results saved as `results.json`, aggregated reports contain full structure

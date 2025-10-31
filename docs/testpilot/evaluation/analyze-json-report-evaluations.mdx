@@ -5,7 +5,7 @@ description: "Calculate key metrics from TestPilot JSON reports: latency, pass/f
 
 ## Overview
 
-In addition to HTML and JUnit reports, Testpilot reports detailed metrics about test executions in a `reports.json` file that is included in the output directory of the test. This report can be uploaded to AI Observability or Eval platforms like Braintrust to understand how your tests are performing over time, and to identify bottlenecks and flaky steps in your tests.
+In addition to HTML and JUnit reports, Testpilot reports detailed metrics about test executions in a `reports.json` file that is included in the output directory of the test. This report can be uploaded to AI observability or evaluation platforms to understand how your tests are performing over time, and to identify bottlenecks and flaky steps in your tests.
 
 This guide explains how to extract and calculate key metrics from TestPilot JSON reports for evaluation and monitoring purposes:
 
@@ -31,7 +31,7 @@ TestPilot provides timing data at multiple levels to help you understand where t
 - **Step-level timing**: Each `Step` has its own `duration` field showing how long that individual step took
 - **Action-level timing**: Individual `Action` objects within steps also have `duration` fields for granular analysis
 
-The duration format uses strings like "2.5s" or "90.2s" - always in seconds with the "s" suffix. Parse these into numeric values to enable mathematical operations like averaging, percentile calculations, and trend analysis.
+The duration format uses strings like "2.5&nbsp;s" or "90.2&nbsp;s" - always in seconds with the "s" suffix. Parse these into numeric values to enable mathematical operations like averaging, percentile calculations, and trend analysis.
 
 ### Per-Test Latency Analysis
 
@@ -58,18 +58,18 @@ Step-level latency analysis helps identify bottlenecks in test execution by exam
 Extract the duration from each step and track it alongside the step title and status to build comprehensive performance profiles.
 
 Key fields for analyzing Per-Step latency include:
-* Step.Title: The actual wording of the step provided to the LLM. You can use this, or the step's index for analysis across tests.
+* Step.title: The actual wording of the step provided to the LLM. You can use this, or the step's index for analysis across tests.
 * Step.duration: Wall time for how long the step took
 * Step.profilingMetrics: Shows the breakdown of duration by attempts, LLM Duration, and Tool Duration
 * Step.executionMode: Shows how the step was executed (cache, agent, script, etc.) - see [Enum Reference](#enum-reference)
 * Step.actions: The actual actions Taken by Testpilot, which can give you a granular understanding of what occurred during the step.
-* Step.cacheStatus: Shows whether the step succssfully used the Action cache, or had to fall back. See [Enum Reference](#enum-reference)
+* Step.cacheStatus: Shows whether the step successfully used the Action cache, or had to fall back. See [Enum Reference](#enum-reference)
 * Step.explanation: The LLM's interpretation of how the step ended.
 
 Some things to evaluate when analyzing steps include:
 
 * Do the profiling metrics indicate frequent retries of the step, or issues with any of the tool calls you are making?
-* Does cache status consistently suggest an issue with cachability? What reasons are preventing the cache from hitting on the action.
+* Does cache status consistently suggest an issue with caching capability? What reasons are preventing the cache from hitting on the action.
 * Do you see a large number of waits, or repetitive actions in the step?
 
 
@@ -129,15 +129,15 @@ TestPilot's caching system speeds up test execution by reusing previous step res
 
 ### Cache Rate Calculation
 
-The most effective cache rate calculation focuses on **non-assertion steps** since verification steps are typically not cacheable. The analysis should:
+The most effective cache rate calculation focuses on **non-assertion steps** since verification steps typically cannot be cached. The analysis should:
 
 - **Count cache utilization**: Steps executed with `EXECUTION_MODE_CACHE` (2) or `EXECUTION_MODE_CACHE_FALLBACK_TO_CUA` (3)
-- **Exclude assertion steps**: Filter out steps identified as assertions/verifications since they're rarely cacheable
+- **Exclude assertion steps**: Filter out steps identified as assertions/verifications since they rarely can be cached
 - **Calculate hit rate**: Cached steps divided by total non-assertion steps
 
 **Assertion step identification:**
-- Step titles beginning with "verify", "assert", or "expect" (case-insensitive)
-- Steps with `stepType` of `STEP_TYPE_VERIFICATION` (3)
+- Step titles beginning with "verify," "assert," or "expect" (case-insensitive).
+- Steps with `stepType` of `STEP_TYPE_VERIFICATION` (3).
 
 ### Cache Error Rate Analysis
 
