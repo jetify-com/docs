@@ -68,6 +68,13 @@
             ]
           },
           {
+            "group": "Evaluation",
+            "pages": [
+              "docs/testpilot/evaluation/analyze-json-report-evaluations",
+              "docs/testpilot/evaluation/testpilot-json-report-reference"
+            ]
+          },
+          {
             "group": "Reference",
             "pages": [
               {
