@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/johnlago/src/docs/**)",
+      "Read(//Users/johnlago/src/axiom/main/testpilot/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
