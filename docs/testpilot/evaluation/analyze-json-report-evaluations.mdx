@@ -17,9 +17,7 @@ These metrics help identify performance regressions, flaky tests, and cache opti
 
 ## Data Sources
 
-TestPilot generates JSON in two formats:
-- **Per-test results**: `.../<report-id>/<test-id>/results.json` → single `Test` object
-- **Aggregated report**: Complete JSON → `Report` object containing `tests: Test[]`
+TestPilot generates a `report.json` file for each test in your test run in the `testpilot-out/.internal/<report-id>/<test-id>/results.json` directory. You can view a detailed reference of the report structure [here](./testpilot-json-report-reference.mdx).
 
 ## 1. Latency Metrics
 
@@ -71,7 +69,6 @@ Some things to evaluate when analyzing steps include:
 * Do the profiling metrics indicate frequent retries of the step, or issues with any of the tool calls you are making?
 * Does cache status consistently suggest an issue with caching capability? What reasons are preventing the cache from hitting on the action.
 * Do you see a large number of waits, or repetitive actions in the step?
-
 
 
 ## 2. Pass/Fail Metrics

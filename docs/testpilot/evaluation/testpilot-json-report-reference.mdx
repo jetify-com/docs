@@ -240,6 +240,7 @@ Both formats share the same core object structures and use `camelCase` field nam
 - **`profilingMetrics`** (ProfilingMetrics): Performance timing metrics
 - **`platformConfig`** (PlatformConfig): Platform-specific configuration
 - **`logUrl`** (string): URL or path to detailed test execution logs
+- **`url`** (string): URL of the test case, **Deprecated**, use `platformConfig.url` instead
 - **`testCaseId`** (string): Test case identifier from the pilot file
 - **`context`** (string): Historical or contextual information for the test
 - **`cacheSourceId`** (string): ID of the test used as cache source if applicable
@@ -328,6 +329,7 @@ Both formats share the same core object structures and use `camelCase` field nam
 #### PlatformConfig
 - **`url`** (string): Target URL for web testing
 - **`androidPkg`** (string): Android package name for mobile testing
+- **`iosPkg`** (string): iOS package name for mobile testing
 
 #### Viewport
 - **`width`** (integer): Viewport width in pixels
