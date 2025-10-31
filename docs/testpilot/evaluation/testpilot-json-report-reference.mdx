@@ -1,0 +1,433 @@
+---
+title: "TestPilot JSON Report Reference"
+description: "Complete reference for TestPilot's JSON report structure with schema, field descriptions, and enum tables."
+sidebarTitle: "report.json Reference"
+---
+
+## Overview
+
+TestPilot generates JSON reports in two formats:
+- **Aggregated Report**: Top-level report containing all tests from a run
+- **Per-test Results**: Individual `results.json` files for each test
+
+Both formats share the same core object structures and use `camelCase` field naming in JSON output.
+
+## Complete JSON Schema
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TestPilot JSON Report",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "startTime": { "type": "string", "format": "date-time" },
+    "duration": { "type": "string" },
+    "platforms": { "type": "array", "items": { "type": "string" } },
+    "statusSummary": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "count": { "type": "integer" },
+          "status": { "type": "integer", "enum": [0, 1, 2, 3, 4] }
+        },
+        "required": ["count", "status"]
+      }
+    },
+    "tests": { "type": "array", "items": { "$ref": "#/$defs/Test" } },
+    "title": { "type": "string" },
+    "orgId": { "type": "string" },
+    "token": { "type": "string" },
+    "ownerName": { "type": "string" },
+    "isArchived": { "type": "boolean" }
+  },
+  "required": ["id", "startTime", "duration", "tests"],
+  "$defs": {
+    "Test": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "status": { "type": "integer", "enum": [0, 1, 2, 3, 4] },
+        "explanation": { "type": "string" },
+        "videoUrl": { "type": "string" },
+        "platform": { "type": "string" },
+        "steps": { "type": "array", "items": { "$ref": "#/$defs/Step" } },
+        "startTime": { "type": "string", "format": "date-time" },
+        "duration": { "type": "string" },
+        "llmMetrics": { "$ref": "#/$defs/LLMMetrics" },
+        "profilingMetrics": { "$ref": "#/$defs/ProfilingMetrics" },
+        "platformConfig": { "$ref": "#/$defs/PlatformConfig" },
+        "logUrl": { "type": "string" },
+        "testCaseId": { "type": "string" },
+        "context": { "type": "string" },
+        "cacheSourceId": { "type": "string" },
+        "viewport": { "$ref": "#/$defs/Viewport" }
+      },
+      "required": ["id", "status", "steps"]
+    },
+    "Step": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "status": { "type": "integer", "enum": [0, 1, 2, 3, 4] },
+        "explanation": { "type": "string" },
+        "actions": { "type": "array", "items": { "$ref": "#/$defs/Action" } },
+        "startTime": { "type": "string", "format": "date-time" },
+        "duration": { "type": "string" },
+        "failureReasonCategory": { "type": "string" },
+        "profilingMetrics": { "$ref": "#/$defs/ProfilingMetrics" },
+        "executionMode": { "type": "integer", "enum": [0, 1, 2, 3, 4, 5, 6, 7] },
+        "cacheStatus": { "type": "integer", "enum": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] },
+        "stepType": { "type": "integer", "enum": [0, 1, 2, 3] }
+      }
+    },
+    "Action": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "xCoordinate": { "type": "integer" },
+        "yCoordinate": { "type": "integer" },
+        "text": { "type": "string" },
+        "screenshotUrl": { "type": "string" },
+        "llmMessage": { "type": "string" },
+        "startTime": { "type": "string", "format": "date-time" },
+        "duration": { "type": "string" },
+        "element": { "$ref": "#/$defs/HTMLElement" },
+        "toolCallId": { "type": "string" },
+        "responseId": { "type": "string" },
+        "keys": { "type": "array", "items": { "type": "string" } },
+        "beforeUrl": { "type": "string" },
+        "afterUrl": { "type": "string" },
+        "button": { "type": "string" },
+        "type": { "type": "string" },
+        "path": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "x": { "type": "integer" },
+              "y": { "type": "integer" }
+            }
+          }
+        },
+        "scrollX": { "type": "integer" },
+        "scrollY": { "type": "integer" },
+        "toolCalls": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "input": { "type": "string" },
+              "output": { "type": "string" }
+            }
+          }
+        },
+        "swipeParams": { "$ref": "#/$defs/SwipeParams" }
+      }
+    },
+    "HTMLElement": {
+      "type": "object",
+      "properties": {
+        "alt": { "type": "string" },
+        "ariaLabel": { "type": "string" },
+        "checked": { "type": "boolean" },
+        "className": { "type": "string" },
+        "disabled": { "type": "boolean" },
+        "href": { "type": "string" },
+        "id": { "type": "string" },
+        "options": { "type": "array", "items": { "type": "string" } },
+        "placeholder": { "type": "string" },
+        "readonly": { "type": "boolean" },
+        "required": { "type": "boolean" },
+        "selected": { "type": "boolean" },
+        "src": { "type": "string" },
+        "tagName": { "type": "string" },
+        "testpilotId": { "type": "string" },
+        "textContent": { "type": "string" },
+        "title": { "type": "string" },
+        "value": { "type": "string" },
+        "name": { "type": "string" },
+        "dataTestid": { "type": "string" },
+        "target": { "type": "string" },
+        "type": { "type": "string" },
+        "selectedValue": { "type": "string" },
+        "width": { "type": "integer" },
+        "height": { "type": "integer" }
+      }
+    },
+    "LLMMetrics": {
+      "type": "object",
+      "properties": {
+        "promptTokens": { "type": "integer" },
+        "completionTokens": { "type": "integer" },
+        "anthropicCachedInputTokens": { "type": "integer" },
+        "maxScreenshots": { "type": "integer" }
+      }
+    },
+    "ProfilingMetrics": {
+      "type": "object",
+      "properties": {
+        "totalDuration": { "type": "string" },
+        "llmDuration": { "type": "string" },
+        "toolDuration": { "type": "string" },
+        "attempts": { "type": "integer" }
+      }
+    },
+    "PlatformConfig": {
+      "type": "object",
+      "properties": {
+        "url": { "type": "string" },
+        "androidPkg": { "type": "string" }
+      }
+    },
+    "Viewport": {
+      "type": "object",
+      "properties": {
+        "width": { "type": "integer" },
+        "height": { "type": "integer" }
+      }
+    },
+    "SwipeParams": {
+      "type": "object",
+      "properties": {
+        "repetitions": { "type": "integer" },
+        "startX": { "type": "integer" },
+        "startY": { "type": "integer" },
+        "endX": { "type": "integer" },
+        "endY": { "type": "integer" }
+      }
+    }
+  }
+}
+```
+
+## Field Descriptions
+
+### Report Fields
+
+- **`id`** (string): Unique report identifier with `tpreport_` prefix
+- **`startTime`** (string): ISO 8601 timestamp when the test run began
+- **`duration`** (string): Total execution time in duration format (for example, "137.221&nbsp;s")
+- **`platforms`** (string[]): List of platforms/browsers used in the test run
+- **`statusSummary`** (StatusSummary[]): Aggregated count of tests by their final status
+- **`tests`** (Test[]): Array of all test executions in this report
+- **`title`** (string): Human-readable name for the report
+- **`orgId`** (string): Organization identifier with `org_` prefix
+- **`token`** (string): Access token for report authentication
+- **`ownerName`** (string): Display name of the report owner
+- **`isArchived`** (boolean): Whether the report has been archived
+
+### StatusSummary Fields
+
+- **`count`** (integer): Number of tests with this status
+- **`status`** (integer): Status enum value (see Status table below)
+
+### Test Fields
+
+- **`id`** (string): Unique test identifier. This can be used to correlate tests across runs, even if the title or description of the test changes.
+- **`title`** (string): Human-readable test name
+- **`status`** (integer): Final test execution status (Status enum)
+- **`explanation`** (string): Agent's explanation of the test outcome
+- **`videoUrl`** (string): URL or path to the test execution video recording
+- **`platform`** (string): Platform or browser used for this test
+- **`steps`** (Step[]): Ordered array of test steps executed
+- **`startTime`** (string): ISO 8601 timestamp when test execution began
+- **`duration`** (string): Test execution time in duration format
+- **`llmMetrics`** (LLMMetrics): Token usage and LLM-related metrics
+- **`profilingMetrics`** (ProfilingMetrics): Performance timing metrics
+- **`platformConfig`** (PlatformConfig): Platform-specific configuration
+- **`logUrl`** (string): URL or path to detailed test execution logs
+- **`url`** (string): URL of the test case, **Deprecated**, use `platformConfig.url` instead
+- **`testCaseId`** (string): Test case identifier from the pilot file
+- **`context`** (string): Historical or contextual information for the test
+- **`cacheSourceId`** (string): ID of the test used as cache source if applicable
+- **`viewport`** (Viewport): Screen dimensions used during test execution
+
+### Step Fields
+
+- **`title`** (string): Human-readable step description
+- **`status`** (integer): Step execution status (Status enum)
+- **`explanation`** (string): Agent's explanation of what happened in this step
+- **`actions`** (Action[]): Individual actions performed within this step
+- **`startTime`** (string): ISO 8601 timestamp when step execution began
+- **`duration`** (string): Step execution time in duration format
+- **`failureReasonCategory`** (string): Optional categorization of failure reason
+- **`profilingMetrics`** (ProfilingMetrics): Step-level performance metrics
+- **`executionMode`** (integer): How the step was executed (ExecutionMode enum)
+- **`cacheStatus`** (integer): Cache utilization status (CacheStatus enum)
+- **`stepType`** (integer): Classification of the step type (StepType enum)
+
+### Action Fields
+
+- **`name`** (string): Human-readable action name (for example, "left click," "screenshot")
+- **`xCoordinate`** (integer): X coordinate for pointer-based actions
+- **`yCoordinate`** (integer): Y coordinate for pointer-based actions
+- **`text`** (string): Text content for typing or text-based actions
+- **`screenshotUrl`** (string): URL or path to screenshot taken during action
+- **`llmMessage`** (string): Agent's reasoning or message for this action
+- **`startTime`** (string): ISO 8601 timestamp when action began
+- **`duration`** (string): Action execution time in duration format
+- **`element`** (HTMLElement): DOM element that was interacted with
+- **`toolCallId`** (string): LLM tool call identifier
+- **`responseId`** (string): LLM response identifier
+- **`keys`** (string[]): Array of key names for keyboard actions
+- **`beforeUrl`** (string): Page URL before the action was performed
+- **`afterUrl`** (string): Page URL after the action was performed
+- **`button`** (string): Mouse button used (for example, "left," "right")
+- **`type`** (string): Action type classification (for example, "click," "type")
+- **`path`** (DragPath[]): Coordinate path for drag gestures
+- **`scrollX`** (integer): Horizontal scroll position
+- **`scrollY`** (integer): Vertical scroll position
+- **`toolCalls`** (ToolCall[]): LLM tool calls made during this action
+- **`swipeParams`** (SwipeParams): Parameters for mobile swipe gestures
+
+### HTMLElement Fields
+
+- **`alt`** (string): Alt text attribute
+- **`ariaLabel`** (string): ARIA label attribute
+- **`checked`** (boolean): Whether checkbox/radio is checked
+- **`className`** (string): CSS class names
+- **`disabled`** (boolean): Whether element is disabled
+- **`href`** (string): Link URL for anchor elements
+- **`id`** (string): HTML ID attribute
+- **`options`** (string[]): Available options for select elements
+- **`placeholder`** (string): Placeholder text
+- **`readonly`** (boolean): Whether element is read-only
+- **`required`** (boolean): Whether element is required
+- **`selected`** (boolean): Whether option is selected
+- **`src`** (string): Source URL for media elements
+- **`tagName`** (string): HTML tag name (for example, "INPUT," "BUTTON")
+- **`testpilotId`** (string): TestPilot-generated element identifier
+- **`textContent`** (string): Text content of the element
+- **`title`** (string): Title attribute
+- **`value`** (string): Current value of form elements
+- **`name`** (string): Name attribute
+- **`dataTestid`** (string): data-testid attribute for testing
+- **`target`** (string): Target attribute for links
+- **`type`** (string): Type attribute (for example, input type)
+- **`selectedValue`** (string): Value of selected option
+- **`width`** (integer): Element width in pixels
+- **`height`** (integer): Element height in pixels
+
+### Other Object Fields
+
+#### LLMMetrics
+- **`promptTokens`** (integer): Number of input tokens sent to LLM
+- **`completionTokens`** (integer): Number of output tokens received from LLM
+- **`anthropicCachedInputTokens`** (integer): Number of cached input tokens (Anthropic-specific)
+- **`maxScreenshots`** (integer): Maximum number of screenshots allowed
+
+#### ProfilingMetrics
+- **`totalDuration`** (string): Total time spent
+- **`llmDuration`** (string): Time spent waiting for LLM responses
+- **`toolDuration`** (string): Time spent executing tools/actions
+- **`attempts`** (integer): Number of execution attempts
+
+#### PlatformConfig
+- **`url`** (string): Target URL for web testing
+- **`androidPkg`** (string): Android package name for mobile testing
+- **`iosPkg`** (string): iOS package name for mobile testing
+
+#### Viewport
+- **`width`** (integer): Viewport width in pixels
+- **`height`** (integer): Viewport height in pixels
+
+## Enum Reference Tables
+
+### Status
+
+| Number | Name | Meaning |
+|---|---|---|
+| 0 | STATUS_UNSPECIFIED | Status is unknown or not set |
+| 1 | STATUS_PENDING | Test or step is still in progress |
+| 2 | STATUS_SUCCEEDED | Completed successfully (passed) |
+| 3 | STATUS_FAILED | Completed with failure |
+| 4 | STATUS_INCOMPLETE | Did not finish all steps (aborted or skipped) |
+
+### ExecutionMode
+
+| Number | Name | Meaning |
+|---|---|---|
+| 0 | EXECUTION_MODE_UNSPECIFIED | Mode not specified |
+| 1 | EXECUTION_MODE_CUA | Executed by Computer Use Agent (LLM-driven) |
+| 2 | EXECUTION_MODE_CACHE | Step executed from cache (no live LLM run) |
+| 3 | EXECUTION_MODE_CACHE_FALLBACK_TO_CUA | Cache attempted but fell back to agent execution |
+| 4 | EXECUTION_MODE_FALLBACK_TO_CUA | Non-CUA execution failed, fell back to agent |
+| 5 | EXECUTION_MODE_NON_CUA | Non-CUA mode (deterministic/scripted) |
+| 6 | EXECUTION_MODE_SCRIPT | Script mode execution |
+| 7 | EXECUTION_MODE_FORM_FILLER | Form filler mode execution |
+
+### CacheStatus
+
+| Number | Name | Meaning |
+|---|---|---|
+| 0 | CACHE_STATUS_UNSPECIFIED | Cache status not specified |
+| 1 | CACHE_STATUS_HIT | Cache entry found and used |
+| 2 | CACHE_STATUS_MISS | No suitable cache entry found |
+| 3 | CACHE_STATUS_UNUSED_IS_RETRY | Cache ignored because step needed retry |
+| 4 | CACHE_STATUS_UNUSED_IS_ASSERTION | Cache ignored for assertion-only step |
+| 5 | CACHE_STATUS_UNUSED_NON_CACHEABLE_EXECUTION_MODE | Cache ignored due to non-cacheable execution mode |
+| 6 | CACHE_STATUS_UNUSED_CONTAINS_NON_CACHEABLE_ACTIONS | Cache ignored due to non-cacheable actions |
+| 7 | CACHE_STATUS_UNUSED_ELEMENT_IS_MISSING | Cache ignored because required element missing |
+| 8 | CACHE_STATUS_UNUSED_HAS_TOOL_CALLS | Cache ignored because step involved tool calls |
+| 9 | CACHE_STATUS_UNUSED_IS_SCRIPT | Cache ignored for script-based step |
+
+### StepType
+
+| Number | Name | Meaning |
+|---|---|---|
+| 0 | STEP_TYPE_UNSPECIFIED | Step type not specified |
+| 1 | STEP_TYPE_REGULAR_ACTION | Regular user actions (click, type, navigate) |
+| 2 | STEP_TYPE_FORM_FILLING | Data entry or form completion |
+| 3 | STEP_TYPE_VERIFICATION | Assertion or verification of expected state |
+
+
+## Example Usage
+
+### Basic Report Structure
+```json
+{
+  "id": "tpreport_01abc123...",
+  "startTime": "2025-10-30T10:00:00Z",
+  "duration": "45.123&nbsp;s",
+  "platforms": ["Linux - Chrome"],
+  "statusSummary": [
+    {"count": 3, "status": 2},
+    {"count": 1, "status": 3}
+  ],
+  "tests": [
+    {
+      "id": "tptest_01def456...",
+      "title": "Login Test",
+      "status": 2,
+      "steps": [
+        {
+          "title": "Navigate to login page",
+          "status": 2,
+          "actions": [
+            {
+              "name": "navigate",
+              "type": "navigate",
+              "beforeUrl": "",
+              "afterUrl": "https://example.com/login"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+## Notes
+
+- **Field Naming**: All JSON fields use `camelCase` convention
+- **Timestamps**: Use ISO 8601 format (for example, "2025-10-30T10:00:00Z")
+- **Durations**: String format with units (for example, "45.123&nbsp;s," "1m30.5&nbsp;s")
+- **Enum values**: Always serialized as numeric values in JSON
+- **TypeIDs**: Use specific prefixes (`tpreport_`, `tptest_`, `org_`)
+- **Optional Fields**: May be omitted entirely or contain zero/empty values
+- **File Locations**: Per-test results saved as `results.json`, aggregated reports contain full structure
