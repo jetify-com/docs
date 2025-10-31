@@ -10,7 +10,7 @@ TestPilot generates JSON reports in two formats:
 - **Aggregated Report**: Top-level report containing all tests from a run
 - **Per-test Results**: Individual `results.json` files for each test
 
-Both formats share the same core object structures and use camelCase field naming in JSON output.
+Both formats share the same core object structures and use `camelCase` field naming in JSON output.
 
 ## Complete JSON Schema
 
@@ -208,130 +208,130 @@ Both formats share the same core object structures and use camelCase field namin
 
 ### Report Fields
 
-- **id** (string): Unique report identifier with `tpreport_` prefix
-- **startTime** (string): ISO 8601 timestamp when the test run began
-- **duration** (string): Total execution time in duration format (for example, "137.221&nbsp;s")
-- **platforms** (string[]): List of platforms/browsers used in the test run
-- **statusSummary** (StatusSummary[]): Aggregated count of tests by their final status
-- **tests** (Test[]): Array of all test executions in this report
-- **title** (string): Human-readable name for the report
-- **orgId** (string): Organization identifier with `org_` prefix
-- **token** (string): Access token for report authentication
-- **ownerName** (string): Display name of the report owner
-- **isArchived** (boolean): Whether the report has been archived
+- **`id`** (string): Unique report identifier with `tpreport_` prefix
+- **`startTime`** (string): ISO 8601 timestamp when the test run began
+- **`duration`** (string): Total execution time in duration format (for example, "137.221&nbsp;s")
+- **`platforms`** (string[]): List of platforms/browsers used in the test run
+- **`statusSummary`** (StatusSummary[]): Aggregated count of tests by their final status
+- **`tests`** (Test[]): Array of all test executions in this report
+- **`title`** (string): Human-readable name for the report
+- **`orgId`** (string): Organization identifier with `org_` prefix
+- **`token`** (string): Access token for report authentication
+- **`ownerName`** (string): Display name of the report owner
+- **`isArchived`** (boolean): Whether the report has been archived
 
 ### StatusSummary Fields
 
-- **count** (integer): Number of tests with this status
-- **status** (integer): Status enum value (see Status table below)
+- **`count`** (integer): Number of tests with this status
+- **`status`** (integer): Status enum value (see Status table below)
 
 ### Test Fields
 
-- **id** (string): Unique test identifier. This can be used to correlate tests across runs, even if the title or description of the test changes.
-- **title** (string): Human-readable test name
-- **status** (integer): Final test execution status (Status enum)
-- **explanation** (string): Agent's explanation of the test outcome
-- **videoUrl** (string): URL or path to the test execution video recording
-- **platform** (string): Platform or browser used for this test
-- **steps** (Step[]): Ordered array of test steps executed
-- **startTime** (string): ISO 8601 timestamp when test execution began
-- **duration** (string): Test execution time in duration format
-- **llmMetrics** (LLMMetrics): Token usage and LLM-related metrics
-- **profilingMetrics** (ProfilingMetrics): Performance timing metrics
-- **platformConfig** (PlatformConfig): Platform-specific configuration
-- **logUrl** (string): URL or path to detailed test execution logs
-- **testCaseId** (string): Test case identifier from the pilot file
-- **context** (string): Historical or contextual information for the test
-- **cacheSourceId** (string): ID of the test used as cache source if applicable
-- **viewport** (Viewport): Screen dimensions used during test execution
+- **`id`** (string): Unique test identifier. This can be used to correlate tests across runs, even if the title or description of the test changes.
+- **`title`** (string): Human-readable test name
+- **`status`** (integer): Final test execution status (Status enum)
+- **`explanation`** (string): Agent's explanation of the test outcome
+- **`videoUrl`** (string): URL or path to the test execution video recording
+- **`platform`** (string): Platform or browser used for this test
+- **`steps`** (Step[]): Ordered array of test steps executed
+- **`startTime`** (string): ISO 8601 timestamp when test execution began
+- **`duration`** (string): Test execution time in duration format
+- **`llmMetrics`** (LLMMetrics): Token usage and LLM-related metrics
+- **`profilingMetrics`** (ProfilingMetrics): Performance timing metrics
+- **`platformConfig`** (PlatformConfig): Platform-specific configuration
+- **`logUrl`** (string): URL or path to detailed test execution logs
+- **`testCaseId`** (string): Test case identifier from the pilot file
+- **`context`** (string): Historical or contextual information for the test
+- **`cacheSourceId`** (string): ID of the test used as cache source if applicable
+- **`viewport`** (Viewport): Screen dimensions used during test execution
 
 ### Step Fields
 
-- **title** (string): Human-readable step description
-- **status** (integer): Step execution status (Status enum)
-- **explanation** (string): Agent's explanation of what happened in this step
-- **actions** (Action[]): Individual actions performed within this step
-- **startTime** (string): ISO 8601 timestamp when step execution began
-- **duration** (string): Step execution time in duration format
-- **failureReasonCategory** (string): Optional categorization of failure reason
-- **profilingMetrics** (ProfilingMetrics): Step-level performance metrics
-- **executionMode** (integer): How the step was executed (ExecutionMode enum)
-- **cacheStatus** (integer): Cache utilization status (CacheStatus enum)
-- **stepType** (integer): Classification of the step type (StepType enum)
+- **`title`** (string): Human-readable step description
+- **`status`** (integer): Step execution status (Status enum)
+- **`explanation`** (string): Agent's explanation of what happened in this step
+- **`actions`** (Action[]): Individual actions performed within this step
+- **`startTime`** (string): ISO 8601 timestamp when step execution began
+- **`duration`** (string): Step execution time in duration format
+- **`failureReasonCategory`** (string): Optional categorization of failure reason
+- **`profilingMetrics`** (ProfilingMetrics): Step-level performance metrics
+- **`executionMode`** (integer): How the step was executed (ExecutionMode enum)
+- **`cacheStatus`** (integer): Cache utilization status (CacheStatus enum)
+- **`stepType`** (integer): Classification of the step type (StepType enum)
 
 ### Action Fields
 
-- **name** (string): Human-readable action name (for example, "left click," "screenshot")
-- **xCoordinate** (integer): X coordinate for pointer-based actions
-- **yCoordinate** (integer): Y coordinate for pointer-based actions
-- **text** (string): Text content for typing or text-based actions
-- **screenshotUrl** (string): URL or path to screenshot taken during action
-- **llmMessage** (string): Agent's reasoning or message for this action
-- **startTime** (string): ISO 8601 timestamp when action began
-- **duration** (string): Action execution time in duration format
-- **element** (HTMLElement): DOM element that was interacted with
-- **toolCallId** (string): LLM tool call identifier
-- **responseId** (string): LLM response identifier
-- **keys** (string[]): Array of key names for keyboard actions
-- **beforeUrl** (string): Page URL before the action was performed
-- **afterUrl** (string): Page URL after the action was performed
-- **button** (string): Mouse button used (for example, "left," "right")
-- **type** (string): Action type classification (for example, "click," "type")
-- **path** (DragPath[]): Coordinate path for drag gestures
-- **scrollX** (integer): Horizontal scroll position
-- **scrollY** (integer): Vertical scroll position
-- **toolCalls** (ToolCall[]): LLM tool calls made during this action
-- **swipeParams** (SwipeParams): Parameters for mobile swipe gestures
+- **`name`** (string): Human-readable action name (for example, "left click," "screenshot")
+- **`xCoordinate`** (integer): X coordinate for pointer-based actions
+- **`yCoordinate`** (integer): Y coordinate for pointer-based actions
+- **`text`** (string): Text content for typing or text-based actions
+- **`screenshotUrl`** (string): URL or path to screenshot taken during action
+- **`llmMessage`** (string): Agent's reasoning or message for this action
+- **`startTime`** (string): ISO 8601 timestamp when action began
+- **`duration`** (string): Action execution time in duration format
+- **`element`** (HTMLElement): DOM element that was interacted with
+- **`toolCallId`** (string): LLM tool call identifier
+- **`responseId`** (string): LLM response identifier
+- **`keys`** (string[]): Array of key names for keyboard actions
+- **`beforeUrl`** (string): Page URL before the action was performed
+- **`afterUrl`** (string): Page URL after the action was performed
+- **`button`** (string): Mouse button used (for example, "left," "right")
+- **`type`** (string): Action type classification (for example, "click," "type")
+- **`path`** (DragPath[]): Coordinate path for drag gestures
+- **`scrollX`** (integer): Horizontal scroll position
+- **`scrollY`** (integer): Vertical scroll position
+- **`toolCalls`** (ToolCall[]): LLM tool calls made during this action
+- **`swipeParams`** (SwipeParams): Parameters for mobile swipe gestures
 
 ### HTMLElement Fields
 
-- **alt** (string): Alt text attribute
-- **ariaLabel** (string): ARIA label attribute
-- **checked** (boolean): Whether checkbox/radio is checked
-- **className** (string): CSS class names
-- **disabled** (boolean): Whether element is disabled
-- **href** (string): Link URL for anchor elements
-- **id** (string): HTML ID attribute
-- **options** (string[]): Available options for select elements
-- **placeholder** (string): Placeholder text
-- **readonly** (boolean): Whether element is read-only
-- **required** (boolean): Whether element is required
-- **selected** (boolean): Whether option is selected
-- **src** (string): Source URL for media elements
-- **tagName** (string): HTML tag name (for example, "INPUT," "BUTTON")
-- **testpilotId** (string): TestPilot-generated element identifier
-- **textContent** (string): Text content of the element
-- **title** (string): Title attribute
-- **value** (string): Current value of form elements
-- **name** (string): Name attribute
-- **dataTestid** (string): data-testid attribute for testing
-- **target** (string): Target attribute for links
-- **type** (string): Type attribute (for example, input type)
-- **selectedValue** (string): Value of selected option
-- **width** (integer): Element width in pixels
-- **height** (integer): Element height in pixels
+- **`alt`** (string): Alt text attribute
+- **`ariaLabel`** (string): ARIA label attribute
+- **`checked`** (boolean): Whether checkbox/radio is checked
+- **`className`** (string): CSS class names
+- **`disabled`** (boolean): Whether element is disabled
+- **`href`** (string): Link URL for anchor elements
+- **`id`** (string): HTML ID attribute
+- **`options`** (string[]): Available options for select elements
+- **`placeholder`** (string): Placeholder text
+- **`readonly`** (boolean): Whether element is read-only
+- **`required`** (boolean): Whether element is required
+- **`selected`** (boolean): Whether option is selected
+- **`src`** (string): Source URL for media elements
+- **`tagName`** (string): HTML tag name (for example, "INPUT," "BUTTON")
+- **`testpilotId`** (string): TestPilot-generated element identifier
+- **`textContent`** (string): Text content of the element
+- **`title`** (string): Title attribute
+- **`value`** (string): Current value of form elements
+- **`name`** (string): Name attribute
+- **`dataTestid`** (string): data-testid attribute for testing
+- **`target`** (string): Target attribute for links
+- **`type`** (string): Type attribute (for example, input type)
+- **`selectedValue`** (string): Value of selected option
+- **`width`** (integer): Element width in pixels
+- **`height`** (integer): Element height in pixels
 
 ### Other Object Fields
 
 #### LLMMetrics
-- **promptTokens** (integer): Number of input tokens sent to LLM
-- **completionTokens** (integer): Number of output tokens received from LLM
-- **anthropicCachedInputTokens** (integer): Number of cached input tokens (Anthropic-specific)
-- **maxScreenshots** (integer): Maximum number of screenshots allowed
+- **`promptTokens`** (integer): Number of input tokens sent to LLM
+- **`completionTokens`** (integer): Number of output tokens received from LLM
+- **`anthropicCachedInputTokens`** (integer): Number of cached input tokens (Anthropic-specific)
+- **`maxScreenshots`** (integer): Maximum number of screenshots allowed
 
 #### ProfilingMetrics
-- **totalDuration** (string): Total time spent
-- **llmDuration** (string): Time spent waiting for LLM responses
-- **toolDuration** (string): Time spent executing tools/actions
-- **attempts** (integer): Number of execution attempts
+- **`totalDuration`** (string): Total time spent
+- **`llmDuration`** (string): Time spent waiting for LLM responses
+- **`toolDuration`** (string): Time spent executing tools/actions
+- **`attempts`** (integer): Number of execution attempts
 
 #### PlatformConfig
-- **url** (string): Target URL for web testing
-- **androidPkg** (string): Android package name for mobile testing
+- **`url`** (string): Target URL for web testing
+- **`androidPkg`** (string): Android package name for mobile testing
 
 #### Viewport
-- **width** (integer): Viewport width in pixels
-- **height** (integer): Viewport height in pixels
+- **`width`** (integer): Viewport width in pixels
+- **`height`** (integer): Viewport height in pixels
 
 ## Enum Reference Tables
 
@@ -422,7 +422,7 @@ Both formats share the same core object structures and use camelCase field namin
 
 ## Notes
 
-- **Field Naming**: All JSON fields use camelCase convention
+- **Field Naming**: All JSON fields use `camelCase` convention
 - **Timestamps**: Use ISO 8601 format (for example, "2025-10-30T10:00:00Z")
 - **Durations**: String format with units (for example, "45.123&nbsp;s," "1m30.5&nbsp;s")
 - **Enum values**: Always serialized as numeric values in JSON
