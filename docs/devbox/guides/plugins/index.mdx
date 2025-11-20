@@ -55,8 +55,19 @@ Sometimes, you may want to share a plugin across multiple projects or users. In 
 provide a Github reference to a plugin hosted on Github. To install a github hosted plugin, add the
 following to the include section of your devbox.json
 
+Default - `master` branch:
 ```
   "include": [    "github:<org>/<repo>?dir=<plugin-dir>"  ]
+```
+
+Branch override:
+```
+  "include": [    "github:<org>/<repo>/<branch>?dir=<plugin-dir>"  ]
+```
+
+Git Tag Pinning:
+```
+  "include": [    "github:<org>/<repo>/tags/<tag-to-pin>?dir=<plugin-dir>"  ]
 ```
 
 Note that Devbox will cache Github plugins for 24 hours. This is to aid performance of
