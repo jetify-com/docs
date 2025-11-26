@@ -4,7 +4,7 @@ description: "Learn how to use the Bash Tool in Testpilot to execute shell scrip
 sidebarTitle: "Running Scripts with Bash Tool"
 ---
 
-Our recommended way to extend Testpilot's capabilities is through via our [Model Context Protocol (MCP) integration](../model-context-protocol). However, for scenarios where you want Testpilot to run a simple script directly, or where adding an MCP server is not feasible, you can use our Testpilot's Bash tool. Bash tool can be useful for tasks such as setting up test environments, performing system checks, or manipulating files during test execution.
+Our recommended way to extend Testpilot's capabilities is through our [Model Context Protocol (MCP) integration](../model-context-protocol). However, for scenarios where you want Testpilot to run a simple script directly, or where adding an MCP server is not feasible, you can use Testpilot's Bash tool. Bash tool can be useful for tasks such as setting up test environments, performing system checks, or manipulating files during test execution.
 
 <Warning>
 
@@ -14,7 +14,7 @@ The Bash tool executes shell commands directly on the machine where Testpilot is
 
 ## Enabling the Bash Tool
 
-To enable the Bash tool in Testpilot, you should first will first need to set the `BASH_TOOL` environment variable to `true` in your Testpilot configuration. This can typically be done by adding the following line to your environment configuration file or setting it directly in your deployment environment:
+To enable the Bash tool in Testpilot, you will first need to set the `BASH_TOOL` environment variable to `true` in your Testpilot configuration. This can typically be done by adding the following line to your environment configuration file or setting it directly in your deployment environment:
 
 ```bash
 export BASH_TOOL=true
@@ -66,4 +66,4 @@ echo "Generated $COUNT test items"
 exit 0
 ```
 
-When you execute this test case, Testpilot will run the `generate-test-data.sh` script with the specified arguments, capture its output, and use that output to fill out the todos items on the TodoMVC application.
+When you execute this test case, Testpilot will run the `generate-test-data.sh` script with the specified arguments, capture its output, and use that output to fill out the todo items on the TodoMVC application.
