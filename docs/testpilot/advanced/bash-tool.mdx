@@ -1,0 +1,69 @@
+---
+title: "Running scripts with Bash Tool"
+description: "Learn how to use the Bash Tool in Testpilot to execute shell scripts as part of your testing workflow."
+sidebarTitle: "Running Scripts with Bash Tool"
+---
+
+Our recommended way to extend Testpilot's capabilities is through via our [Model Context Protocol (MCP) integration](../model-context-protocol). However, for scenarios where you want Testpilot to run a simple script directly, or where adding an MCP server is not feasible, you can use our Testpilot's Bash tool. Bash tool can be useful for tasks such as setting up test environments, performing system checks, or manipulating files during test execution.
+
+<Warning>
+
+The Bash tool executes shell commands directly on the machine where Testpilot is running. Be cautious when using it, especially with commands that modify system files or configurations, as it can pose security risks. If you want to restrict or provide a safer alternative to executing arbitrary shell commands, consider using the [Model Context Protocol (MCP) integration](../model-context-protocol) instead.
+
+</Warning>
+
+## Enabling the Bash Tool
+
+To enable the Bash tool in Testpilot, you should first will first need to set the `BASH_TOOL` environment variable to `true` in your Testpilot configuration. This can typically be done by adding the following line to your environment configuration file or setting it directly in your deployment environment:
+
+```bash
+export BASH_TOOL=true
+```
+
+## Using the Bash Tool in Test Cases
+
+Once the Bash tool is enabled, you can use it in your test cases by adding a step that describes a script or command you want to execute. You should specify the relative path to the script, as well as any arguments you want Testpilot to pass to the script.
+
+<Note>Testpilot will use your current working directory and shell environment as the context for executing scripts.</Note>
+
+Here is an example of how to define a test case that uses the Bash tool:
+
+```yaml
+# Example YAML test case using the Bash tool
+cases:
+  - id: testcase_bash_tool_simple
+    name: bash-tool-simple-execution
+    description: Simple test that executes bash scripts and uses their output
+    platform_config:
+      url: https://todomvc.com/examples/react/dist/
+    steps:
+      - Run the data generator script at scripts/generate-test-data.sh with arguments 3 and "todo"
+      - Use the generated test data to create three todo items
+      - Verify all three todo items are displayed in the list
+```
+
+```bash
+#!/bin/bash
+# ./scripts/generate-test-data.sh
+set -e
+
+COUNT=${1:-5}
+PREFIX=${2:-"test-item"}
+
+echo "=== Test Data Generator ==="
+echo "Generating $COUNT items with prefix '$PREFIX'"
+echo ""
+
+# Generate test data
+for i in $(seq 1 $COUNT); do
+    echo "$PREFIX-$i"
+done
+
+echo ""
+echo "=== Generation Complete ==="
+echo "Generated $COUNT test items"
+
+exit 0
+```
+
+When you execute this test case, Testpilot will run the `generate-test-data.sh` script with the specified arguments, capture its output, and use that output to fill out the todos items on the TodoMVC application.
