@@ -2,28 +2,16 @@
 title: "Overview"
 ---
 
-## Install Devbox[​](#install-devbox "Direct link to Install Devbox")
+### Prerequisites
 
-Select your OS below for the steps to install Devbox.
+- Nix Package Manager 
 
-- Linux
-- MacOS
-- Windows/WSL2
-- NixOS/Nixpkg
-- Nix Flake
-
-Run the following install script as a _non-root user_ to install the latest version of Devbox:
-
-```bash
-curl -fsSL https://get.jetify.com/devbox | bash
-```
-
-Devbox requires the [Nix Package Manager](https://nixos.org/download.html). If Nix is not detected
-when running a command, Devbox will install it for you in single-user mode for Linux. Don't worry:
-You can use Devbox without needing to learn the Nix Language.
-
-If you would like to install Nix yourself, we recommend the
+If Nix is not detected when running a command, Devbox will automatically install it for you. 
+Don't worry: You can use Devbox without needing to learn the Nix Language.
+If you would like to install Nix yourself, we recommend the 
 [Determinate Nix Installer](https://determinate.systems/nix-installer/).
+
+### Installation Script
 
 Run the following install script to install the latest version of Devbox:
 
@@ -31,86 +19,98 @@ Run the following install script to install the latest version of Devbox:
 curl -fsSL https://get.jetify.com/devbox | bash
 ```
 
-Devbox requires the [Nix Package Manager](https://nixos.org/download.html). If Nix is not detected
-when running a command, Devbox will install it in multi-user mode for macOS. Don't worry: You can
-use Devbox without needing to learn the Nix Language.
+### OS-Specific Notes
 
-If you would like to install Nix yourself, we recommend the
-[Determinate Nix Installer](https://determinate.systems/posts/determinate-nix-installer).
+<Tabs>
+  <Tab title="Linux">
+    Run the install script as a **non-root user**.
 
-You can use Devbox on a Windows machine using
-[**Windows Subsystem for Linux 2**](https://learn.microsoft.com/en-us/windows/wsl/install).
+    Devbox will install Nix in single-user mode for Linux if not already present.
+  </Tab>
 
-<Accordion title="Installing WSL2">
-  To install WSL2 with the default Ubuntu distribution, open Powershell or Windows Command Prompt as an administrator, and run:
+  <Tab title="MacOS">
+    Devbox will install Nix in multi-user mode for macOS if not already present.
+  </Tab>
 
-```bash
-wsl --install
-```
+  <Tab title="Windows/WSL2">
+    You can use Devbox on Windows using
+     [**Windows Subsystem for Linux 2**](https://learn.microsoft.com/en-us/windows/wsl/install).
 
-If WSL2 is already installed, you can install Ubuntu by running
+    <Accordion title="Installing WSL2">
+      To install WSL2 with the default Ubuntu distribution, open Powershell or Windows Command Prompt
+       as an administrator, and run:
 
-```bash
-wsl --install -d Ubuntu
-```
+    ```bash
+    wsl --install
+    ```
 
-If you are running an older version of Windows, you may need to follow the
-[manual installation steps](https://learn.microsoft.com/en-us/windows/wsl/install-manual) to enable
-virtualization and WSL2 on your system. See the
-[official docs](https://learn.microsoft.com/en-us/windows/wsl/install) for more details
+    If WSL2 is already installed, you can install Ubuntu by running
 
-</Accordion>
+    ```bash
+    wsl --install -d Ubuntu
+    ```
 
-Run the following script in your WSL2 terminal as a _non-root user_ to install Devbox.
+    If you are running an older version of Windows, you may need to follow the
+     [manual installation steps](https://learn.microsoft.com/en-us/windows/wsl/install-manual) 
+     to enable virtualization and WSL2 on your system. 
+     See the [official docs](https://learn.microsoft.com/en-us/windows/wsl/install) for more details.
 
-```bash
-curl -fsSL https://get.jetify.com/devbox | bash
-```
+    </Accordion>
 
-Devbox requires the [Nix Package Manager](https://nixos.org/download/). If Nix is not detected on
-your machine when running a command, Devbox will automatically install it in single user mode for
-WSL2. Don't worry: You can use Devbox without needing to learn the Nix Language.
+    Run the install script in your WSL2 terminal as a **non-root user**.
 
-Devbox is available through the
-[**Nix Package Manager**](https://search.nixos.org/packages?channel=unstable&show=devbox&from=0&size=50&sort=relevance&type=packages&query=devbox).
+    Devbox will install Nix in single-user mode for WSL2 if not already present.
+  </Tab>
 
-To install on NixOS:
+  <Tab title="NixOS/Nixpkg">
+    Devbox is available through the
+    [**Nix Package Manager**](https://search.nixos.org/packages?channel=unstable&show=devbox&from=0&size=50&sort=relevance&type=packages&query=devbox).
 
-```bash
-nix-env -iA nixos.devbox
-```
+    To install on NixOS:
 
-To install on a non NixOS:
+    ```bash
+    nix-env -iA nixos.devbox
+    ```
 
-```bash
-nix-env -iA nixpkgs.devbox
-```
+    To install on a non NixOS:
 
-or
+    ```bash
+    nix-env -iA nixpkgs.devbox
+    ```
 
-```
-nix profile install nixpkgs#devbox
-```
+    or
 
-Note: New releases of Devbox need to be updated in Nixpkgs before they are available for
-installation. If you want to use the latest version of Devbox, you can install it using the
-[Nix Flake](/docs/devbox/installing-devbox/?install-method=flake).
+    ```bash
+    nix profile install nixpkgs#devbox
+    ```
 
-You can also install Devbox on a NixOS/Nixpkgs system using our Nix Flake. Using the Nix Flake can
-help you access pre-releases and final releases of Devbox as soon as they are published.
+    <Note>
+    New releases of Devbox need to be updated in Nixpkgs before they are available for
+    installation. If you want to use the latest version of Devbox, you can install it using the
+    [Nix Flake](/docs/devbox/installing-devbox/?install-method=flake).
+    </Note>
+  </Tab>
 
-To get the latest version:
+  <Tab title="Nix Flake">
+    You can also install Devbox on a NixOS/Nixpkgs system using our Nix Flake. Using the Nix Flake can
+    help you access pre-releases and final releases of Devbox as soon as they are published.
 
-```
-nix profile install github:jetify-com/devbox/latest
-```
+    To get the latest version:
 
-To install a specific version, you can run the following command (only supports versions 0.13.2 and
-above).
+    ```bash
+    nix profile install github:jetify-com/devbox/latest
+    ```
 
-```
-nix profile install github:jetify-com/devbox/0.13.2
-```
+    To install a specific version, you can run the following command (only supports versions 0.13.2 and
+    above):
+
+    ```bash
+    nix profile install github:jetify-com/devbox/0.13.2
+    ```
+  </Tab>
+</Tabs>
+
+---
 
 ## Updating Devbox[​](#updating-devbox "Direct link to Updating Devbox")
 
