@@ -16,14 +16,14 @@
     "mint": "mint",
     "vale": "devbox run vale"
   },
-  "packageManager": "pnpm@10.15.1",
+  "packageManager": "pnpm@10.26.0",
   "engines": {
     "node": ">=22",
     "pnpm": ">=8"
   },
   "devDependencies": {
     "mdx2vast": "^0.3.0",
-    "mint": "^4.2.158",
-    "prettier": "^3.6.2"
+    "mint": "^4.2.243",
+    "prettier": "^3.7.4"
   }
 }
