@@ -38,11 +38,11 @@ For example, to use the latest version of `ripgrep,` run `devbox add ripgrep`,
 `devbox add ripgrep@latest`, or add `ripgrep@latest` to your devbox.json package list.
 
 To add a specific version of a package, write `<package_name>@<version>`. For example, to pin the
-`nodejs` package to version `20.1.0`, you can run `devbox add [email protected]` or add
-`[email protected]` to the packages list in your `devbox.json`:
+`nodejs` package to version `20.1.0`, you can run `devbox add package_name@version` or add
+`package_name@version` to the packages list in your `devbox.json`:
 
 ```
-"packages": [	"[email protected]"]
+"packages": [	"package_name@version"]
 ```
 
 For packages that use semver, you can pin a range of versions for your project. For example, if you
