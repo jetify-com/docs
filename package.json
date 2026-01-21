@@ -23,8 +23,8 @@
   },
   "devDependencies": {
     "mdx2vast": "^0.3.0",
-    "mint": "^4.2.245",
-    "prettier": "^3.7.4"
+    "mint": "^4.2.284",
+    "prettier": "^3.8.0"
   },
   "pnpm": {
     "overrides": {
