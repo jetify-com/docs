@@ -1,9 +1,11 @@
 {
   "name": "Jetify Docs",
   "description": "Repo containing documentation for Jetify products.",
+  "env": {
+    "DEVBOX_COREPACK_ENABLED": "false"
+  },
   "packages": {
-    "git": "latest",
-    "nodejs": "latest",
+    "nodejs": "22",
     "vale": "latest"
   },
   "shell": {
