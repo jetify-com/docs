@@ -5,7 +5,7 @@
     "DEVBOX_COREPACK_ENABLED": "false"
   },
   "packages": {
-    "nodejs": "22",
+    "nodejs": "24",
     "vale": "latest"
   },
   "shell": {
