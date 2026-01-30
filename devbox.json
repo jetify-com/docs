@@ -2,7 +2,7 @@
   "name": "Jetify Docs",
   "description": "Repo containing documentation for Jetify products.",
   "env": {
-    "DEVBOX_COREPACK_ENABLED": "false"
+    "DEVBOX_COREPACK_ENABLED": "true"
   },
   "packages": {
     "nodejs": "24",
