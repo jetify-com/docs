@@ -1,0 +1,5 @@
+.devbox
+devbox.json
+devbox.lock
+node_modules
+.git
