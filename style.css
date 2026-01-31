@@ -5,3 +5,15 @@
 footer a[href*="mintlify.com"] {
   display: none !important;
 }
+
+/* Fix footer overlap issue */
+main {
+  min-height: calc(100vh - 200px);
+  padding-bottom: 300px;
+}
+
+footer {
+  position: relative;
+  clear: both;
+  margin-top: auto;
+}
