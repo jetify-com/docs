@@ -63,6 +63,7 @@
             "group": "Advanced",
             "pages": [
               "docs/testpilot/advanced/index",
+              "docs/testpilot/advanced/bash-tool",
               "docs/testpilot/ai-test-generation",
               "docs/testpilot/model-context-protocol"
             ]
