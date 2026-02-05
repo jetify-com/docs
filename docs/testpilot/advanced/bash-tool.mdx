@@ -1,20 +1,33 @@
 ---
 title: "Running scripts with Bash Tool"
-description: "Learn how to use the Bash Tool in Testpilot to execute shell scripts as part of your testing workflow."
+description:
+  "Learn how to use the Bash Tool in Testpilot to execute shell scripts as part of your testing
+  workflow."
 sidebarTitle: "Running Scripts with Bash Tool"
 ---
 
-Our recommended way to extend Testpilot's capabilities is through our [Model Context Protocol (MCP) integration](../model-context-protocol). However, for scenarios where you want Testpilot to run a simple script directly, or where adding an MCP server is not feasible, you can use Testpilot's Bash tool. Bash tool can be useful for tasks such as setting up test environments, performing system checks, or manipulating files during test execution.
+Our recommended way to extend Testpilot's capabilities is through our
+[Model Context Protocol (MCP) integration](../model-context-protocol). However, for scenarios where
+you want Testpilot to run a simple script directly, or where adding an MCP server is not feasible,
+you can use Testpilot's Bash tool. Bash tool can be useful for tasks such as setting up test
+environments, performing system checks, or manipulating files during test execution.
 
 <Warning>
 
-The Bash tool executes shell commands directly on the machine where Testpilot is running. Be cautious when using it, especially with commands that modify system files or configurations, as it can pose security risks. If you want to restrict or provide a safer alternative to executing arbitrary shell commands, consider using the [Model Context Protocol (MCP) integration](../model-context-protocol) instead.
+The Bash tool executes shell commands directly on the machine where Testpilot is running. Be
+cautious when using it, especially with commands that modify system files or configurations, as it
+can pose security risks. If you want to restrict or provide a safer alternative to executing
+arbitrary shell commands, consider using the
+[Model Context Protocol (MCP) integration](../model-context-protocol) instead.
 
 </Warning>
 
 ## Enabling the Bash Tool
 
-To enable the Bash tool in Testpilot, you will first need to set the `BASH_TOOL` environment variable to `true` in your Testpilot configuration. This can typically be done by adding the following line to your environment configuration file or setting it directly in your deployment environment:
+To enable the Bash tool in Testpilot, you will first need to set the `BASH_TOOL` environment
+variable to `true` in your Testpilot configuration. This can typically be done by adding the
+following line to your environment configuration file or setting it directly in your deployment
+environment:
 
 ```bash
 export BASH_TOOL=true
@@ -22,9 +35,14 @@ export BASH_TOOL=true
 
 ## Using the Bash Tool in Test Cases
 
-Once the Bash tool is enabled, you can use it in your test cases by adding a step that describes a script or command you want to execute. You should specify the relative path to the script, as well as any arguments you want Testpilot to pass to the script.
+Once the Bash tool is enabled, you can use it in your test cases by adding a step that describes a
+script or command you want to execute. You should specify the relative path to the script, as well
+as any arguments you want Testpilot to pass to the script.
 
-<Note>Testpilot will use your current working directory and shell environment as the context for executing scripts.</Note>
+<Note>
+  Testpilot will use your current working directory and shell environment as the context for
+  executing scripts.
+</Note>
 
 Here is an example of how to define a test case that uses the Bash tool:
 
@@ -66,4 +84,6 @@ echo "Generated $COUNT test items"
 exit 0
 ```
 
-When you execute this test case, Testpilot will run the `generate-test-data.sh` script with the specified arguments, capture its output, and use that output to fill out the todo items on the TodoMVC application.
+When you execute this test case, Testpilot will run the `generate-test-data.sh` script with the
+specified arguments, capture its output, and use that output to fill out the todo items on the
+TodoMVC application.

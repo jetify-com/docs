@@ -1,7 +1,9 @@
 ---
 title: "Testpilot GitLab CI/CD Integration"
 sidebarTitle: "GitLab CI/CD"
-description: "Set up Testpilot in GitLab pipelines. Install the component, configure runners, and automate your tests with GitLab CI/CD."
+description:
+  "Set up Testpilot in GitLab pipelines. Install the component, configure runners, and automate your
+  tests with GitLab CI/CD."
 ---
 
 You can check out an [example repo](https://gitlab.com/jetify-com/gitlab-components-example) with
@@ -37,9 +39,9 @@ stages:
 # Your test job
 run-my-tests:
   stage: test
-  needs: ["testpilot-install-linux-amd64"]  # Wait for Testpilot installation
+  needs: ["testpilot-install-linux-amd64"] # Wait for Testpilot installation
   script:
-    - ./bin/testpilot test your_test.pilot.yaml  # Replace with your test file
+    - ./bin/testpilot test your_test.pilot.yaml # Replace with your test file
   # preserve artifacts and reports
   artifacts:
     reports:
@@ -120,7 +122,7 @@ setup. Here's how to configure your pipeline to use GitLab's SaaS macOS runners:
 # macOS runner configuration
 .macos_saas_runners:
   tags:
-    - saas-macos-medium-m1  # Use GitLab's SaaS macOS runners
+    - saas-macos-medium-m1 # Use GitLab's SaaS macOS runners
 ```
 
 **Step 2:** Include the component with macOS-specific settings:
@@ -130,9 +132,9 @@ setup. Here's how to configure your pipeline to use GitLab's SaaS macOS runners:
 include:
   - component: gitlab.com/jetify-com/gitlab-components/testpilot-install@main
     inputs:
-      stage: install                # Install Testpilot in the 'install' stage
-      platform: macos               # Target the macOS platform
-      runner-extends: .macos_saas_runners  # Use the macOS SaaS runner config
+      stage: install # Install Testpilot in the 'install' stage
+      platform: macos # Target the macOS platform
+      runner-extends: .macos_saas_runners # Use the macOS SaaS runner config
 
 # Define pipeline stages
 stages:
@@ -145,7 +147,7 @@ run-tests-macos:
   extends: .macos_saas_runners
   needs: ["testpilot-install-macos"]
   script:
-    - ./bin/testpilot test your_test.pilot.yaml  # Replace with your test file
+    - ./bin/testpilot test your_test.pilot.yaml # Replace with your test file
 ```
 
 ### Setting up Custom Runners[​](#setting-up-custom-runners "Direct link to Setting up Custom Runners")
@@ -249,7 +251,9 @@ testpilot-test:
   needs: ["testpilot-install-linux-amd64"]
   parallel: 2
   # Use built in CI_NODE environment variables to shard across runners
-  script: ./bin/testpilot test --outdir=testpilot-out-${CI_NODE_INDEX} --shard=${CI_NODE_INDEX}/${CI_NODE_TOTAL} --reporters=junit
+  script:
+    ./bin/testpilot test --outdir=testpilot-out-${CI_NODE_INDEX}
+    --shard=${CI_NODE_INDEX}/${CI_NODE_TOTAL} --reporters=junit
   artifacts:
     reports:
       junit: testpilot-out/*.xml

@@ -1,7 +1,9 @@
 ---
 title: "Testing Authentication and Login Flows"
 sidebarTitle: "Testing Authentication"
-description: "Test authenticated features efficiently. Configure login credentials, set up authentication URLs, and reuse sessions across test cases."
+description:
+  "Test authenticated features efficiently. Configure login credentials, set up authentication URLs,
+  and reuse sessions across test cases."
 ---
 
 ## Setting Login Credentials[​](#setting-login-credentials "Direct link to Setting Login Credentials")
@@ -20,7 +22,9 @@ manager of your choice to set these credentials before running Testpilot
 
 ## Configuring Custom Environment Variables For Login[](#configuring-custom-environment-variables-for-login "Direct link to Configuring Custom Environment Variables for Login")
 
-Alternatively, you can also use custom env-vars of your own choosing by specifying them in the pilot file:
+Alternatively, you can also use custom env-vars of your own choosing by specifying them in the pilot
+file:
+
 ```yaml
 name: "Configuring Environment Variables for Login"
 login:
@@ -108,7 +112,8 @@ your application without repeatedly handling the login process in each test case
 
 ## Example: Testing Login Flow for a mobile app[](#example-testing-login-flow-for-a-mobile-app "Direct link to Example: Testing Login Flow for a mobile app")
 
-For mobile apps, the login steps have to be more explicitly specified and tested, notably as done in step 2 below.
+For mobile apps, the login steps have to be more explicitly specified and tested, notably as done in
+step 2 below.
 
 ```yaml
 name: "Login Flow Test"
@@ -122,11 +127,12 @@ cases:
     steps:
       - "Click on the Login button on the top right"
       - "Login using username ${MY_CUSTOM_USERNAME} and password ${MY_CUSTOM_PASSWORD}"
-      - "Verify the login was successful by confirming the user account's name is displayed on the top-left"
+      - "Verify the login was successful by confirming the user account's name is displayed on the
+        top-left"
     platform_config:
       android_pkg: com.mymobileapp.android
 ```
 
-If you are using a custom env-var for the password (i.e. other than `TESTPILOT_PASSWORD`) then you are 
-encouraged to specify the top-level `login.password` field as well. This helps Testpilot handle the 
-password string literal more securely.
+If you are using a custom env-var for the password (i.e. other than `TESTPILOT_PASSWORD`) then you
+are encouraged to specify the top-level `login.password` field as well. This helps Testpilot handle
+the password string literal more securely.

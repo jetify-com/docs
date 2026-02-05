@@ -55,16 +55,14 @@ this path by setting the `VENV_DIR` environment variable in your devbox.json:
 
 ```json
 {
-   "packages": [
-      "[email protected]"
-    ],
-    "env": {
-        // Install your virtual environment in `.venv`
-        "VENV_DIR": ".venv"
-    },
-    "shell": {
-        "init_hook": ". $VENV_DIR/bin/activate"
-    }
+  "packages": ["[email protected]"],
+  "env": {
+    // Install your virtual environment in `.venv`
+    "VENV_DIR": ".venv"
+  },
+  "shell": {
+    "init_hook": ". $VENV_DIR/bin/activate"
+  }
 }
 ```
 
@@ -74,13 +72,10 @@ install:
 
 ```json
 {
-    "packages": [
-        "[email protected]",
-        "python310Packages.pip"
-    ],
-    "shell": {
-        "init_hook": ". $VENV_DIR/bin/activate"
-    }
+  "packages": ["[email protected]", "python310Packages.pip"],
+  "shell": {
+    "init_hook": ". $VENV_DIR/bin/activate"
+  }
 }
 ```
 

@@ -49,9 +49,9 @@ Django server, you could add the following yaml:
 version: "0.5"
 processes:
   django:
-   command: python todo_project/manage.py runserver
-   availability:
-    restart: "always"
+    command: python todo_project/manage.py runserver
+    availability:
+      restart: "always"
 ```
 
 This will now start your django service whenever you run `devbox services up`.

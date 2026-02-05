@@ -1,6 +1,8 @@
 ---
 title: "Pilotfile Reference"
-description: "Complete reference for Testpilot pilot files. Learn the file format, configuration options, and test case structure."
+description:
+  "Complete reference for Testpilot pilot files. Learn the file format, configuration options, and
+  test case structure."
 ---
 
 ```yaml
@@ -143,8 +145,8 @@ context:
 
 ### headers[​](#headers "Direct link to headers")
 
-Custom HTTP headers to include in all browser requests for this test case. The
-browser sends these headers with every request made during test execution.
+Custom HTTP headers to include in all browser requests for this test case. The browser sends these
+headers with every request made during test execution.
 
 ```yaml
 headers:
@@ -153,9 +155,8 @@ headers:
   User-Agent: "TestPilot/1.0 Custom Agent"
 ```
 
-**Important**: custom headers are only supported for web testing with
-Playwright. They're currently not available when testing mobile applications on
-Android or iOS platforms.
+**Important**: custom headers are only supported for web testing with Playwright. They're currently
+not available when testing mobile applications on Android or iOS platforms.
 
 ### platform_config[​](#platform_config "Direct link to platform_config")
 

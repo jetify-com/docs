@@ -1,7 +1,9 @@
 ---
 title: "Parameterizing Tests with Environment Variables"
 sidebarTitle: "Parameterizing Tests"
-description: "Make tests flexible and reusable with environment variables. Run the same tests across staging, development, and production environments."
+description:
+  "Make tests flexible and reusable with environment variables. Run the same tests across staging,
+  development, and production environments."
 ---
 
 ## Using Environment Variables in Tests[​](#using-environment-variables-in-tests "Direct link to Using Environment Variables in Tests")
@@ -106,7 +108,7 @@ test_staging:
 
 test_production:
   stage: test
-  when: manual  # Only run when triggered manually
+  when: manual # Only run when triggered manually
   script:
     - export TEST_HOST=https://example.com
     - testpilot test tests/*.pilot.yaml
