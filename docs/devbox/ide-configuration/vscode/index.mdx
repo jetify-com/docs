@@ -100,7 +100,7 @@ follow the installation guide first. Then follow the steps below:
    executable java binary inside the devbox shell. Copy and save that path. It should look something
    like this:
 
-```json
+   ```json
    /nix/store/qaf9fysymdoj19qtyg7209s83lajz65b-zulu17.34.19-ca-jdk-17.0.3/bin/java
    ```
 
@@ -124,7 +124,7 @@ follow the installation guide first. Then follow the steps below:
      "projectName": "<project_name>",
      "javaExec": "<path_to_java_executable_from_step_4>"
    }
-```json
+   ```
 
    Update the values in between \< and > to match your project and environment.
 
@@ -151,9 +151,9 @@ macOS terminal.
 5. Use `javac` command to compile your Java project. As an example, if you have a simple hello world
    project and the directory structure such as:
 
-   ```
+   ```bash
    my_java_project/-- src/-- -- main/-- -- -- hello.java
-```json
+   ```
 
    You can use the following command to compile: to compile:
 
@@ -161,11 +161,12 @@ macOS terminal.
    javac my_java_project/src/main/hello.java
    ```
 
-6. Use `java` command to run the compiled project. For example, to run the sample project from above:
+6. Use `java` command to run the compiled project. For example, to run the sample project from
+   above:
 
    ```bash
    cd src/java main/hello
-```json
+   ```
 
 If this guide is missing something, feel free to contribute by opening a
 [pull request](https://github.com/jetify-com/devbox/pulls) in Github.

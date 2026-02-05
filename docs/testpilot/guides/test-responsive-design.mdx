@@ -1,7 +1,9 @@
 ---
 title: "Testing Responsive Design with Viewports"
 sidebarTitle: "Testing Responsive Design"
-description: "Ensure your site works across all screen sizes. Define and test multiple viewport dimensions for desktop, tablet, and mobile devices."
+description:
+  "Ensure your site works across all screen sizes. Define and test multiple viewport dimensions for
+  desktop, tablet, and mobile devices."
 ---
 
 ## Why Configure Viewports?[​](#why-configure-viewports "Direct link to Why Configure Viewports?")
@@ -80,19 +82,24 @@ viewports:
 ```yaml
 viewports:
   - name: "Mobile Large"
-    size: [428, 926]  # iPhone 13 Pro Max
+    size: [428, 926] # iPhone 13 Pro Max
   - name: "Mobile Medium"
-    size: [390, 844]  # iPhone 13 Pro
+    size: [390, 844] # iPhone 13 Pro
   - name: "Mobile Small"
-    size: [375, 667]  # iPhone SE
+    size: [375, 667] # iPhone SE
 ```
 
 ## Tips for Viewport Testing
 
-1. **Start with key breakpoints**: Focus on testing the major breakpoints where your UI changes significantly
+1. **Start with key breakpoints**: Focus on testing the major breakpoints where your UI changes
+   significantly
 2. **Test critical user flows**: Ensure important user journeys work on all screen sizes
-3. **Consider device-specific behaviors**: Some features might work differently on touch devices versus desktop
-4. **Test orientation changes**: For tablet and mobile viewports, consider testing both portrait and landscape orientations
-5. **Check for overflow issues**: Verify that content doesn't overflow or get cut off at smaller screen sizes
+3. **Consider device-specific behaviors**: Some features might work differently on touch devices
+   versus desktop
+4. **Test orientation changes**: For tablet and mobile viewports, consider testing both portrait and
+   landscape orientations
+5. **Check for overflow issues**: Verify that content doesn't overflow or get cut off at smaller
+   screen sizes
 
-By thoroughly testing your application across different viewports, you can ensure a consistent and high-quality user experience for all your users, regardless of the device they're using.
+By thoroughly testing your application across different viewports, you can ensure a consistent and
+high-quality user experience for all your users, regardless of the device they're using.
