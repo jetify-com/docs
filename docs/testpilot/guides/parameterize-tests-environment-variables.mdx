@@ -106,7 +106,7 @@ test_staging:
 
 test_production:
   stage: test
-  when: manual  # Only run when triggered manually
+  when: manual # Only run when triggered manually
   script:
     - export TEST_HOST=https://example.com
     - testpilot test tests/*.pilot.yaml

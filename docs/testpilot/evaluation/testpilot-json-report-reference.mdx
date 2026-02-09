@@ -7,6 +7,7 @@ sidebarTitle: "report.json Reference"
 ## Overview
 
 TestPilot generates JSON reports in two formats:
+
 - **Aggregated Report**: Top-level report containing all tests from a run
 - **Per-test Results**: Individual `results.json` files for each test
 
@@ -315,23 +316,27 @@ Both formats share the same core object structures and use `camelCase` field nam
 ### Other Object Fields
 
 #### LLMMetrics
+
 - **`promptTokens`** (integer): Number of input tokens sent to LLM
 - **`completionTokens`** (integer): Number of output tokens received from LLM
 - **`anthropicCachedInputTokens`** (integer): Number of cached input tokens (Anthropic-specific)
 - **`maxScreenshots`** (integer): Maximum number of screenshots allowed
 
 #### ProfilingMetrics
+
 - **`totalDuration`** (string): Total time spent
 - **`llmDuration`** (string): Time spent waiting for LLM responses
 - **`toolDuration`** (string): Time spent executing tools/actions
 - **`attempts`** (integer): Number of execution attempts
 
 #### PlatformConfig
+
 - **`url`** (string): Target URL for web testing
 - **`androidPkg`** (string): Android package name for mobile testing
 - **`iosPkg`** (string): iOS package name for mobile testing
 
 #### Viewport
+
 - **`width`** (integer): Viewport width in pixels
 - **`height`** (integer): Viewport height in pixels
 
@@ -339,55 +344,55 @@ Both formats share the same core object structures and use `camelCase` field nam
 
 ### Status
 
-| Number | Name | Meaning |
-|---|---|---|
-| 0 | STATUS_UNSPECIFIED | Status is unknown or not set |
-| 1 | STATUS_PENDING | Test or step is still in progress |
-| 2 | STATUS_SUCCEEDED | Completed successfully (passed) |
-| 3 | STATUS_FAILED | Completed with failure |
-| 4 | STATUS_INCOMPLETE | Did not finish all steps (aborted or skipped) |
+| Number | Name               | Meaning                                       |
+| ------ | ------------------ | --------------------------------------------- |
+| 0      | STATUS_UNSPECIFIED | Status is unknown or not set                  |
+| 1      | STATUS_PENDING     | Test or step is still in progress             |
+| 2      | STATUS_SUCCEEDED   | Completed successfully (passed)               |
+| 3      | STATUS_FAILED      | Completed with failure                        |
+| 4      | STATUS_INCOMPLETE  | Did not finish all steps (aborted or skipped) |
 
 ### ExecutionMode
 
-| Number | Name | Meaning |
-|---|---|---|
-| 0 | EXECUTION_MODE_UNSPECIFIED | Mode not specified |
-| 1 | EXECUTION_MODE_CUA | Executed by Computer Use Agent (LLM-driven) |
-| 2 | EXECUTION_MODE_CACHE | Step executed from cache (no live LLM run) |
-| 3 | EXECUTION_MODE_CACHE_FALLBACK_TO_CUA | Cache attempted but fell back to agent execution |
-| 4 | EXECUTION_MODE_FALLBACK_TO_CUA | Non-CUA execution failed, fell back to agent |
-| 5 | EXECUTION_MODE_NON_CUA | Non-CUA mode (deterministic/scripted) |
-| 6 | EXECUTION_MODE_SCRIPT | Script mode execution |
-| 7 | EXECUTION_MODE_FORM_FILLER | Form filler mode execution |
+| Number | Name                                 | Meaning                                          |
+| ------ | ------------------------------------ | ------------------------------------------------ |
+| 0      | EXECUTION_MODE_UNSPECIFIED           | Mode not specified                               |
+| 1      | EXECUTION_MODE_CUA                   | Executed by Computer Use Agent (LLM-driven)      |
+| 2      | EXECUTION_MODE_CACHE                 | Step executed from cache (no live LLM run)       |
+| 3      | EXECUTION_MODE_CACHE_FALLBACK_TO_CUA | Cache attempted but fell back to agent execution |
+| 4      | EXECUTION_MODE_FALLBACK_TO_CUA       | Non-CUA execution failed, fell back to agent     |
+| 5      | EXECUTION_MODE_NON_CUA               | Non-CUA mode (deterministic/scripted)            |
+| 6      | EXECUTION_MODE_SCRIPT                | Script mode execution                            |
+| 7      | EXECUTION_MODE_FORM_FILLER           | Form filler mode execution                       |
 
 ### CacheStatus
 
-| Number | Name | Meaning |
-|---|---|---|
-| 0 | CACHE_STATUS_UNSPECIFIED | Cache status not specified |
-| 1 | CACHE_STATUS_HIT | Cache entry found and used |
-| 2 | CACHE_STATUS_MISS | No suitable cache entry found |
-| 3 | CACHE_STATUS_UNUSED_IS_RETRY | Cache ignored because step needed retry |
-| 4 | CACHE_STATUS_UNUSED_IS_ASSERTION | Cache ignored for assertion-only step |
-| 5 | CACHE_STATUS_UNUSED_NON_CACHEABLE_EXECUTION_MODE | Cache ignored due to non-cacheable execution mode |
-| 6 | CACHE_STATUS_UNUSED_CONTAINS_NON_CACHEABLE_ACTIONS | Cache ignored due to non-cacheable actions |
-| 7 | CACHE_STATUS_UNUSED_ELEMENT_IS_MISSING | Cache ignored because required element missing |
-| 8 | CACHE_STATUS_UNUSED_HAS_TOOL_CALLS | Cache ignored because step involved tool calls |
-| 9 | CACHE_STATUS_UNUSED_IS_SCRIPT | Cache ignored for script-based step |
+| Number | Name                                               | Meaning                                           |
+| ------ | -------------------------------------------------- | ------------------------------------------------- |
+| 0      | CACHE_STATUS_UNSPECIFIED                           | Cache status not specified                        |
+| 1      | CACHE_STATUS_HIT                                   | Cache entry found and used                        |
+| 2      | CACHE_STATUS_MISS                                  | No suitable cache entry found                     |
+| 3      | CACHE_STATUS_UNUSED_IS_RETRY                       | Cache ignored because step needed retry           |
+| 4      | CACHE_STATUS_UNUSED_IS_ASSERTION                   | Cache ignored for assertion-only step             |
+| 5      | CACHE_STATUS_UNUSED_NON_CACHEABLE_EXECUTION_MODE   | Cache ignored due to non-cacheable execution mode |
+| 6      | CACHE_STATUS_UNUSED_CONTAINS_NON_CACHEABLE_ACTIONS | Cache ignored due to non-cacheable actions        |
+| 7      | CACHE_STATUS_UNUSED_ELEMENT_IS_MISSING             | Cache ignored because required element missing    |
+| 8      | CACHE_STATUS_UNUSED_HAS_TOOL_CALLS                 | Cache ignored because step involved tool calls    |
+| 9      | CACHE_STATUS_UNUSED_IS_SCRIPT                      | Cache ignored for script-based step               |
 
 ### StepType
 
-| Number | Name | Meaning |
-|---|---|---|
-| 0 | STEP_TYPE_UNSPECIFIED | Step type not specified |
-| 1 | STEP_TYPE_REGULAR_ACTION | Regular user actions (click, type, navigate) |
-| 2 | STEP_TYPE_FORM_FILLING | Data entry or form completion |
-| 3 | STEP_TYPE_VERIFICATION | Assertion or verification of expected state |
-
+| Number | Name                     | Meaning                                      |
+| ------ | ------------------------ | -------------------------------------------- |
+| 0      | STEP_TYPE_UNSPECIFIED    | Step type not specified                      |
+| 1      | STEP_TYPE_REGULAR_ACTION | Regular user actions (click, type, navigate) |
+| 2      | STEP_TYPE_FORM_FILLING   | Data entry or form completion                |
+| 3      | STEP_TYPE_VERIFICATION   | Assertion or verification of expected state  |
 
 ## Example Usage
 
 ### Basic Report Structure
+
 ```json
 {
   "id": "tpreport_01abc123...",
@@ -395,8 +400,8 @@ Both formats share the same core object structures and use `camelCase` field nam
   "duration": "45.123&nbsp;s",
   "platforms": ["Linux - Chrome"],
   "statusSummary": [
-    {"count": 3, "status": 2},
-    {"count": 1, "status": 3}
+    { "count": 3, "status": 2 },
+    { "count": 1, "status": 3 }
   ],
   "tests": [
     {

@@ -21,6 +21,7 @@ manager of your choice to set these credentials before running Testpilot
 ## Configuring Custom Environment Variables For Login[](#configuring-custom-environment-variables-for-login "Direct link to Configuring Custom Environment Variables for Login")
 
 Alternatively, you can also use custom env-vars of your own choosing by specifying them in the pilot file:
+
 ```yaml
 name: "Configuring Environment Variables for Login"
 login:
@@ -127,6 +128,6 @@ cases:
       android_pkg: com.mymobileapp.android
 ```
 
-If you are using a custom env-var for the password (i.e. other than `TESTPILOT_PASSWORD`) then you are 
-encouraged to specify the top-level `login.password` field as well. This helps Testpilot handle the 
+If you are using a custom env-var for the password (i.e. other than `TESTPILOT_PASSWORD`) then you are
+encouraged to specify the top-level `login.password` field as well. This helps Testpilot handle the
 password string literal more securely.
