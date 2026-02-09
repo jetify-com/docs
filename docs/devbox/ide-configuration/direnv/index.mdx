@@ -22,9 +22,9 @@ direnv to seamlessly work with a devbox project.
 If you have direnv installed, Devbox will generate an .envrc file when you run
 `devbox generate direnv` and enables it by running `direnv allow` in the background:
 
-````bash
+```
 ➜  devbox generate direnvSuccess: generated .envrc fileSuccess: ran `direnv allow`direnv: loading ~/src/docs/devbox/.envrcdirenv: using devbox
-```bash
+```
 
 This will generate a `.envrc` file in your project directory that contains `devbox.json`. Run
 `direnv allow` to activate your shell upon directory navigation. Run `direnv revoke` to stop.
@@ -36,9 +36,9 @@ installed direnv and Devbox is enough to make direnv integrate with Devbox.
 
 For an existing project, you can add a `.envrc` file by running `devbox generate direnv`:
 
-```bash
+```
 ➜  devbox generate direnvSuccess: generated .envrc fileSuccess: ran `direnv allow`direnv: loading ~/src/docs/devbox/.envrcdirenv: using devbox
-````
+```
 
 The generated `.envrc` file doesn't need any further configuration. Just having the generated file
 along with installed direnv and Devbox, is enough to make direnv integration with Devbox work.
@@ -55,15 +55,15 @@ key-value pairs, where the key is the name of the environment variable and the v
 the environment variable. For example, if you wanted to add a `MY_CUSTOM_ENV_VAR` environment
 variable with a value of `my-custom-value`, you would run the following command:
 
-````bash
-devbox generate direnv --env MY_CUSTOM_ENV_VAR=my-value
 ```bash
+devbox generate direnv --env MY_CUSTOM_ENV_VAR=my-value
+```
 
 The resulting .envrc will have the following:
 
 ```bash
 # Automatically sets up your devbox environment whenever you cd into this# directory via our direnv integration:eval "$(devbox generate direnv --print-envrc --env MY_CUSTOM_ENV_VAR=my-value)"# check out https://www.jetify.com/docs/devbox/ide-configuration/direnv/# for more details
-````
+```
 
 You can also tell direnv to read environment variables from a custom `.env` file by passing the
 `--env-file` flag to `devbox generate direnv`. This flag takes a path to a file containing
@@ -71,15 +71,15 @@ environment variables to set in the devbox environment. If the file does not exi
 parameter is ignored. For example, if you wanted to add a `.env.devbox` file located in your project
 root, you would run the following command:
 
-````bash
-devbox generate direnv --env-file .env.devbox
 ```bash
+devbox generate direnv --env-file .env.devbox
+```
 
 The resulting .envrc will have the following:
 
 ```bash
 # Automatically sets up your devbox environment whenever you cd into this# directory via our direnv integration:eval "$(devbox generate direnv --print-envrc --env-file .env.devbox)"# check out https://www.jetify.com/docs/devbox/ide-configuration/direnv/# for more details
-````
+```
 
 Note that if Devbox cannot find the env file provided to the flag, it will ignore the flag and load
 your Devbox shell environment as normal

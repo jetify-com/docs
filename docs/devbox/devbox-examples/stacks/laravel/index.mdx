@@ -48,29 +48,29 @@ Devbox Plugins for all 3 Nix packages to simplify configuration
    devbox add mariadb@latest, [email protected], nodejs@18, redis@latest, php81Packages.composer@latest
    ```
 
-```bash
-
 3. Run `devbox shell` to start your shell. This will also initialize your database by running
    `initdb` in the init hook.
 
 4. Create your laravel project by running:
 
-```
-
-composer create-project laravel/laravel tmpmv tmp/_ tmp/._ .
-
-```bash
+   ```bash
+   composer create-project laravel/laravel tmpmv tmp/* tmp/.* .
+   ```
 
 ### Setting up MariaDB[​](#setting-up-mariadb "Direct link to Setting up MariaDB")
 
 To use MariaDB, you need to create the default Laravel database. You can do this by running the
 following commands in your `devbox shell`:
 
-```
-
-# Start the MariaDB servicedevbox services up mariadb -b# Create the databasemysql -u root -e "CREATE DATABASE laravel;"# Once you're done, stop the MariaDB servicedevbox services stop mariadb
-
 ```bash
+# Start the MariaDB service
+devbox services up mariadb -b
+
+# Create the database
+mysql -u root -e "CREATE DATABASE laravel;"
+
+# Once you're done, stop the MariaDB service
+devbox services stop mariadb
+```
 
 [Edit this page](https://github.com/jetify-com/docs/tree/main/docs/devbox/devbox-examples/stacks/laravel/index.mdx)
-```
