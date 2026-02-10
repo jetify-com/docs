@@ -40,10 +40,11 @@ Test-level latency provides the most important metric for overall user experienc
 - **Resource planning**: Understanding typical execution times for capacity planning
 
 Key fields for analyzing Per test latency include:
-* **Test.id**: Stable Identifier for analyzing your test across runs
-* **Test.duration**: Wall time for how long the test took to run
-* **Test.startTime**: Useful for organizing your tests chronologically
-* **Test.profilingMetrics**: Splits test time into LLM Duration, Tool Duration, and Attempts, which can help you understand what is driving the test's overall duration.
+
+- **Test.id**: Stable Identifier for analyzing your test across runs
+- **Test.duration**: Wall time for how long the test took to run
+- **Test.startTime**: Useful for organizing your tests chronologically
+- **Test.profilingMetrics**: Splits test time into LLM Duration, Tool Duration, and Attempts, which can help you understand what is driving the test's overall duration.
 
 ### Per-Step Latency Analysis
 
@@ -56,20 +57,20 @@ Step-level latency analysis helps identify bottlenecks in test execution by exam
 Extract the duration from each step and track it alongside the step title and status to build comprehensive performance profiles.
 
 Key fields for analyzing Per-Step latency include:
-* Step.title: The actual wording of the step provided to the LLM. You can use this, or the step's index for analysis across tests.
-* Step.duration: Wall time for how long the step took
-* Step.profilingMetrics: Shows the breakdown of duration by attempts, LLM Duration, and Tool Duration
-* Step.executionMode: Shows how the step was executed (cache, agent, script, etc.) - see [Enum Reference](#enum-reference)
-* Step.actions: The actual actions Taken by Testpilot, which can give you a granular understanding of what occurred during the step.
-* Step.cacheStatus: Shows whether the step successfully used the Action cache, or had to fall back. See [Enum Reference](#enum-reference)
-* Step.explanation: The LLM's interpretation of how the step ended.
+
+- Step.title: The actual wording of the step provided to the LLM. You can use this, or the step's index for analysis across tests.
+- Step.duration: Wall time for how long the step took
+- Step.profilingMetrics: Shows the breakdown of duration by attempts, LLM Duration, and Tool Duration
+- Step.executionMode: Shows how the step was executed (cache, agent, script, etc.) - see [Enum Reference](#enum-reference)
+- Step.actions: The actual actions Taken by Testpilot, which can give you a granular understanding of what occurred during the step.
+- Step.cacheStatus: Shows whether the step successfully used the Action cache, or had to fall back. See [Enum Reference](#enum-reference)
+- Step.explanation: The LLM's interpretation of how the step ended.
 
 Some things to evaluate when analyzing steps include:
 
-* Do the profiling metrics indicate frequent retries of the step, or issues with any of the tool calls you are making?
-* Does cache status consistently suggest an issue with caching capability? What reasons are preventing the cache from hitting on the action.
-* Do you see a large number of waits, or repetitive actions in the step?
-
+- Do the profiling metrics indicate frequent retries of the step, or issues with any of the tool calls you are making?
+- Does cache status consistently suggest an issue with caching capability? What reasons are preventing the cache from hitting on the action.
+- Do you see a large number of waits, or repetitive actions in the step?
 
 ## 2. Pass/Fail Metrics
 
@@ -88,6 +89,7 @@ Step-level analysis helps identify which specific operations are most prone to f
 Pay attention to the `stepType` field as verification steps failing might indicate different issues than action steps failing. See the [StepType enum table](#steptype) for complete values.
 
 **Key aggregation strategies:**
+
 - **Binary classification**: Treat STATUS_SUCCEEDED as "pass" and all others as "fail" for most analyses
 - **Step type segmentation**: Analyze action steps vs verification steps separately
 - **Failure categorization**: Use the `failureReasonCategory` field to group similar failure types
@@ -103,12 +105,14 @@ The `explanation` field often contains valuable context about why a test failed,
 Tracking pass/fail rates over time is essential for identifying flaky tests and overall test suite stability:
 
 **Critical metrics to track:**
+
 - **Overall pass rate**: Percentage of tests passing in recent runs
 - **Test stability**: Individual tests with inconsistent results across runs
 - **Flaky test identification**: Tests with pass rates between 20-80% indicating intermittent issues
 - **Failure clustering**: Whether failures concentrate around specific time periods or code changes
 
 **Analysis techniques:**
+
 - **Stability scoring**: Calculate pass rates over rolling windows to identify consistently failing vs intermittent tests
 - **Trend detection**: Monitor whether test suite health is improving or degrading over time
 - **Outlier identification**: Flag tests that deviate significantly from expected pass rates
@@ -120,6 +124,7 @@ Tracking pass/fail rates over time is essential for identifying flaky tests and 
 TestPilot's caching system speeds up test execution by reusing previous step results when conditions are similar. Understanding cache performance helps optimize test execution time and identify optimization opportunities.
 
 **Key fields for cache analysis:**
+
 - **Step.cacheStatus**: Indicates what happened with cache for this step (hit, miss, or unused with reason)
 - **Step.executionMode**: Shows how the step was actually executed (cache, agent, script, etc.)
 - **Test.cacheSourceId**: When present, indicates this test used another test as a cache source
@@ -133,6 +138,7 @@ The most effective cache rate calculation focuses on **non-assertion steps** sin
 - **Calculate hit rate**: Cached steps divided by total non-assertion steps
 
 **Assertion step identification:**
+
 - Step titles beginning with "verify," "assert," or "expect" (case-insensitive).
 - Steps with `stepType` of `STEP_TYPE_VERIFICATION` (3).
 
@@ -157,6 +163,7 @@ See the [CacheStatus enum table](#cachestatus) for complete cache status values 
 Track cache performance over time to understand optimization effectiveness:
 
 **Key trend indicators:**
+
 - **Declining hit rates**: May indicate tests becoming more dynamic or environmental instability
 - **Consistent unused reasons**: Suggest systematic issues addressable through test design changes
 - **Cache source stability**: Tests frequently serving as cache sources should be prioritized for stability
@@ -167,18 +174,21 @@ Track cache performance over time to understand optimization effectiveness:
 ### Essential Fields by Analysis Type
 
 **Latency Analysis:**
+
 - `Test.duration` and `Step.duration`: Core timing metrics
 - `Test.id`: For grouping across runs
 - `ProfilingMetrics.totalDuration`, `llmDuration`, `toolDuration`: For detailed breakdowns
 - `Report.startTime`: For chronological ordering
 
 **Pass/Fail Analysis:**
+
 - `Test.status` and `Step.status`: Core success metrics (focus on value 2 = SUCCESS)
 - `Test.explanation` and `Step.explanation`: Context for failures
 - `Step.stepType`: To differentiate verification vs action failures
 - `Step.failureReasonCategory`: For categorizing failure types
 
 **Cache Analysis:**
+
 - `Step.executionMode`: How step was executed (primary metric)
 - `Step.cacheStatus`: Detailed cache behavior
 - `Test.cacheSourceId`: Cache dependency relationships
@@ -192,56 +202,56 @@ TestPilot uses numeric enum values throughout the JSON reports. This section pro
 
 The `status` field appears on both `Test` and `Step` objects to indicate execution outcomes:
 
-| Number | Name | Meaning |
-|---|---|---|
-| 0 | STATUS_UNSPECIFIED | Status is unknown or not set |
-| 1 | STATUS_PENDING | Test or step is still in progress |
-| 2 | STATUS_SUCCEEDED | Completed successfully (passed) |
-| 3 | STATUS_FAILED | Completed with failure |
-| 4 | STATUS_INCOMPLETE | Did not finish all steps (aborted or skipped) |
+| Number | Name               | Meaning                                       |
+| ------ | ------------------ | --------------------------------------------- |
+| 0      | STATUS_UNSPECIFIED | Status is unknown or not set                  |
+| 1      | STATUS_PENDING     | Test or step is still in progress             |
+| 2      | STATUS_SUCCEEDED   | Completed successfully (passed)               |
+| 3      | STATUS_FAILED      | Completed with failure                        |
+| 4      | STATUS_INCOMPLETE  | Did not finish all steps (aborted or skipped) |
 
 ### ExecutionMode
 
 The `executionMode` field indicates how each step was executed:
 
-| Number | Name | Meaning |
-|---|---|---|
-| 0 | EXECUTION_MODE_UNSPECIFIED | Mode not specified |
-| 1 | EXECUTION_MODE_CUA | Executed by Computer Use Agent (LLM-driven) |
-| 2 | EXECUTION_MODE_CACHE | Step executed from cache (no live LLM run) |
-| 3 | EXECUTION_MODE_CACHE_FALLBACK_TO_CUA | Cache attempted but fell back to agent execution |
-| 4 | EXECUTION_MODE_FALLBACK_TO_CUA | Non-CUA execution failed, fell back to agent |
-| 5 | EXECUTION_MODE_NON_CUA | Non-CUA mode (deterministic/scripted) |
-| 6 | EXECUTION_MODE_SCRIPT | Script mode execution |
-| 7 | EXECUTION_MODE_FORM_FILLER | Form filler mode execution |
+| Number | Name                                 | Meaning                                          |
+| ------ | ------------------------------------ | ------------------------------------------------ |
+| 0      | EXECUTION_MODE_UNSPECIFIED           | Mode not specified                               |
+| 1      | EXECUTION_MODE_CUA                   | Executed by Computer Use Agent (LLM-driven)      |
+| 2      | EXECUTION_MODE_CACHE                 | Step executed from cache (no live LLM run)       |
+| 3      | EXECUTION_MODE_CACHE_FALLBACK_TO_CUA | Cache attempted but fell back to agent execution |
+| 4      | EXECUTION_MODE_FALLBACK_TO_CUA       | Non-CUA execution failed, fell back to agent     |
+| 5      | EXECUTION_MODE_NON_CUA               | Non-CUA mode (deterministic/scripted)            |
+| 6      | EXECUTION_MODE_SCRIPT                | Script mode execution                            |
+| 7      | EXECUTION_MODE_FORM_FILLER           | Form filler mode execution                       |
 
 ### CacheStatus
 
 The `cacheStatus` field indicates what happened with cache for each step:
 
-| Number | Name | Meaning |
-|---|---|---|
-| 0 | CACHE_STATUS_UNSPECIFIED | Cache status not specified |
-| 1 | CACHE_STATUS_HIT | Cache entry found and used - optimal performance |
-| 2 | CACHE_STATUS_MISS | No suitable cache entry found - expected for first runs |
-| 3 | CACHE_STATUS_UNUSED_IS_RETRY | Cache ignored because step needed retry - may indicate flaky steps |
-| 4 | CACHE_STATUS_UNUSED_IS_ASSERTION | Cache ignored for assertion-only step - expected behavior |
-| 5 | CACHE_STATUS_UNUSED_NON_CACHEABLE_EXECUTION_MODE | Cache ignored due to non-cacheable execution mode |
-| 6 | CACHE_STATUS_UNUSED_CONTAINS_NON_CACHEABLE_ACTIONS | Cache ignored due to non-cacheable actions |
-| 7 | CACHE_STATUS_UNUSED_ELEMENT_IS_MISSING | Cache ignored because required element missing - UI changes may have broken cache assumptions |
-| 8 | CACHE_STATUS_UNUSED_HAS_TOOL_CALLS | Cache ignored because step involved tool calls - dynamic behavior prevented caching |
-| 9 | CACHE_STATUS_UNUSED_IS_SCRIPT | Cache ignored for script-based step |
+| Number | Name                                               | Meaning                                                                                       |
+| ------ | -------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| 0      | CACHE_STATUS_UNSPECIFIED                           | Cache status not specified                                                                    |
+| 1      | CACHE_STATUS_HIT                                   | Cache entry found and used - optimal performance                                              |
+| 2      | CACHE_STATUS_MISS                                  | No suitable cache entry found - expected for first runs                                       |
+| 3      | CACHE_STATUS_UNUSED_IS_RETRY                       | Cache ignored because step needed retry - may indicate flaky steps                            |
+| 4      | CACHE_STATUS_UNUSED_IS_ASSERTION                   | Cache ignored for assertion-only step - expected behavior                                     |
+| 5      | CACHE_STATUS_UNUSED_NON_CACHEABLE_EXECUTION_MODE   | Cache ignored due to non-cacheable execution mode                                             |
+| 6      | CACHE_STATUS_UNUSED_CONTAINS_NON_CACHEABLE_ACTIONS | Cache ignored due to non-cacheable actions                                                    |
+| 7      | CACHE_STATUS_UNUSED_ELEMENT_IS_MISSING             | Cache ignored because required element missing - UI changes may have broken cache assumptions |
+| 8      | CACHE_STATUS_UNUSED_HAS_TOOL_CALLS                 | Cache ignored because step involved tool calls - dynamic behavior prevented caching           |
+| 9      | CACHE_STATUS_UNUSED_IS_SCRIPT                      | Cache ignored for script-based step                                                           |
 
 ### StepType
 
 The `stepType` field classifies the type of step being executed:
 
-| Number | Name | Meaning |
-|---|---|---|
-| 0 | STEP_TYPE_UNSPECIFIED | Step type not specified |
-| 1 | STEP_TYPE_REGULAR_ACTION | Regular user actions (click, type, navigate) |
-| 2 | STEP_TYPE_FORM_FILLING | Data entry or form completion |
-| 3 | STEP_TYPE_VERIFICATION | Assertion or verification of expected state |
+| Number | Name                     | Meaning                                      |
+| ------ | ------------------------ | -------------------------------------------- |
+| 0      | STEP_TYPE_UNSPECIFIED    | Step type not specified                      |
+| 1      | STEP_TYPE_REGULAR_ACTION | Regular user actions (click, type, navigate) |
+| 2      | STEP_TYPE_FORM_FILLING   | Data entry or form completion                |
+| 3      | STEP_TYPE_VERIFICATION   | Assertion or verification of expected state  |
 
 ## Key Takeaways
 

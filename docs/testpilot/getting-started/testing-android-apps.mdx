@@ -13,10 +13,10 @@ Before you can run tests on Android devices, you'll need to set up Appium:
    ```bash
    # Install Appium globally
    npm install -g appium
-   
+
    # Install Appium Doctor for diagnostics
    npm install -g appium-doctor
-   
+
    # Install the Android driver
    appium driver install uiautomator2
    ```
@@ -90,7 +90,7 @@ cases:
     name: "Basic Android Navigation"
     description: "Test basic navigation in the Android app"
     platform_config:
-      android_pkg: "com.example.myapp"  # Replace with your app's package name
+      android_pkg: "com.example.myapp" # Replace with your app's package name
     steps:
       - "Verify the app launches successfully"
       - "Tap on the 'Login' button"
@@ -120,8 +120,8 @@ You can specify an app and URL for both browser based and native application tes
 
 ```yaml
 platform_config:
-  url: "https://example.com"        # For browser-based tests
-  android_pkg: "com.example.myapp"  # For native app tests
+  url: "https://example.com" # For browser-based tests
+  android_pkg: "com.example.myapp" # For native app tests
 ```
 
 - Use `url` for browser-based tests on Android Chrome

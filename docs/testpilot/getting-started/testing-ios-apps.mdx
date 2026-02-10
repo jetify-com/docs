@@ -14,10 +14,10 @@ dependencies:
    ```bash
    # Install Appium globally
    npm install -g appium
-   
+
    # Install Appium Doctor for diagnostics
    npm install -g appium-doctor
-   
+
    # Install the XCUITest driver for iOS testing
    appium driver install xcuitest
    ```
@@ -70,7 +70,7 @@ cases:
     name: "Basic iOS Navigation"
     description: "Test basic navigation in the iOS app"
     platform_config:
-      ios_bundle: "com.example.MyApp"  # Replace with your app's bundle identifier
+      ios_bundle: "com.example.MyApp" # Replace with your app's bundle identifier
     steps:
       - "Verify the app launches successfully"
       - "Tap on the 'Login' button"
@@ -116,7 +116,7 @@ The `platform_config` section of your test file is crucial for iOS testing:
 
 ```yaml
 platform_config:
-  url: "https://example.com"      # For browser-based tests
+  url: "https://example.com" # For browser-based tests
   ios_bundle: "com.example.MyApp" # For native app tests
 ```
 
