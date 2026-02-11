@@ -2,7 +2,7 @@
 title: "Apache"
 description:
   "Apache can be automatically configured by Devbox via the built-in Apache Plugin. This plugin will
-  activate automatically when you install Apache using ."
+  activate automatically when you install Apache using `devbox add apache`."
 ---
 
 [**Example Repo**](https://github.com/jetify-com/devbox/tree/main/examples/servers/apache)
@@ -11,8 +11,10 @@ description:
 
 Run `devbox add apache`, or add the following to your `devbox.json`
 
-```
-  "packages": [    "apache@latest"  ]
+```json
+  "packages": [
+    "apache@latest"
+  ]
 ```
 
 This will install the latest version of Apache. You can find other installable versions of Apache by
@@ -43,7 +45,11 @@ this, you should copy and modify the default `./devbox.d/apacheHttpd/httpd.conf`
 ### Environment Variables[​](#environment-variables "Direct link to Environment Variables")
 
 ```bash
-HTTPD_ACCESS_LOG_FILE={PROJECT_DIR}/.devbox/virtenv/apacheHttpd/access.logHTTPD_ERROR_LOG_FILE={PROJECT_DIR}/.devbox/virtenv/apacheHttpd/error.logHTTPD_PORT=8080HTTPD_DEVBOX_CONFIG_DIR={PROJECT_DIR}HTTPD_CONFDIR={PROJECT_DIR}/devbox.d/apacheHttpd
+HTTPD_ACCESS_LOG_FILE={PROJECT_DIR}/.devbox/virtenv/apacheHttpd/access.log
+HTTPD_ERROR_LOG_FILE={PROJECT_DIR}/.devbox/virtenv/apacheHttpd/error.log
+HTTPD_PORT=8080
+HTTPD_DEVBOX_CONFIG_DIR={PROJECT_DIR}
+HTTPD_CONFDIR={PROJECT_DIR}/devbox.d/apacheHttpd
 ```
 
 ### Notes[​](#notes "Direct link to Notes")

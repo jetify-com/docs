@@ -1,9 +1,10 @@
 ---
 title: "Zed Editor"
 description:
-  "Zed is a fast, open source code editor designed for collaboration and AI support, that is
-  available for macOS and Linux. Zed has support for loading environments directly from
-  Direnv's  files, meaning you can easily use Zed w/ Devbox via our ."
+  "[Zed](https://zed.dev/) is a fast, open source code editor designed for collaboration and AI
+  support, that is available for macOS and Linux. Zed has support for loading environments directly
+  from Direnv's `.envrc` files, meaning you can easily use Zed w/ Devbox via our [direnv
+  integration](/devbox/ide_configuration/direnv)."
 ---
 
 ## Setting up your Project for Zed[​](#setting-up-your-project-for-zed "Direct link to Setting up your Project for Zed")
@@ -47,7 +48,9 @@ steps:
    To fix this, add the following to your `~/.config/zed/config.json` file:
 
 ```json
-{ "load_direnv": "shell_hook" }
+{
+  "load_direnv": "shell_hook"
+}
 ```
 
 [Edit this page](https://github.com/jetify-com/docs/tree/main/docs/devbox/ide-configuration/zed/index.mdx)

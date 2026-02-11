@@ -1,11 +1,11 @@
 ---
 title: "Using Plugins"
 description:
-  "This doc describes how to use Devbox Plugins with your project.  provide a default Devbox
-  configuration for a Nix package. Plugins make it easier to get started with packages that require
-  additional setup when installed with Nix, and they offer a familiar interface for configuring
-  packages. They also help keep all of your project's configuration within your project directory,
-  which helps maintain portability and isolation."
+  "This doc describes how to use Devbox Plugins with your project. **Plugins** provide a default
+  Devbox configuration for a Nix package. Plugins make it easier to get started with packages that
+  require additional setup when installed with Nix, and they offer a familiar interface for
+  configuring packages. They also help keep all of your project's configuration within your project
+  directory, which helps maintain portability and isolation."
 ---
 
 ## Using Plugins[​](#using-plugins "Direct link to Using Plugins")
@@ -20,7 +20,9 @@ You can also explicitly add a built-in plugin in your project by adding it to th
 explicitly add the plugin for Nginx, you can add the following to your `devbox.json` file:
 
 ```json
-{ "include": ["plugin:nginx"] }
+{
+  "include": ["plugin:nginx"]
+}
 ```
 
 Built-in plugins are available for the following packages. You can activate the plugins for these
@@ -45,8 +47,10 @@ packages by running `devbox add <package_name>`
 You can also [define your own plugins](/docs/devbox/guides/creating-plugins/) and use them in your
 project. To use a local plugin, add the following to the `include` section of your devbox.json:
 
-```
-  "include": [    "path:./path/to/plugin.json"  ]
+```json
+  "include": [
+    "path:./path/to/plugin.json"
+  ]
 ```
 
 ### Github Hosted Plugins[​](#github-hosted-plugins "Direct link to Github Hosted Plugins")
@@ -57,20 +61,26 @@ following to the include section of your devbox.json
 
 Default - `master` branch:
 
-```
-  "include": [    "github:<org>/<repo>?dir=<plugin-dir>"  ]
+```json
+  "include": [
+    "github:<org>/<repo>?dir=<plugin-dir>"
+  ]
 ```
 
 Branch override:
 
-```
-  "include": [    "github:<org>/<repo>/<branch>?dir=<plugin-dir>"  ]
+```json
+  "include": [
+    "github:<org>/<repo>/<branch>?dir=<plugin-dir>"
+  ]
 ```
 
 Git Tag Pinning:
 
-```
-  "include": [    "github:<org>/<repo>/tags/<tag-to-pin>?dir=<plugin-dir>"  ]
+```json
+  "include": [
+    "github:<org>/<repo>/tags/<tag-to-pin>?dir=<plugin-dir>"
+  ]
 ```
 
 Note that Devbox will cache Github plugins for 24 hours. This is to aid performance of
@@ -150,6 +160,7 @@ this service with `devbox services start nginx`, and then test it with `curl`:
 
 ```bash
 > devbox services start nginx
+
 Installing nix packages. This may take a while... done.
 Starting a devbox shell...
 Service "nginx" started

@@ -48,14 +48,14 @@ available when using this Devbox shell, ensuring we don’t pollute your machine
    `devbox add <package>@<version>`. For example, to install Python 3.10, you can run:
 
    ```bash
-   devbox add [email protected]
+   devbox add python@3.10
    ```
 
 5. Your `devbox.json` file keeps track of the packages you've added, it should now look like this:
 
    ```json
    {
-     "packages": ["ripgrep@latest", "[email protected]"]
+     "packages": ["ripgrep@latest", "python@3.10"]
    }
    ```
 
@@ -80,16 +80,17 @@ available when using this Devbox shell, ensuring we don’t pollute your machine
 
    In this example we installed Python 3.10, so let's use it.
 
-   ```bash
+   ```
    $ python --version
    Python 3.10.0
    ```
 
    We will also have the latest version of ripgrep installed in our shell:
 
-   ```bash
+   ```
    $ rg --version
-   ripgrep 13.0.0-SIMD -AVX (compiled)
+   ripgrep 13.0.0
+   -SIMD -AVX (compiled)
    ```
 
 3. Your regular tools are also available including environment variables and config settings.
@@ -116,12 +117,15 @@ README.md to add the badge
 
 [![Built with Devbox](/docs/images/devbox/badges/devbox-badge-galaxy.svg)](https://www.jetify.com/devbox/docs/contributor-quickstart/)
 
-- Markdown
-- HTML
+<Tabs>
+<Tab title="Markdown">
 
 ```markdown
 [![Built with Devbox](https://www.jetify.com/img/devbox/shield_galaxy.svg)](https://www.jetify.com/devbox/docs/contributor-quickstart/)
 ```
+
+</Tab>
+<Tab title="HTML">
 
 ```html
 <a href="https://www.jetify.com/devbox/docs/contributor-quickstart/">
@@ -129,20 +133,29 @@ README.md to add the badge
 </a>
 ```
 
+</Tab>
+</Tabs>
+
 [![Built with Devbox](/docs/images/devbox/badges/devbox-badge-moon.svg)](https://www.jetify.com/devbox/docs/contributor-quickstart/)
 
-- Markdown
-- HTML
+<Tabs>
+<Tab title="Markdown">
 
 ```markdown
 [![Built with Devbox](https://www.jetify.com/img/devbox/shield_moon.svg)](https://www.jetify.com/devbox/docs/contributor-quickstart/)
 ```
+
+</Tab>
+<Tab title="HTML">
 
 ```html
 <a href="https://www.jetify.com/devbox/docs/contributor-quickstart/">
   <img src="https://www.jetify.com/img/devbox/shield_moon.svg" alt="Built with Devbox" />
 </a>
 ```
+
+</Tab>
+</Tabs>
 
 ## Next Steps[​](#next-steps "Direct link to Next Steps")
 

@@ -23,7 +23,11 @@ If you have direnv installed, Devbox will generate an .envrc file when you run
 `devbox generate direnv` and enables it by running `direnv allow` in the background:
 
 ```
-➜  devbox generate direnvSuccess: generated .envrc fileSuccess: ran `direnv allow`direnv: loading ~/src/docs/devbox/.envrcdirenv: using devbox
+➜  devbox generate direnv
+Success: generated .envrc file
+Success: ran `direnv allow`
+direnv: loading ~/src/docs/devbox/.envrc
+direnv: using devbox
 ```
 
 This will generate a `.envrc` file in your project directory that contains `devbox.json`. Run
@@ -37,7 +41,11 @@ installed direnv and Devbox is enough to make direnv integrate with Devbox.
 For an existing project, you can add a `.envrc` file by running `devbox generate direnv`:
 
 ```
-➜  devbox generate direnvSuccess: generated .envrc fileSuccess: ran `direnv allow`direnv: loading ~/src/docs/devbox/.envrcdirenv: using devbox
+➜  devbox generate direnv
+Success: generated .envrc file
+Success: ran `direnv allow`
+direnv: loading ~/src/docs/devbox/.envrc
+direnv: using devbox
 ```
 
 The generated `.envrc` file doesn't need any further configuration. Just having the generated file
@@ -62,7 +70,13 @@ devbox generate direnv --env MY_CUSTOM_ENV_VAR=my-value
 The resulting .envrc will have the following:
 
 ```bash
-# Automatically sets up your devbox environment whenever you cd into this# directory via our direnv integration:eval "$(devbox generate direnv --print-envrc --env MY_CUSTOM_ENV_VAR=my-value)"# check out https://www.jetify.com/docs/devbox/ide-configuration/direnv/# for more details
+# Automatically sets up your devbox environment whenever you cd into this
+# directory via our direnv integration:
+
+eval "$(devbox generate direnv --print-envrc --env MY_CUSTOM_ENV_VAR=my-value)"
+
+# check out https://www.jetify.com/docs/devbox/ide-configuration/direnv/
+# for more details
 ```
 
 You can also tell direnv to read environment variables from a custom `.env` file by passing the
@@ -78,7 +92,13 @@ devbox generate direnv --env-file .env.devbox
 The resulting .envrc will have the following:
 
 ```bash
-# Automatically sets up your devbox environment whenever you cd into this# directory via our direnv integration:eval "$(devbox generate direnv --print-envrc --env-file .env.devbox)"# check out https://www.jetify.com/docs/devbox/ide-configuration/direnv/# for more details
+# Automatically sets up your devbox environment whenever you cd into this
+# directory via our direnv integration:
+
+eval "$(devbox generate direnv --print-envrc --env-file .env.devbox)"
+
+# check out https://www.jetify.com/docs/devbox/ide-configuration/direnv/
+# for more details
 ```
 
 Note that if Devbox cannot find the env file provided to the flag, it will ignore the flag and load
@@ -94,8 +114,10 @@ Alternatively, a project directory can be whitelisted so that changes will be au
 up by `direnv`. This is done by adding following snippet to direnv config file typically at
 `~/.config/direnv/direnv.toml`. You can create the file and directory if it doesn't exist.
 
-```bash
-[whitelist]prefix = [ "/absolute/path/to/project" ]
+```toml
+[whitelist]
+prefix = [ "/absolute/path/to/project" ]
+
 ```
 
 ### Direnv Limitations[​](#direnv-limitations "Direct link to Direnv Limitations")

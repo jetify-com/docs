@@ -1,8 +1,9 @@
 ---
 title: "devbox.json Reference"
 description:
-  "Your devbox configuration is stored in a  file, located in your project's root directory. This
-  file can be edited directly, or using the ."
+  "Your devbox configuration is stored in a `devbox.json` file, located in your project's root
+  directory. This file can be edited directly, or using the [devbox
+  CLI](/docs/devbox/cli-reference/devbox/)."
 ---
 
 ```json
@@ -87,11 +88,12 @@ you provide.
 
 You can pin a specific version of a package by adding a `@` followed by the version number to the
 end of the package name. For example, to pin the `go` package to version `1.19`, you can run
-`devbox add [email protected]`, or add `[email protected]` to the packages list in your
-`devbox.json`:
+`devbox add go@1.19`, or add `go@1.19` to the packages list in your `devbox.json`:
 
 ```json
-{ "packages": ["[email protected]"] }
+{
+  "packages": ["go@1.19"]
+}
 ```
 
 Where possible, pinned packages follow semver. For example, if you pin `python@3`, it will install
@@ -189,7 +191,11 @@ local machine or by [Devbox Plugins](/docs/devbox/guides/plugins/).
 For example, you could set variable `$FOO` to `bar` by adding the following to your `devbox.json`:
 
 ```json
-{ "env": { "FOO": "bar" } }
+{
+  "env": {
+    "FOO": "bar"
+  }
+}
 ```
 
 Currently, you can only set values using string literals, `$PWD`, and `$PATH`. Any other values with
@@ -207,7 +213,9 @@ You can load environment variables from a `.env` file by adding the path to the 
 sensitive information that you don't want to store in your `devbox.json`.
 
 ```json
-{ "env_from": "path/to/.env" }
+{
+  "env_from": "path/to/.env"
+}
 ```
 
 This will load the environment variables from the `.env` file into your shell when you run
@@ -220,7 +228,9 @@ You can securely load secrets from Jetify Secrets by running `devbox secrets ini
 project in Jetify Cloud. This will add the `jetify-cloud` field to `env_from` in your project.
 
 ```json
-{ "env_from": "jetify-cloud" }
+{
+  "env_from": "jetify-cloud"
+}
 ```
 
 Note that setting secrets securely with Jetify Secrets requires a Jetify Cloud account. For more
@@ -257,7 +267,7 @@ This is an example `devbox.json` that customizes the prompt and prints a welcome
 
 When run, you'll see:
 
-```bash
+```
 > devbox shell
 Installing nix packages. This may take a while...
 Starting a devbox shell...
@@ -329,7 +339,9 @@ following:
 ```json
 {
   "packages": ["rustup@latest", "libiconv@latest"],
-  "env": { "PROJECT_DIR": "$PWD" },
+  "env": {
+    "PROJECT_DIR": "$PWD"
+  },
   "shell": {
     "init_hook": [". conf/set-env.sh", "rustup default stable", "cargo fetch"],
     "scripts": {

@@ -2,7 +2,7 @@
 title: "LAPP (Linux, Apache, PHP, Postgres)"
 description:
   "This example shows how to build a simple application using Apache, PHP, and PostgreSQL. It uses
-  Devbox Plugins for all 3 packages to simplify configuration"
+  Devbox Plugins for all 3 packages to simplify configuration."
 ---
 
 [Example Repo](https://github.com/jetify-com/devbox/tree/main/examples/stacks/lapp-stack)
@@ -24,7 +24,7 @@ description:
    that the plugins are activated:
 
    ```bash
-   devbox add postgresql@14 php php83Extensions.pgsql@latest [email protected]
+   devbox add postgresql@14 php php83Extensions.pgsql@latest apache@2.4
    ```
 
 3. Update `devbox.d/apache/httpd.conf` to point to the directory with your PHP files. You'll need to

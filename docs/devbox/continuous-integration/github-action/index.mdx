@@ -1,9 +1,9 @@
 ---
 title: "Using Devbox in CI/CD with GitHub Actions"
-description:
-  "This guide explains how to use Devbox in CI/CD using GitHub Actions. The  will install Devbox CLI
-  and any packages + configuration defined in your  file. You can then run tasks or scripts
-  within  to reproduce your environment."
+description: "This guide explains how to use Devbox in CI/CD using GitHub Actions. The
+  [devbox-install-action](https://github.com/marketplace/actions/devbox-installer) will install the
+  Devbox CLI and any packages + configuration defined in your `devbox.json` file. You can then run
+  tasks or scripts within `devbox shell` to reproduce your environment."
 ---
 
 This GitHub Action also supports caching the packages and dependencies installed in your
@@ -16,8 +16,9 @@ This GitHub Action also supports caching the packages and dependencies installed
 
 In your project's workflow YAML, add the following step:
 
-```bash
-- name: Install devbox  uses: jetify-com/devbox-install-[email protected]
+```yaml
+- name: Install devbox
+  uses: jetify-com/devbox-install-action@v0.14.0
 ```
 
 ## Example Workflow[​](#example-workflow "Direct link to Example Workflow")
@@ -25,8 +26,25 @@ In your project's workflow YAML, add the following step:
 The workflow below shows how to use the action to install Devbox, and then run arbitrary commands or
 [Devbox Scripts](/docs/devbox/guides/scripts/) in your shell.
 
-```bash
-name: Testing with devboxon: pushjobs:  test:    runs-on: ubuntu-latest    steps:      - uses: actions/checkout@v4      - name: Install devbox        uses: jetify-com/devbox-install-[email protected]      - name: Run arbitrary commands        run: devbox run -- echo "done!"      - name: Run a script called test        run: devbox run test
+```yaml
+name: Testing with devbox
+
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install devbox
+        uses: jetify-com/devbox-install-action@v0.14.0
+
+      - name: Run arbitrary commands
+        run: devbox run -- echo "done!"
+
+      - name: Run a script called test
+        run: devbox run test
 ```
 
 ## Configuring the Action[​](#configuring-the-action "Direct link to Configuring the Action")

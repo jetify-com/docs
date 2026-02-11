@@ -2,7 +2,7 @@
 title: "Nginx"
 description:
   "NGINX can be automatically configured by Devbox via the built-in NGINX Plugin. This plugin will
-  activate automatically when you install NGINX using"
+  activate automatically when you install NGINX using `devbox add nginx`."
 ---
 
 [**Example Repo**](https://github.com/jetify-com/devbox/tree/main/examples/servers/nginx)
@@ -11,8 +11,10 @@ description:
 
 Run `devbox add nginx`, or add the following to your `devbox.json`
 
-```
-  "packages": [    "nginx@latest"  ]
+```json
+  "packages": [
+    "nginx@latest"
+  ]
 ```
 
 This will install the latest version of NGINX. You can find other installable versions of NGINX by
@@ -48,7 +50,9 @@ this, you should modify `./devbox.d/nginx/nginx.template`
 ### Environment Variables[​](#environment-variables "Direct link to Environment Variables")
 
 ```bash
-NGINX_CONFDIR=devbox.d/nginx/nginx.confNGINX_PATH_PREFIX=.devbox/virtenv/nginxNGINX_TMPDIR=.devbox/virtenv/nginx/temp
+NGINX_CONFDIR=devbox.d/nginx/nginx.conf
+NGINX_PATH_PREFIX=.devbox/virtenv/nginx
+NGINX_TMPDIR=.devbox/virtenv/nginx/temp
 ```
 
 ### Notes[​](#notes "Direct link to Notes")

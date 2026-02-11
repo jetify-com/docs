@@ -2,7 +2,7 @@
 title: "Caddy"
 description:
   "Caddy can be configured automatically using Devbox's built in Caddy plugin. This plugin will
-  activate automatically when you install Caddy using"
+  activate automatically when you install Caddy using `devbox add caddy`."
 ---
 
 [**Example Repo**](https://github.com/jetify-com/devbox/tree/main/examples/servers/caddy)
@@ -11,8 +11,10 @@ description:
 
 Run `devbox add caddy`, or add the following to your `devbox.json`
 
-```
-  "packages": [    "caddy@latest"  ]
+```json
+  "packages": [
+    "caddy@latest"
+  ]
 ```
 
 This will install the latest version of Caddy. You can find other installable versions of Caddy by
@@ -44,7 +46,9 @@ variable
 ### Environment Variables[​](#environment-variables "Direct link to Environment Variables")
 
 ```
-* CADDY_CONFIG={PROJECT_DIR}/devbox.d/caddy/Caddyfile* CADDY_LOG_DIR={PROJECT_DIR}/.devbox/virtenv/caddy/log* CADDY_ROOT_DIR={PROJECT_DIR}/devbox.d/web
+* CADDY_CONFIG={PROJECT_DIR}/devbox.d/caddy/Caddyfile
+* CADDY_LOG_DIR={PROJECT_DIR}/.devbox/virtenv/caddy/log
+* CADDY_ROOT_DIR={PROJECT_DIR}/devbox.d/web
 ```
 
 ### Notes[​](#notes "Direct link to Notes")

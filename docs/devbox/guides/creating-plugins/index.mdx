@@ -31,7 +31,15 @@ We recommend organizing your plugin with the following directory structure, wher
 folder matches the name of your plugin:
 
 ```
-my-plugin/├── README.md├── plugin.json├── config/│   ├── my-plugin.conf│   └── process-compose.yaml└── test/    ├── devbox.json    └── devbox.lock
+my-plugin/
+├── README.md
+├── plugin.json
+├── config/
+│   ├── my-plugin.conf
+│   └── process-compose.yaml
+└── test/
+    ├── devbox.json
+    └── devbox.lock
 ```
 
 - **README.md** -- Should contain a description of how your plugin works, and what files, variables,
@@ -55,7 +63,29 @@ works as follows:
 Plugins are defined as Go JSON Template files, using the following schema:
 
 ```json
-{  "name": "",  "version": "",  "description": "",  "packages":[] | {},  "env": {    "<key>": "<value>"  },  "create_files": {    "<destination>": "<source>"  },  "shell": {    "init_hook": [      "<bash commands>"    ],     "scripts": {      "<key>": "<value>"    }  },  "include": [   "<path_to_plugin>"  ]}
+{
+  "name": "",
+  "version": "",
+  "description": "",
+  "packages":[] | {},
+  "env": {
+    "<key>": "<value>"
+  },
+  "create_files": {
+    "<destination>": "<source>"
+  },
+  "shell": {
+    "init_hook": [
+      "<bash commands>"
+    ],
+    "scripts": {
+      "<key>": "<value>"
+    }
+  },
+  "include": [
+    "<path_to_plugin>"
+  ]
+}
 ```
 
 A plugin can define services by adding a `process-compose.yaml` file in its `create_files` stanza.
@@ -106,8 +136,8 @@ section follows the same format as [`packages`](/docs/devbox/configuration/#pack
 project's `devbox.json`.
 
 Packages installed by a plugin can be overridden if a user installs a different version of the same
-package in their `devbox.json` config. For example, if a plugin installs `[email protected]`, and a
-user's devbox.json installs `[email protected]`, the project will use `[email protected]`.
+package in their `devbox.json` config. For example, if a plugin installs `python@3.10`, and a user's
+devbox.json installs `python@3.11`, the project will use `python@3.11`.
 
 #### `env` _object_[​](#env-object "Direct link to env-object")
 
@@ -120,8 +150,10 @@ by a user's `devbox.json`.
 A map of `"destination":"source"` pairs that can be used to create or copy files into the user's
 devbox directory when the plugin is activated. For example:
 
-```
-"create_files": {    "{{ .DevboxDir }}/Caddyfile": "caddy/Caddyfile"}
+```json
+"create_files": {
+  "{{ .DevboxDir }}/Caddyfile": "caddy/Caddyfile"
+}
 ```
 
 Will copy the Caddyfile in the `plugins/caddy` folder to `devbox.d/caddy/Caddyfile` in the user's
@@ -182,8 +214,17 @@ Note that in the event of a conflict, plugins near the end of the list will over
 beginning of the list. Likewise, if a setting in your plugin.json conflicts with an included plugin,
 your setting will take precedence.
 
-```
-{    "include": [        // Include a plugin from a Github Repo. The repo must have a plugin.json in it's root,        // or in the directory specified by ?dir        "github:org/repo/ref?dir=<path-to-plugin>"        // Include a local plugin. The path must point to a plugin.json        "path:path/to/plugin.json"    ]}
+```jsonc
+{
+  "include": [
+    // Include a plugin from a Github Repo. The repo must have a plugin.json in it's root,
+    // or in the directory specified by ?dir
+    "github:org/repo/ref?dir=<path-to-plugin>"
+
+    // Include a local plugin. The path must point to a plugin.json
+    "path:path/to/plugin.json"
+  ]
+}
 ```
 
 ### Adding Services[​](#adding-services "Direct link to Adding Services")
