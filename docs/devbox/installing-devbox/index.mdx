@@ -6,11 +6,8 @@ title: "Installing Devbox"
 
 Select your OS below for the steps to install Devbox.
 
-- Linux
-- MacOS
-- Windows/WSL2
-- NixOS/Nixpkg
-- Nix Flake
+<Tabs>
+<Tab title="Linux">
 
 Run the following install script as a _non-root user_ to install the latest version of Devbox:
 
@@ -25,6 +22,9 @@ You can use Devbox without needing to learn the Nix Language.
 If you would like to install Nix yourself, we recommend the
 [Determinate Nix Installer](https://determinate.systems/nix-installer/).
 
+</Tab>
+<Tab title="MacOS">
+
 Run the following install script to install the latest version of Devbox:
 
 ```bash
@@ -37,6 +37,9 @@ use Devbox without needing to learn the Nix Language.
 
 If you would like to install Nix yourself, we recommend the
 [Determinate Nix Installer](https://determinate.systems/posts/determinate-nix-installer).
+
+</Tab>
+<Tab title="Windows/WSL2">
 
 You can use Devbox on a Windows machine using
 [**Windows Subsystem for Linux 2**](https://learn.microsoft.com/en-us/windows/wsl/install).
@@ -71,6 +74,9 @@ Devbox requires the [Nix Package Manager](https://nixos.org/download/). If Nix i
 your machine when running a command, Devbox will automatically install it in single user mode for
 WSL2. Don't worry: You can use Devbox without needing to learn the Nix Language.
 
+</Tab>
+<Tab title="NixOS/Nixpkg">
+
 Devbox is available through the
 [**Nix Package Manager**](https://search.nixos.org/packages?channel=unstable&show=devbox&from=0&size=50&sort=relevance&type=packages&query=devbox).
 
@@ -96,6 +102,9 @@ Note: New releases of Devbox need to be updated in Nixpkgs before they are avail
 installation. If you want to use the latest version of Devbox, you can install it using the
 [Nix Flake](/docs/devbox/installing-devbox/?install-method=flake).
 
+</Tab>
+<Tab title="Nix Flake">
+
 You can also install Devbox on a NixOS/Nixpkgs system using our Nix Flake. Using the Nix Flake can
 help you access pre-releases and final releases of Devbox as soon as they are published.
 
@@ -111,6 +120,9 @@ above).
 ```bash
 nix profile install github:jetify-com/devbox/0.13.2
 ```
+
+</Tab>
+</Tabs>
 
 ## Updating Devbox[​](#updating-devbox "Direct link to Updating Devbox")
 

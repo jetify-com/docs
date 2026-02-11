@@ -47,6 +47,7 @@ Django server, you could add the following yaml:
 ```yaml
 # Process compose for starting django
 version: "0.5"
+
 processes:
   django:
     command: python todo_project/manage.py runserver
@@ -75,9 +76,11 @@ The service will be made available to your project when you install the packages
 You can list all the services available to your current devbox project by running
 `devbox services ls`. For example, the services in a PHP web app project might look like this:
 
-```text
+```
 devbox services ls
+
 No services currently running. Run `devbox services up` to start them:
+
   django
   postgresql
 ```

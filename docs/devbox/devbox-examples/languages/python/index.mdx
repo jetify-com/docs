@@ -10,12 +10,12 @@ description:
 
 ## Adding Python to your Project[​](#adding-python-to-your-project "Direct link to Adding Python to your Project")
 
-`devbox add [email protected]`, or in your `devbox.json` add:
+`devbox add python@3.10`, or in your `devbox.json` add:
 
 ```json
   "packages": [
-    "[email protected]"
-  ]
+    "python@3.10"
+  ],
 ```
 
 This will install Python 3.10 in your shell. You can find other versions of Python by running
@@ -38,7 +38,7 @@ environment automatically using the init_hook of your `devbox.json`:
 
 ```json
 {
-  "packages": ["[email protected]"],
+  "packages": ["python@3.10"],
   "shell": {
     "init_hook": ". $VENV_DIR/bin/activate"
   }
@@ -55,7 +55,7 @@ this path by setting the `VENV_DIR` environment variable in your devbox.json:
 
 ```json
 {
-  "packages": ["[email protected]"],
+  "packages": ["python@3.10"],
   "env": {
     // Install your virtual environment in `.venv`
     "VENV_DIR": ".venv"
@@ -72,7 +72,7 @@ install:
 
 ```json
 {
-  "packages": ["[email protected]", "python310Packages.pip"],
+  "packages": ["python@3.10", "python310Packages.pip"],
   "shell": {
     "init_hook": ". $VENV_DIR/bin/activate"
   }
@@ -92,7 +92,9 @@ your packages and virtual environment via a Pipfile
 ```json
 {
   "packages": ["python310", "pipenv"],
-  "shell": { "init_hook": "pipenv shell" }
+  "shell": {
+    "init_hook": "pipenv shell"
+  }
 }
 ```
 
@@ -111,7 +113,9 @@ packages and virtual environment via a `pyproject.toml`
 ```json
 {
   "packages": ["python3", "poetry"],
-  "shell": { "init_hook": "poetry shell" }
+  "shell": {
+    "init_hook": "poetry shell"
+  }
 }
 ```
 

@@ -1,9 +1,9 @@
 ---
 title: "Installing a Specific Package Version"
 description:
-  "This document explains how to use  and  to install a specific package version in your Devbox
-  project. It also explains how to pin a particular major or minor version for the package in your
-  project."
+  "This document explains how to use `devbox search` and `devbox add` to install a specific package
+  version in your Devbox project. It also explains how to pin a particular major or minor version
+  for the package in your project."
 ---
 
 ## The Nixpkgs Repository and the Devbox Search Index[​](#the-nixpkgs-repository-and-the-devbox-search-index "Direct link to The Nixpkgs Repository and the Devbox Search Index")
@@ -25,8 +25,15 @@ version without looking up a Nixpkg commit.
 You can look up the available versions of a package by running `devbox search <package_name>`. For
 example, to see the available versions of `nodejs`, you can run `devbox search nodejs`:
 
-```bash
-$ devbox search nodejsFound 2+ results for "nodejs":* nodejs  (20.5.1, 20.5.0, 20.4.0, 20.3.1, 20.3.0, 20.2.0, 20.1.0, 20.0.0, 19.9.0, 19.8.1)* nodejs-slim  (20.5.1, 20.5.0, 20.4.0, 20.3.1, 20.3.0, 20.2.0, 20.1.0, 20.0.0, 19.9.0, 19.8.1)Warning: Showing top 10 results and truncated versions. Use --show-all to show all.
+```
+$ devbox search nodejs
+
+Found 2+ results for "nodejs":
+
+* nodejs  (20.5.1, 20.5.0, 20.4.0, 20.3.1, 20.3.0, 20.2.0, 20.1.0, 20.0.0, 19.9.0, 19.8.1)
+* nodejs-slim  (20.5.1, 20.5.0, 20.4.0, 20.3.1, 20.3.0, 20.2.0, 20.1.0, 20.0.0, 19.9.0, 19.8.1)
+
+Warning: Showing top 10 results and truncated versions. Use --show-all to show all.
 ```
 
 ### Specifying Package Versions[​](#specifying-package-versions "Direct link to Specifying Package Versions")
@@ -38,11 +45,13 @@ For example, to use the latest version of `ripgrep,` run `devbox add ripgrep`,
 `devbox add ripgrep@latest`, or add `ripgrep@latest` to your devbox.json package list.
 
 To add a specific version of a package, write `<package_name>@<version>`. For example, to pin the
-`nodejs` package to version `20.1.0`, you can run `devbox add package_name@version` or add
-`package_name@version` to the packages list in your `devbox.json`:
+`nodejs` package to version `20.1.0`, you can run `devbox add nodejs@20.1.0` or add `nodejs@20.1.0`
+to the packages list in your `devbox.json`:
 
-```
-"packages": [	"package_name@version"]
+```json
+"packages": [
+	"nodejs@20.1.0"
+]
 ```
 
 For packages that use semver, you can pin a range of versions for your project. For example, if you

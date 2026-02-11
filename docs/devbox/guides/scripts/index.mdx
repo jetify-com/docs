@@ -2,8 +2,8 @@
 title: "Running Scripts"
 description:
   "Scripts are shell commands that can be defined in your devbox.json file. They can be executed by
-  using the  command. Scripts started with  are launched in a interactive  that terminates once the
-  script finishes, or is interrupted by CTRL-C."
+  using the `devbox run` command. Scripts started with `devbox run` are launched in a interactive
+  `devbox shell` that terminates once the script finishes, or is interrupted by CTRL-C."
 ---
 
 Scripts will run after your packages finish installing, and after your `init_hook` completes.
@@ -31,7 +31,7 @@ commands to run:
 To run a script, use `devbox run <script_name>`. This will start your shell, run your `init_hook`,
 and then run the script:
 
-```bash
+```
 $ devbox run echo_once
 Installing nix packages. This may take a while... done.
 Starting a devbox shell...

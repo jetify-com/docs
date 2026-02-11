@@ -45,7 +45,7 @@ Devbox Plugins for all 3 Nix packages to simplify configuration
    that the plugins are activated:
 
    ```bash
-   devbox add mariadb@latest, [email protected], nodejs@18, redis@latest, php81Packages.composer@latest
+   devbox add mariadb@latest, php@8.1, nodejs@18, redis@latest, php81Packages.composer@latest
    ```
 
 3. Run `devbox shell` to start your shell. This will also initialize your database by running
@@ -54,7 +54,8 @@ Devbox Plugins for all 3 Nix packages to simplify configuration
 4. Create your laravel project by running:
 
    ```bash
-   composer create-project laravel/laravel tmpmv tmp/* tmp/.* .
+   composer create-project laravel/laravel tmp
+   mv tmp/* tmp/.* .
    ```
 
 ### Setting up MariaDB[​](#setting-up-mariadb "Direct link to Setting up MariaDB")

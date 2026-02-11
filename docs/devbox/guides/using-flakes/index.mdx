@@ -1,6 +1,6 @@
 ---
 title: "Installing Packages from Nix Flakes"
-description: "Devbox supports installing packages with ."
+description: "Devbox supports installing packages with [Nix Flakes](https://nixos.wiki/wiki/Flakes)."
 ---
 
 Devbox currently provides two ways to use Flakes to install packages in your project:
@@ -22,8 +22,10 @@ revision to use
 
 You can add a Flake hosted on Github using the following string in your packages list:
 
-```
-"packages": [    "github:<org>/<repo>/<ref>#<optional_flake_attr>"]
+```json
+  "packages": [
+    "github:<org>/<repo>/<ref>#<optional_flake_attr>"
+  ]
 ```
 
 The Ref and Flake Attribute is optional and will default to the main branch and
@@ -98,7 +100,7 @@ packages before using them in your Devbox project
 
 Your flake reference should point to a directory that contains a `flake.nix` file.
 
-```
+```nix
 path:<path_to_flake>#<optional_flake_attr>
 ```
 

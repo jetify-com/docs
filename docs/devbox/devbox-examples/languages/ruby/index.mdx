@@ -1,17 +1,21 @@
 ---
 title: "Ruby"
-description: "Example Repo"
+description:
+  "Ruby can be automatically configured by Devbox via the built-in Ruby Plugin. This plugin will
+  activate automatically when you install Ruby 2.7 using `devbox add ruby`."
 ---
 
-Ruby can be automatically configured by Devbox via the built-in Ruby Plugin. This plugin will
-activate automatically when you install Ruby 2.7 using `devbox add ruby`.
+[**Example Repo**](https://github.com/jetify-com/devbox/tree/main/examples/development/ruby)
 
 ## Adding Ruby to your shell[​](#adding-ruby-to-your-shell "Direct link to Adding Ruby to your shell")
 
-Run `devbox add [email protected] bundler`, or add the following to your `devbox.json`
+Run `devbox add ruby@3.1 bundler`, or add the following to your `devbox.json`
 
 ```json
-    "packages": [        "[email protected]",        "bundler@latest"    ]
+    "packages": [
+        "ruby@3.1",
+        "bundler@latest"
+    ]
 ```
 
 This will install Ruby 3.1 to your shell. You can find other installable versions of Ruby by running
@@ -47,7 +51,9 @@ You can disable the Ruby plugin by running `devbox add ruby --disable-plugin`, o
       "version": "3.1",
       "disable_plugin": true
     },
-    "bundler": { "version": "latest" }
+    "bundler": {
+      "version": "latest"
+    }
   }
 }
 ```

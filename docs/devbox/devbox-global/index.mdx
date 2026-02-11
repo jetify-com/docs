@@ -2,8 +2,8 @@
 title: "Use Devbox as your Primary Package Manager"
 description:
   "In addition to managing isolated development environments, you can use Devbox as a general
-  package manager. Devbox Global allows you to add packages to a global  This is useful for
-  installing a standard set of tools you want to use across multiple Devbox Projects."
+  package manager. Devbox Global allows you to add packages to a global `devbox.json.` This is
+  useful for installing a standard set of tools you want to use across multiple Devbox Projects."
 ---
 
 For example — if you use ripgrep as your preferred search tool, you can add it to your global Devbox
@@ -30,6 +30,7 @@ For example, if we wanted to install ripgrep, vim, and git to our global profile
 
 ```bash
 devbox global add ripgrep vim git
+
 # Output:
 ripgrep is now installed
 vim is now installed
@@ -43,6 +44,7 @@ To view a full list of global packages, you can run `devbox global list`:
 
 ```bash
 devbox global list
+
 # Output:
 * ripgrep
 * vim
@@ -53,6 +55,7 @@ To remove a global package, use:
 
 ```bash
 devbox global rm ripgrep
+
 # Output:
 removing 'github:NixOS/nixpkgs/ripgrep'
 ```
