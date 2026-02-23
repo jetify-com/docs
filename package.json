@@ -14,7 +14,8 @@
     "fmt": "prettier --write .",
     "lint": "mint broken-links",
     "mint": "mint",
-    "vale": "devbox run vale"
+    "vale": "devbox run vale",
+    "prepare": "husky"
   },
   "packageManager": "pnpm@10.26.0",
   "engines": {
@@ -22,6 +23,8 @@
     "pnpm": ">=8"
   },
   "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "mdx2vast": "^0.3.1",
     "mint": "^4.2.310",
     "prettier": "^3.8.1"
@@ -40,5 +43,9 @@
       "serve-static": "1.16.0",
       "zod": "3.22.3"
     }
+  },
+  "lint-staged": {
+    "*.{css,ya?ml}": "prettier --write",
+    "*.{md,mdx}": "prettier --write"
   }
 }
