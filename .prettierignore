@@ -1,2 +1,2 @@
-.vale/
-pnpm-lock.yaml
+/.vale/
+/pnpm-lock.yaml
